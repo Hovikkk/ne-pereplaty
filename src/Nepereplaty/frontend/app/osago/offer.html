@@ -1,0 +1,283 @@
+<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование <strong>{{osagoOfferCtrl.offers.InsuranceType}}</strong> для автомобиля
+        <strong>{{osagoOfferCtrl.offers.CarBrand}}</strong>
+        <strong>{{osagoOfferCtrl.offers.CarModel}}</strong>
+        <strong>{{osagoOfferCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{osagoOfferCtrl.startData}}</strong> и  до <strong>{{osagoOfferCtrl.endData}}</strong> для <strong>{{osagoOfferCtrl.offers.DriversCount}}</strong> <span ng-show="osagoOfferCtrl.offers.DriversCount > 1">водителей</span><span ng-show="osagoOfferCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{osagoOfferCtrl.offers.DriversMinAge}}.</strong>
+    </p>
+</section>
+<section class="offers">
+    <div class="offer" ng-repeat="offer in osagoOfferCtrl.offers.Offers">
+        <div class="logo">
+            <img ng-src="{{offer.Company.Logo}}" />
+        </div>
+        <div class="info" >
+            <div class="header">
+                <p>
+                    <strong>{{offer.Company.Name}}</strong>
+                    {{offer.Name}}
+                </p>
+                <div class="price">
+                    {{offer.Price}}
+                </div>
+            </div>
+            <div class="alarm-and-compare">
+                <p class="alarm">
+                    Требования к сигнализацие в рамках данного страхового полиса:<br />
+                    <strong>{{offer.AntiTheftSystem}}</strong>
+                </p>
+                <div class="compare">
+
+                </div>
+            </div>
+            <div class="controls">
+                <div class="showmore" ng-click="offer.IsShown = !offer.IsShown">
+                    <p class="plus" ng-show="!offer.IsShown"><span>+</span></p><p class="minus" ng-show="offer.IsShown"><span>-</span></p> Подробнее
+                </div>
+                <div class="phone" >
+                    <div class="clik-area" ng-click="offer.IsclickInPhone=true"></div>
+                    <div ng-show="offer.IsclickInPhone" class="phone_tooltip" >
+                        <input type="text" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true"  placeholder="Имя"/>
+                        <input type="tel" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true" placeholder="Телефон"/>  
+                        <div class="phone" ng-click="offer.IsclickInPhone=false"></div> 
+                    </div>
+                </div>
+                <div class="mail">
+                    <div class="clik-area" ng-click="offer.IsclickInEmail=true"></div>
+                    <div ng-show="offer.IsclickInEmail" class="mail_tooltip">
+                        <input type="text" ng-mousedown="offer.IsclickInEmail=true" ng-click="offer.IsclickInEmail=true" ng-mouseup="offer.IsclickInEmail=true" placeholder="Email" />
+                        <div class="mail" ng-click="offer.IsclickInEmail=false"></div>
+                    </div>
+                    <span class="tooltip">написать мне</span>
+                </div>
+                <div class="buy" ng-click="osagoOfferCtrl.buyOffer($index)">
+                    Приобрести
+                </div>
+            </div>
+            <div class="more" ng-show="offer.IsShown">
+                <div class="option" ng-repeat="option in offer.AdditionalOptions">
+                    <strong>{{option.Name}}</strong>
+                    <p>{{option.Description}}</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+    -->
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterOffer" ng-show="isMobile"><h2><span>Шаг2 </span>Получить предложения</h2></div>
+    <p>
+        Страхование <strong>{{osagoOfferCtrl.offers.InsuranceType}}</strong> для автомобиля
+        <strong>{{osagoOfferCtrl.offers.CarBrand}}</strong>
+        <strong>{{osagoOfferCtrl.offers.CarModel}}</strong>
+        <strong>{{osagoOfferCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{osagoOfferCtrl.startData}}</strong> и  до <strong>{{osagoOfferCtrl.endData}}</strong> для <strong>{{osagoOfferCtrl.offers.DriversCount}}</strong> <span ng-show="osagoOfferCtrl.offers.DriversCount > 1">водителей</span><span ng-show="osagoOfferCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{osagoOfferCtrl.offers.DriversMinAge}}.</strong>
+    </p>
+    
+</section>
+<section class="offers" ng-show="!isMobile">
+    <div class="offer" ng-repeat="offer in osagoOfferCtrl.offers.Offers">
+        <div class="logo">
+            <img ng-src="{{offer.Company.Logo}}" />
+        </div>
+        <div class="info">
+            <div class="header">
+                <p>
+                    <strong>{{offer.Company.Name}}</strong>
+                    {{offer.Name}}
+                </p>
+                <div class="price">
+                    {{offer.Price}}
+                </div>
+            </div>
+            <div class="alarm-and-compare">
+                <p class="alarm">
+                    Требования к сигнализацие в рамках данного страхового полиса:<br />
+                    <strong>{{offer.AntiTheftSystem}}</strong>
+                </p>
+                
+            </div>
+            <div class="controls">
+                <div class="showmore" ng-click="offer.IsShown = !offer.IsShown">
+                    <p class="plus" ng-show="!offer.IsShown"><span>+</span></p><p class="minus" ng-show="offer.IsShown"><span>-</span></p> Подробнее
+                </div>
+                <div class="phone">
+                    <div class="clik-area" ng-click="offer.IsclickInPhone=true"></div>
+                    <div ng-show="offer.IsclickInPhone" class="phone_tooltip">
+                        <input type="text" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true" placeholder="Имя" />
+                        <input type="tel" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true" placeholder="Телефон" />
+                        <div class="phone" ng-click="offer.IsclickInPhone=false"></div>
+                    </div>
+                </div>
+                <div class="mail">
+                    <div class="clik-area" ng-click="offer.IsclickInEmail=true"></div>
+                    <div ng-show="offer.IsclickInEmail" class="mail_tooltip">
+                        <input type="text" ng-mousedown="offer.IsclickInEmail=true" ng-click="offer.IsclickInEmail=true" ng-mouseup="offer.IsclickInEmail=true" placeholder="Email" />
+                        <div class="mail" ng-click="offer.IsclickInEmail=false"></div>
+                    </div>
+                    <span class="tooltip">написать мне</span>
+                </div>
+                <div class="buy" ng-click="osagoOfferCtrl.buyOffer($index)">
+                    Приобрести
+                </div>
+            </div>
+            <div class="more" ng-show="offer.IsShown">
+                <div class="option" ng-repeat="option in offer.AdditionalOptions">
+                    <strong>{{option.Name}}</strong>
+                    <p>{{option.Description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="offersMob" id="cascoOfferMob" ng-show="isMobile">
+    <div class="offer" ng-repeat="offer in osagoOfferCtrl.offers.Offers">
+        <div class="logo">
+            <img ng-src="{{offer.Company.Logo}}" />
+            <p>
+                <strong>{{offer.Company.Name}}</strong><br />
+                {{offer.Name}}
+            </p>
+            <div class="price">
+                {{offer.Price}} руб
+            </div>
+            <div class="header">
+
+
+            </div>
+        </div>
+        <div class="info">
+
+            <div class="alarm-and-compare">
+                <p class="alarm">
+                    Требования к сигнализацие в рамках данного страхового полиса:<br />
+                    <strong>{{offer.AntiTheftSystem}}</strong>
+                </p>
+            </div>
+            <div class="call">
+                <div class="phone">
+                    <div class="clik-area" ng-click="offer.IsclickInPhone=true"></div>
+                    <div ng-show="offer.IsclickInPhone" class="phone_tooltip">
+                        <div class="headerOption">
+                            <div class="clossOption" ng-click="offer.IsclickInPhone=false"></div>
+                            
+                            <h3>{{offer.Company.Name}}</h3>
+                            <p>{{offer.Name}}</p>
+                        </div>
+                        <div class="phoneFeedback"><p>Обратная связь</p></div>
+                        <input type="text" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true" placeholder="Имя" />
+                        <input type="tel" ng-mousedown="offer.IsclickInPhone=true" ng-click="offer.IsclickInPhone=true" ng-mouseup="offer.IsclickInPhone=true" placeholder="Телефон" />
+                        <div class="callButton" ng-click="offer.IsclickInPhone=false"><p>Позвонить</p></div>
+                    </div>
+                </div>
+                <div class="mail">
+                    <div class="clik-area" ng-click="offer.IsclickInEmail=true"></div>
+                    <div ng-show="offer.IsclickInEmail" class="mail_tooltip">
+                        <div class="headerOption">
+                            <div class="clossOption" ng-click="offer.IsclickInEmail=false"></div>
+                            <h3>{{offer.Company.Name}}</h3>
+                            <p>{{offer.Name}}</p>
+                        </div>
+                        <div class="mailFeedback"><p>Обратная связь</p></div>
+                        <input type="text" ng-mousedown="offer.IsclickInEmail=true" ng-click="offer.IsclickInEmail=true" ng-mouseup="offer.IsclickInEmail=true" placeholder="Email" />
+                        <div class="sendButton" ng-click="offer.IsclickInEmail=false"><p>Отправить</p></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="controls" id="cascoOfferButtonMob">
+
+            <div class="showmore" ng-click="offer.IsShown = !offer.IsShown">
+                <p ng-show="!offer.IsShown">Подробнее</p>
+            </div>
+
+            <div class="buy" ng-click="osagoOfferCtrl.buyOffer($index)">
+                Приобрести
+            </div>
+        </div>
+        <div class="more" ng-show="offer.IsShown">
+            <div class="headerOption">
+                <div class="clossOption" ng-click="offer.IsShown = !offer.IsShown"></div>
+                <h3>{{offer.Company.Name}}</h3>
+                <p>{{offer.Name}}</p>
+            </div>
+            <div class="option" ng-repeat="option in offer.AdditionalOptions">
+                <div class="headerOptionBackground"></div>
+                <strong>{{option.Name}}</strong>
+                <p>{{option.Description}}</p>
+            </div>
+        </div>
+    </div>
+    <div ng-class="{footerMargin:osagoOfferCtrl.showMargin}"></div>
+</section>

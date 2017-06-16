@@ -1,0 +1,572 @@
+<nav>
+    <ul>
+        <li class="active">
+            <p>
+                <strong>1</strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+
+<form name="form" ng-submit="cascoCtrl.requestOffer()" novalidate>
+    <div class="chapter" ng-show="isMobile"><h2><span>Шаг1 </span>Заполнить данные</h2></div>
+    <section class="control-group" id="period">
+        <h2><span>Период страховки</span></h2>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_periodStart">
+                <p class="name" ng-show="!isMobile">Начало страховки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodStart.$touched) && form.periodStart.$invalid">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodStart" class="big date" id="cascoCtrl_cascoInsuranceForm_periodStart" ng-model="cascoCtrl.cascoInsuranceForm.periodStart | amDateFormat:'DD MMMM YYYY'" ng-click="cascoCtrl.showPeriodStart = !cascoCtrl.showPeriodStart" required/>
+        </div>
+        <div pickadate=""   min-date = "cascoCtrl.insuranceStartMinData"  ng-show="cascoCtrl.showPeriodStart" ng-model="cascoCtrl.cascoInsuranceForm.periodStart"></div>
+        <a class="datepicker-close" ng-show="cascoCtrl.showPeriodStart" ng-click="cascoCtrl.showPeriodStart = !cascoCtrl.showPeriodStart"><span>Закрыть</span></a>
+    </section>
+    <section class="control-group" id="about-car">
+        <h2 ng-click="(isMobile)?(cascoCtrl.openAboutCar = !cascoCtrl.openAboutCar):cascoCtrl.openAboutCar = true;"><span>Данные по автомобилю</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.$error.carBrandRequired || form.releaseYear.$invalid || form.$error.carModelRequired || !cascoCtrl.cascoInsuranceForm.carBody.value || !cascoCtrl.cascoInsuranceForm.modification.value || 
+                                                  !cascoCtrl.cascoInsuranceForm.transmission.value || form.power.$invalid || form.$error.carRegionRequired || form.isGuarantee.$invalid || form.buyingDate.$invalid || form.startUsingDate.$invalid || form.carCost.$invalid || 
+                                                  !cascoCtrl.cascoInsuranceForm.franchise.value || form.isCredit.$invalid)) }"></div>
+                                             <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.$error.carBrandRequired || form.releaseYear.$invalid || form.$error.carModelRequired || !cascoCtrl.cascoInsuranceForm.carBody.value || !cascoCtrl.cascoInsuranceForm.modification.value ||
+                                                  !cascoCtrl.cascoInsuranceForm.transmission.value || form.power.$invalid || form.$error.carRegionRequired || form.isGuarantee.$invalid || form.buyingDate.$invalid || form.startUsingDate.$invalid || form.carCost.$invalid ||
+                                                  !cascoCtrl.cascoInsuranceForm.franchise.value || form.isCredit.$invalid)) }"></div></h2>
+        <div ng-show="cascoCtrl.openAboutCar">
+        <div class="control">
+            <label class="big" for="osagoCtrl_osagoInsuranceForm_year">
+                <p class="name">Год</p>
+                <p class="error" ng-show="(form.$submitted || form.releaseYear.$touched ) && form.releaseYear.$invalid">Год выпуска автомобиля</p>
+                <p class="error" ng-show="cascoCtrl.cascoInsuranceForm.releaseYearIsLarge">Год выпуска автомобиля не должна превышать нынешний год</p>
+            </label>
+            <input type="number" name="releaseYear" class="big" ng-change="cascoCtrl.yearBigValue()" id="cascoCtrl_cascoInsuranceForm_releaseYear" ng-model="cascoCtrl.cascoInsuranceForm.releaseYear" min="0" placeholder="например: 2015" required />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_brand">
+                <p class="name">Марка</p>
+                <p class="error" ng-show="(form.$submitted || form.carBrand.$touched) && form.$error.carBrandRequired">Выберите марку</p>
+            </label>
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_brand"
+                              placeholder="укажите"
+                              selected-object="cascoCtrl.cascoInsuranceForm.brand"
+                              remote-url="api/handbook/carBrands/{{cascoCtrl.cascoInsuranceForm.releaseYear}}/"
+                              title-field="title"
+                              minlength="1"
+                              field-required="true"
+                              field-required-class="carBrandRequired"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big"
+                              input-name="carBrand" />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_model">
+                <p class="name">Модель</p>
+                <p class="error" ng-show="(form.$submitted || form.carModel.$touched) && form.$error.carModelRequired">Выберите модель</p>
+            </label>
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_model"
+                              placeholder="укажите"
+                              selected-object="cascoCtrl.cascoInsuranceForm.model"
+                              remote-url="api/handbook/carModels/{{cascoCtrl.cascoInsuranceForm.releaseYear}}/{{cascoCtrl.cascoInsuranceForm.brand.originalObject.title}}/"
+                              title-field="title"
+                              disable-input="!cascoCtrl.cascoInsuranceForm.brand.originalObject.value"
+                              field-required="true"
+                              field-required-class="carModelRequired"
+                              minlength="0"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Идёт поиск..."
+                              input-class="big"
+                              input-changed="cascoCtrl.getCarBodyOptions()"
+                              input-name="carModel" />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_carBody">
+                <p class="name">Тип кузова</p>
+                <p class="error" ng-show="(form.$submitted) && !cascoCtrl.cascoInsuranceForm.carBody.value">Выберите тип кузова</p>
+            </label>
+            <div dropdown-select="cascoCtrl.carBodyOptions"
+                 dropdown-onchange="cascoCtrl.getCarModificationOptions()"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.carBody"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_modification">
+                <p class="name">Модификация</p>
+                <p class="error" ng-show="(form.$submitted) && !cascoCtrl.cascoInsuranceForm.modification.value">Выберите модификацию</p>
+            </label>
+            <div dropdown-select="cascoCtrl.modificationOption"
+                 dropdown-onchange="cascoCtrl.getCarTransmissionOptions()"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.modification"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_transmission">
+                <p class="name">Трансмиссия</p>
+                <p class="error" ng-show="(form.$submitted) && !cascoCtrl.cascoInsuranceForm.transmission.value">Выберите трансмиссию</p>
+            </label>
+            <div dropdown-select="cascoCtrl.transmissionOption"
+                 dropdown-onchange="cascoCtrl.getCarDetailsOptions()"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.transmission"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_region">
+                <p class="name">Регион регистрации</p>
+                <p class="error" ng-show="(form.$submitted || form.carRegion.$touched) && form.$error.carRegionRequired">Выберите регион регистрации</p>
+            </label>
+            <angucomplete-alt id="osagoCtrl_osagoInsuranceForm_region"
+                                placeholder="укажите"
+                                selected-object="cascoCtrl.cascoInsuranceForm.region"
+                                local-data="cascoCtrl.regions"
+                                title-field="title"
+                                minlength="1"
+                                field-required="true"
+                                search-fields="title"
+                                field-required-class="carRegionRequired"
+                                text-searching="Идёт поиск..."
+                                text-no-results="Ничего не найдено"
+                                input-class="big"
+                                input-name="carRegion" />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_power">
+                <p class="name">Мощность двигателя</p>
+                <p class="error" ng-show="(form.$submitted || form.power.$touched) && form.power.$invalid">Выберите мощность двигателя</p>
+            </label>
+            <input type="number" name="power" class="big" id="cascoCtrl_cascoInsuranceForm_power" ng-model="cascoCtrl.cascoInsuranceForm.power" min="0" placeholder="в лошадиных силах" required />
+        </div>
+        
+        <div class="control">
+            <label class="big">
+                <p class="name">Автомобиль на гарантии</p>
+                <p class="error" ng-show="(form.$submitted || form.isGuarantee.$touched) && form.isGuarantee.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                    <input type="radio" value="true" name="isGuarantee" ng-model="cascoCtrl.cascoInsuranceForm.isGuarantee" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+            <label class="radio">
+                    <input type="radio" value="false" name="isGuarantee" ng-model="cascoCtrl.cascoInsuranceForm.isGuarantee" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_buyingDate">
+                <p class="name">Дата приобретения автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.buyingDate.$touched) && form.buyingDate.$invalid">Выберите дату</p>
+            </label>
+                <input type="text" ng-readonly="true" name="buyingDate" class="big date" id="cascoCtrl_cascoInsuranceForm_buyingDate" ng-model="cascoCtrl.cascoInsuranceForm.buyingDate | amDateFormat:'DD MMMM YYYY'" ng-click="cascoCtrl.showBuyingDate = !cascoCtrl.showBuyingDate" required />
+        </div>
+        <div pickadate="" ng-show="cascoCtrl.showBuyingDate" ng-model="cascoCtrl.cascoInsuranceForm.buyingDate"></div>
+        <a class="datepicker-close" ng-show="cascoCtrl.showBuyingDate" ng-click="cascoCtrl.showBuyingDate = !cascoCtrl.showBuyingDate"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_startUsingDate">
+                <p class="name">Дата начала использования автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.startUsingDate.$touched) && form.startUsingDate.$invalid">Выберите дату</p>
+            </label>
+            <input type="text" ng-readonly="true" name="startUsingDate" class="big date" id="cascoCtrl_cascoInsuranceForm_startUsingDate" ng-model="cascoCtrl.cascoInsuranceForm.startUsingDate | amDateFormat:'DD MMMM YYYY'" ng-click="cascoCtrl.showStartUsingDate = !cascoCtrl.showStartUsingDate" required />
+        </div>
+        <div pickadate="" ng-show="cascoCtrl.showStartUsingDate" ng-model="cascoCtrl.cascoInsuranceForm.startUsingDate" min-date="cascoCtrl.cascoInsuranceForm.buyingDate" ></div>
+        <a class="datepicker-close" ng-show="cascoCtrl.showStartUsingDate" ng-click="cascoCtrl.showStartUsingDate = !cascoCtrl.showStartUsingDate"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_carCost">
+                <p class="name">Стоимость автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.carCost.$touched) && form.carCost.$invalid">Укажите стоимость автомобиля</p>
+            </label>
+                <input type="number" name="carCost" class="money big" id="cascoCtrl_cascoInsuranceForm_carCost" ng-model="cascoCtrl.cascoInsuranceForm.carCost" min="0" required />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_franchise">
+                <p class="name">Франшиза</p>
+                <p class="error" ng-show="(form.$submitted) && !cascoCtrl.cascoInsuranceForm.franchise.value">Выберите франшизу</p>
+            </label>
+            <div dropdown-select="cascoCtrl.franchiseOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.franchise"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Кредитный автомобиль</p>
+                <p class="error" ng-show="(form.$submitted || form.isCredit.$touched) && form.isCredit.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                    <input type="radio" value="true" name="isCredit" ng-model="cascoCtrl.cascoInsuranceForm.isCredit" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+            <label class="radio">
+                    <input type="radio" value="false" name="isCredit" ng-model="cascoCtrl.cascoInsuranceForm.isCredit" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+        </div>
+            
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoCtrl.openAboutCar}" ng-show="isMobile" ng-click="cascoCtrl.openAboutCar = !cascoCtrl.openAboutCar"></div>
+    </section>
+    <section class="control-group" id="about-drivers">
+        <h2 ng-click="(isMobile)?(cascoCtrl.openDataDrivers = !cascoCtrl.openDataDrivers):cascoCtrl.openDataDrivers = true;"><span>Данные по водителям</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && ((cascoCtrl.cascoInsuranceForm.isIndividual.value == null) || (cascoCtrl.cascoInsuranceForm.isOwner.value == null))) }"></div>
+                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !((cascoCtrl.cascoInsuranceForm.isIndividual.value == null) || (cascoCtrl.cascoInsuranceForm.isOwner.value == null))) }"></div></h2>
+        <div ng-show="cascoCtrl.openDataDrivers">
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_isIndividual">
+                <p class="name">Водитель</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.isIndividual.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.isIndividualOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.isIndividual"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_isOwner">
+                <p class="name">Собственник</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.isOwner.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.isOwnerOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.isOwner"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_modification">
+                <p class="name">Количество Водителей</p>
+            </label>
+            <div dropdown-select="cascoCtrl.driverOptions"
+                 dropdown-model="cascoCtrl.driverCountModel"
+                 dropdown-onchange="cascoCtrl.driversCountChange()"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        </div>
+        <div class="closeButton"  ng-class="{clButton:cascoCtrl.openDataDrivers}" ng-show="isMobile" ng-click="cascoCtrl.openDataDrivers = !cascoCtrl.openDataDrivers"></div>
+        <!-- здесь будет список водителей -->
+
+        <div class="driver" ng-repeat="driver in cascoCtrl.cascoInsuranceForm.drivers">
+            <h2 ng-click="cascoCtrl.openListDrivers = !cascoCtrl.openListDrivers"><span class="white_bg">Водитель №{{$index + 1}} </span> <div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.age{{$index}}.$invalid || form.experience{{$index}}.$invalid || form.isMale{{$index}}.$invalid || (driver.martialStatus.value == null) || (driver.kids.value == null))) }"></div></h2>
+            <div ng-show="cascoCtrl.openListDrivers">
+            <div class="control">
+                <label class="big">
+                    <p class="name">Возраст</p>
+                    <p class="error" ng-show="(form.$submitted || form.age{{$index}}.$touched) && form.age{{$index}}.$invalid">Укажите возраст</p>
+                </label>
+                <input type="number" name="age{{$index}}" class="big" ng-model="driver.age" min="18" placeholder="полных лет" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Стаж</p>
+                    <p class="error" ng-show="(form.$submitted || form.experience{{$index}}.$touched) && form.experience{{$index}}.$invalid">Укажите стаж</p>
+                </label>
+                <input type="number" name="experience{{$index}}" class="big" ng-model="driver.experience" min="0" placeholder="полных лет" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Пол</p>
+                    <p class="error" ng-show="(form.$submitted || form.isMale{{$index}}.$touched) && form.isMale{{$index}}.$invalid">Укажите пол</p>
+                </label>
+                <label class="big_radio">
+                        <input type="radio" value="true" ng-model="driver.isMale" name="isMaleca{{$index}}" required />
+                    <span></span>
+                    <p>Мужской</p>
+                </label>
+                <label class="big_radio">
+                        <input type="radio" value="false" ng-model="driver.isMale" name="isMaleca{{$index}}" required />
+                    <span></span>
+                    <p>Женский</p>
+                </label>
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Семейное положение</p>
+                    <p class="error" ng-show="(form.$submitted) && (driver.martialStatus.value == null)">Укажите семейное положение</p>
+                </label>
+                <div dropdown-select="cascoCtrl.martialStatusOptions"
+                     dropdown-model="driver.martialStatus"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Дети</p>
+                    <p class="error" ng-show="(form.$submitted) && (driver.kids.value == null)">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="cascoCtrl.kidsOptions"
+                     dropdown-model="driver.kids"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            </div>
+            <div class="closeButton" ng-class="{clButton:cascoCtrl.openListDrivers}" ng-show="isMobile" ng-click="cascoCtrl.openListDrivers = !cascoCtrl.openListDrivers"></div>
+        </div>
+    </section>
+    <section class="control-group" id="about-claims">
+        <h2 ng-click="(isMobile)?(cascoCtrl.openPreviousInsurance = !cascoCtrl.openPreviousInsurance): cascoCtrl.openPreviousInsurance = true;"><span>Прошлые страховые случаи владельцев автомобиля</span> <div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && ((cascoCtrl.cascoInsuranceForm.wasInsurance.value == null) || (cascoCtrl.cascoInsuranceForm.wasClaims.value == null) || 
+                                                                             cascoCtrl.cascoInsuranceForm.carClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsThreeYearAgo.value == null || 
+                                                                             cascoCtrl.cascoInsuranceForm.mutilationClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsThreeYearAgo.value == null)) }"></div>
+                                                                        <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !((cascoCtrl.cascoInsuranceForm.wasInsurance.value == null) || (cascoCtrl.cascoInsuranceForm.wasClaims.value == null) || 
+                                                                             cascoCtrl.cascoInsuranceForm.carClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsThreeYearAgo.value == null || 
+                                                                             cascoCtrl.cascoInsuranceForm.mutilationClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsThreeYearAgo.value == null)) }"></div></h2>
+        <div ng-show="cascoCtrl.openPreviousInsurance">
+        <div class="control small controlDiv" >
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_wasInsurance">
+                <p class="name">Была ли у Вас в прошлом страховка</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.wasInsurance.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.wasInsuranceOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.wasInsurance"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div ng-show="(cascoCtrl.cascoInsuranceForm.wasInsurance.value > 1)">
+            <div class="control small">
+                <label class="big" for="cascoCtrl_cascoInsuranceForm_wasClaims">
+                    <p class="name">Были ли у Вас в прошлом иски</p>
+                    <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.wasClaims.value == null)">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.wasClaims"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div class="title">
+                <p>1 год назад</p>
+                <p>2 года назад</p>
+                <p>3 года назад</p>
+            </div>
+            <div class="control small controlDiv">
+                <label class="big">
+                    <p class="name">Страховые случаи по машине</p>
+                    <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.carClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.carClaimsThreeYearAgo.value == null)">Укажите страховые случаи</p>
+                </label>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.carClaimsOneYearAgo"
+                     dropdown-item-label="text">
+                </div>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.carClaimsTwoYearAgo"
+                     dropdown-item-label="text">
+                </div>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.carClaimsThreeYearAgo"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div class="control small">
+                <label class="big">
+                    <p class="name">Страховые случаи по увечиям</p>
+                    <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.mutilationClaimsOneYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsTwoYearAgo.value == null || cascoCtrl.cascoInsuranceForm.mutilationClaimsThreeYearAgo.value == null)">Укажите страховые случаи</p>
+                </label>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.mutilationClaimsOneYearAgo"
+                     dropdown-item-label="text">
+                </div>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.mutilationClaimsTwoYearAgo"
+                     dropdown-item-label="text">
+                </div>
+                <div dropdown-select="cascoCtrl.wasClaimsOptions"
+                     dropdown-model="cascoCtrl.cascoInsuranceForm.mutilationClaimsThreeYearAgo"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoCtrl.openPreviousInsurance}" ng-show="isMobile" ng-click="cascoCtrl.openPreviousInsurance = !cascoCtrl.openPreviousInsurance"></div>
+    </section>
+    <section class="control-group" id="additional-params">
+        <h2 ng-click="(isMobile)?(cascoCtrl.openExtraOptions = !cascoCtrl.openExtraOptions): cascoCtrl.openExtraOptions = true;"><span>Дополнительные параметры</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.city.$invalid || (cascoCtrl.cascoInsuranceForm.isLeftSideRudder.value == null) || form.InsuranceMode.$invalid || 
+                                                      (cascoCtrl.cascoInsuranceForm.antiTheftSystem.value == null) || (cascoCtrl.cascoInsuranceForm.searchSystem.value == null))) }"></div>
+                                                <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.city.$invalid || (cascoCtrl.cascoInsuranceForm.isLeftSideRudder.value == null) || form.InsuranceMode.$invalid || 
+                                                      (cascoCtrl.cascoInsuranceForm.antiTheftSystem.value == null) || (cascoCtrl.cascoInsuranceForm.searchSystem.value == null))) }"></div></h2>
+        <div ng-show="cascoCtrl.openExtraOptions">
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_city">
+                <p class="name">Город</p>
+                <p class="error" ng-show="(form.$submitted || form.city.$touched) && form.$error.carCityRequired">Укажите город</p>
+            </label>
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                              placeholder="укажите"
+                              selected-object="cascoCtrl.cascoInsuranceForm.city"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="carCityRequired"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="city"
+                              pause ="500" />
+        </div>
+           
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_isLeftSideRudder">
+                <p class="name">Руль</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.isLeftSideRudder.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.rudderOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.isLeftSideRudder"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control insuranceMode">
+            <label class="big" id="InsurCover">
+                <p class="name">Страховое покрытие</p>
+                <p class="error" ng-show="(form.$submitted || form.InsuranceMode.$touched) && form.InsuranceMode.$invalid">Выберите страховое покрытие</p>
+            </label>
+            <label class="big_radio InsuranceCover">
+                <input type="radio" value="0" name="InsuranceMode" ng-model="cascoCtrl.cascoInsuranceForm.InsuranceMode" required />
+                <span></span>
+                <p>Ущерб+угон</p>
+            </label>
+            <label class="big_radio InsuranceCover">
+                <input type="radio" value="1" name="InsuranceMode" data-ng-model="cascoCtrl.cascoInsuranceForm.InsuranceMode" required />
+                <span></span>
+                <p>Только угон</p>
+            </label>
+            <label class="big_radio InsuranceCover">
+                <input type="radio" value="2" name="InsuranceMode" data-ng-model="cascoCtrl.cascoInsuranceForm.InsuranceMode" required />
+                <span></span>
+                <p>Только ущерб</p>
+            </label>
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_antiTheftSystem">
+                <p class="name">Противоугонная система</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.antiTheftSystem.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.antiTheftSystemOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.antiTheftSystem"
+                 dropdown-onchange="cascoCtrl.antiTheftSystemSelected(selected)"
+                 dropdown-item-label="text">
+            </div>
+                <input type="text" placeholder="укажите" ng-show="cascoCtrl.cascoInsuranceForm.antiTheftSystem.value" ng-readonly="!cascoCtrl.cascoInsuranceForm.antiTheftSystem.value" focus-me="cascoCtrl.antiTheftSystemAnotherFocused" class="big" id="cascoCtrl_cascoInsuranceForm_antiTheftSystem_another" ng-model="cascoCtrl.cascoInsuranceForm.antiTheftSystem_another" />
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_searchSystem">
+                <p class="name">Поисковая система</p>
+                <p class="error" ng-show="(form.$submitted) && (cascoCtrl.cascoInsuranceForm.searchSystem.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="cascoCtrl.searchSystemOptions"
+                 dropdown-model="cascoCtrl.cascoInsuranceForm.searchSystem"
+                 dropdown-onchange="cascoCtrl.searchSystemSelected(selected)"
+                 dropdown-item-label="text">
+            </div>
+            <input type="text" placeholder="укажите" ng-show="cascoCtrl.cascoInsuranceForm.searchSystem.value" ng-readonly="!cascoCtrl.cascoInsuranceForm.searchSystem.value" focus-me="cascoCtrl.searchSystemAnotherFocused" class="big" id="cascoCtrl_cascoInsuranceForm_searchSystem_another" ng-model="cascoCtrl.cascoInsuranceForm.searchSystem_another" />
+        </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoCtrl.openExtraOptions}" ng-show="isMobile" ng-click="cascoCtrl.openExtraOptions = !cascoCtrl.openExtraOptions"></div>
+    </section>
+    <section class="control-group" id="additional-options">
+        <h2 ng-click="(isMobile)?(cascoCtrl.openAdditionalServices = !cascoCtrl.openAdditionalServices): cascoCtrl.openAdditionalServices = true;"><span>Дополнительные услуги и опционы</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.commissioner.$invalid || form.evacuation.$invalid || form.techSupport.$invalid || form.policeReference.$invalid)) }"></div>
+                                                        <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.commissioner.$invalid || form.evacuation.$invalid || form.techSupport.$invalid || form.policeReference.$invalid)) }"></div></h2>
+        <div ng-show="cascoCtrl.openAdditionalServices">
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_commissioner">
+                <p class="name">Аварийный комиссар</p>
+                <p class="error" ng-show="(form.$submitted || form.commissioner.$touched) && form.commissioner.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" value="1" name="commissioner" data-ng-model="cascoCtrl.cascoInsuranceForm.commissioner" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+                <label class="radio radioRigth">
+                <input type="radio" name="commissioner" value="0" data-ng-model="cascoCtrl.cascoInsuranceForm.commissioner" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+            
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_evacuation">
+                <p class="name">Эвакуация автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.evacuation.$touched) && form.evacuation.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" name="evacuation" value="1" data-ng-model="cascoCtrl.cascoInsuranceForm.evacuation" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+                <label class="radio radioRigth">
+                <input type="radio" name="evacuation" value="0" data-ng-model="cascoCtrl.cascoInsuranceForm.evacuation" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+            
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_techSupport">
+                <p class="name">Техпомощь</p>
+                    <p class="error" ng-show="(form.$submitted || form.techSupport.$touched) && form.techSupport.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" name="techSupport" value="1" data-ng-model="cascoCtrl.cascoInsuranceForm.techSupport" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+                <label class="radio radioRigth">
+                <input type="radio" name="techSupport" value="0" data-ng-model="cascoCtrl.cascoInsuranceForm.techSupport" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+            
+        </div>
+        <div class="control">
+            <label class="big" for="cascoCtrl_cascoInsuranceForm_policeReference">
+                <p class="name">Выплата без справок ГИБДД</p>
+                    <p class="error" ng-show="(form.$submitted || form.policeReference.$touched) && form.policeReference.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" name="policeReference" value="1" data-ng-model="cascoCtrl.cascoInsuranceForm.policeReference" required />
+                <span></span>
+                <p>Да</p>
+            </label>
+                <label class="radio radioRigth">
+                <input type="radio" name="policeReference" value="0" data-ng-model="cascoCtrl.cascoInsuranceForm.policeReference" required />
+                <span></span>
+                <p>Нет</p>
+            </label>
+        </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoCtrl.openAdditionalServices}" ng-show="isMobile" ng-click="cascoCtrl.openAdditionalServices = !cascoCtrl.openAdditionalServices"></div>
+    </section>
+    <section class="control-group submit" id="submit">
+        <label class="checkbox">
+            <p>Cогласен с условиями использования</p>
+            <input type="checkbox" name="isAgreed" ng-model="cascoCtrl.cascoInsuranceForm.isAgreed" required/>
+            <span></span>
+        </label>
+        <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Вы должны согласится с условиями использования</p>
+        <input type="submit" value="{{cascoCtrl.submitValue}}" id="disabled" ng-click="disableClick()" ng-disabled="isDisabled"/>
+    </section>
+</form>

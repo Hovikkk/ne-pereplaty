@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  ng-app="nepereplaty"  class="{{cl}} {{mod}}" ng-class="{mobile:isMobile}">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+        <title>Nepereplaty</title>
+        <base href="/" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="lib/angular-pickadate/dist/angular-pickadate.css" />
+    </head>
+    <body ng-class="{'modal-fix': isModalShown}">
+        <div class="bg" ng-show="openLogin"></div>
+        <img src="i/zaglushka.png" ng-click="showBlindStopper = !showBlindStopper" ng-class="{blindStopper:!showBlindStopper}" id="zaglushka" ng-show="isMobile && showBlindStopper" alt="заглушка" />
+        <header ng-include="'app/components/header.html'" ng-show="showHeader"></header>
+
+
+        <main>
+            <section ui-view ng-class="$state.current.name | dotless" class="main-view-container"></section>
+
+            <aside ng-include="'app/components/aside.html'" ng-show="!isMobile"></aside>
+        </main>
+
+        <footer ng-include="'app/components/footer.html'" ng-class="{footerBottom:showFooter}"></footer>
+
+        <script src='lib/angular/angular.min.js'></script>
+        <script src='lib/angular-sanitize/angular-sanitize.min.js'></script>
+        <script src='lib/angular-ui-router/angular-ui-router.js'></script>
+        <script src='lib/angular-translate/angular-translate.min.js'></script>
+        <script src='lib/angular-locale-ru/angular-locale_ru.js'></script>
+        <script src='lib/angular-pickadate/dist/angular-pickadate.js'></script>
+        <script src='lib/angular-translate-loader-url/angular-translate-loader-url.min.js'></script>
+        <script src='lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js'></script>
+        <script src="lib/moment/moment.js"></script>
+        <script src="lib/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
+        <script src="lib/angular-dropdowns/dist/angular-dropdowns.min.js"></script>
+        <script src="lib/moment/locale/ru.js"></script>
+        <script src="lib/angular-moment/angular-moment.js"></script>
+        <script src='lib/angular-modal-service/dst/angular-modal-service.js'></script>
+        <script src="lib/jquery/dist/jquery.js"></script>
+
+        <script src='app/app.js'></script>
+    </body>
+    </html>

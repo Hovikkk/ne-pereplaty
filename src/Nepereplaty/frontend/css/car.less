@@ -1,0 +1,142 @@
+﻿@import "variables.less";
+@import "mixins.less";
+
+main{
+    & .main-view-container{
+        padding-top: 33px;
+        padding-bottom: 50px;
+        & nav{
+            display: inline-block;
+            @media screen and (max-width: 800px) {
+                background-color: @black-light;
+                width: 100vw;
+                height: 15vw;
+                position: fixed;
+                z-index: 1;
+                bottom: 0vw;
+            }
+            & ul{
+                //.clearfix();
+                margin: 0px 0px 15px 0px;
+
+                & li{
+                    display: block;
+                    float: left;
+                    height: 84px;
+
+                    &::after{
+                        content: " ";
+                        display: inline-block;
+                        height: 84px;
+                        width: 83px;
+                        background-image: url('../i/steps1.png');
+                        background-repeat: no-repeat;
+                        background-position: 0px 24px;
+                        vertical-align: top;
+                        @media screen and (max-width: 800px) {
+                            background-image: url('../i/steps3.png');
+                            width: 5vw;
+                        }
+                    }
+                    &:last-child::after{
+                        display: none;
+                    }
+                    &.active{
+                        &::after{
+                            background-image: url('../i/steps2.png');
+                            @media screen and (max-width: 800px) {
+                                background-image: url('../i/steps4.png');
+                                width: 5vw;
+                            }
+                        }
+
+                        & p{
+                            & strong{
+                                color: @white-main;
+                                border-color: @green;
+                                background-color: @green;
+                            }
+                            & span{
+                                .opacity(1);
+                            }
+                        }
+                    }
+
+                    &.previous{
+                        &::after{
+                            background-image: url('../i/steps2.png');
+                            @media screen and (max-width: 800px) {
+                                background-image: url('../i/steps4.png');
+                            }
+                        }
+
+                        & p{
+                            & strong{
+                                color: rgba(0,0,0,0);
+                                border-color: @green;
+                                background-color: @white-main;
+                                background-image: url('../i/ok.png');
+                                background-position: 50% 50%;
+                                background-size: 12px 10px;
+                                background-repeat: no-repeat;
+
+                                @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                                    background-image: url("../i/ok.2x.png");
+                                }
+                            }
+                            & span{
+                                .opacity(1);
+                            }
+                        }
+                    }
+
+                    & p{
+                        display: inline-block;
+                        width: 65px;
+                        vertical-align: top;
+                        text-align: center;
+                        @media screen and (max-width: 800px) {
+                            width: 14.9vw;
+                            margin-top: 3vw;
+                        }
+                        & strong{
+                            .border-radius(24px);
+
+                            display: inline-block;
+                            height: 48px;
+                            width: 48px;
+                            border-width: 2px;
+                            border-style: solid;
+                            border-color: @gray-for-border;
+                            background-color: @white-additional-nav;
+                            color: @gray-for-border;
+                            font-family: 'segoeuib';
+                            font-size: 17px;
+                            padding-top: 13px;
+                            @media screen and (max-width: 800px) {
+                                .border-radius(5px);
+                                width: 8vw;
+                                height: 8vw;
+                                padding-top: 1vw;
+                                font-size: 4vw;
+                                background-color: @black-additional;
+                                border-color: @black-additional;
+                            }
+                        }
+                        & span{
+                            .opacity(0.7);
+
+                            display: inline-block;
+                            padding-top: 5px;
+                            height: 30px;
+                            font-size: 13px;
+                            letter-spacing: 0.020em;
+                            color: black;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

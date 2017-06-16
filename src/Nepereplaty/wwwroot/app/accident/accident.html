@@ -1,0 +1,126 @@
+﻿<nav>
+    <ul>
+        <li class="active">
+            <p>
+                <strong>1</strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<form name="form" id="accident" ng-submit="accidentCtrl.requestOffer()" novalidate>
+    <div class="chapter" ng-show="isMobile"><h2><span>Шаг1 </span>Заполнить данные</h2></div>
+    <section class="control-group" id="period">
+        <h2><span>Период страховки</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.periodStart.$invalid || accidentCtrl.accidentInsuranceForm.duration.value==null)) }"></div>
+                                        <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.periodStart.$invalid || accidentCtrl.accidentInsuranceForm.duration.value==null)) }"></div></h2>
+        
+        
+        
+        <div class="control">
+            <label class="big" for="accidentCtrl_accidentInsuranceForm_periodStart">
+                <p class="name" ng-show="!isMobile">Начало страховки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodStart.$touched) && form.periodStart.$invalid">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodStart" class="big date" id="accidentCtrl_accidentInsuranceForm_periodStart" ng-model="accidentCtrl.accidentInsuranceForm.startData | amDateFormat:'DD MMMM YYYY'" ng-click="accidentCtrl.showPeriodStart = !accidentCtrl.showPeriodStart" required />
+        </div>
+        <div pickadate=""  min-date = "accidentCtrl.insuranceStartMinData" ng-show="accidentCtrl.showPeriodStart" ng-model="accidentCtrl.accidentInsuranceForm.startData"></div>
+        <a class="datepicker-close" ng-show="accidentCtrl.showPeriodStart" ng-click="accidentCtrl.showPeriodStart = !accidentCtrl.showPeriodStart"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big" for="accidentCtrl_accidentInsuranceForm_insurances">
+                <p class="name">Срок страхования</p>
+                <p class="error" ng-show="(form.$submitted) && accidentCtrl.accidentInsuranceForm.duration.value==null">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="accidentCtrl.insuranceOptions"
+                 dropdown-model="accidentCtrl.accidentInsuranceForm.duration"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+    </section>
+    <section class="control-group" id="period">
+        <h2 ng-click="(isMobile)?(accidentCtrl.dataOnInsured = !accidentCtrl.dataOnInsured):accidentCtrl.dataOnInsured=true;"><span>данные по страхуемому</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.whoInsured.$invalid || form.age.$invalid)) }"></div>
+                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.whoInsured.$invalid || form.age.$invalid)) }"></div></h2>
+        <div ng-show="accidentCtrl.dataOnInsured">
+            <div class="control" id="dataInsured">
+                <label class="big">
+                    <p class="name">Кто будет застрахован</p>
+                    <p class="error" ng-show="(form.$submitted || form.whoInsured.$touched) && form.whoInsured.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio" id="radioAccident1">
+                    <input type="radio" value="false" name="whoInsured" ng-model="accidentCtrl.accidentInsuranceForm.otherPerson" required />
+                    <span></span>
+                    <p>Вы сами</p>
+                </label>
+                <label class="radio" id="radioAccident2">
+                    <input type="radio" value="true" name="whoInsured" ng-model="accidentCtrl.accidentInsuranceForm.otherPerson" required />
+                    <span></span>
+                    <p ng-show="!isMobile">Ваш близкий родственник (ребенок, супруг,<br /> родитель, родной брат/сестра)</p>
+                    <p ng-show="isMobile">Близкий родственник</p>
+                </label>
+            </div>
+            <div class="control">
+                <label class="big" for="accidentCtrl_accidentInsuranceForm_age">
+                    <p class="name">Возраст</p>
+                    <p class="error" ng-show="(form.$submitted || form.age.$touched) && form.age.$invalid">Укажите возраст</p>
+                </label>
+                <input type="number" name="age" class="big" id="accidentCtrl_accidentInsuranceForm_age" ng-model="accidentCtrl.accidentInsuranceForm.age" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:accidentCtrl.dataOnInsured}" ng-show="isMobile" ng-click="accidentCtrl.dataOnInsured = !accidentCtrl.dataOnInsured"></div>
+    </section>
+    <section class="control-group">
+        <h2 ng-click="(isMobile)?(accidentCtrl.additionalInformation = !accidentCtrl.additionalInformation):accidentCtrl.additionalInformation = true;"><span>дополнительные данные</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.amateurSports.$invalid)) }"></div>
+                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.amateurSports.$invalid)) }"></div></h2>
+        <div ng-show="accidentCtrl.additionalInformation">
+            <div class="control" id="amateurSports">
+                <label class="big">
+                    <p class="name">Любительский спорт?</p>
+                    <p class="error" ng-show="(form.$submitted || form.amateurSports.$touched) && form.amateurSports.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" name="amateurSports" ng-model="accidentCtrl.accidentInsuranceForm.amateurSports" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="radio" id="amateurSports2">
+                    <input type="radio" value="false" name="amateurSports" ng-model="accidentCtrl.accidentInsuranceForm.amateurSports" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:accidentCtrl.additionalInformation}" ng-show="isMobile" ng-click="accidentCtrl.additionalInformation = !accidentCtrl.additionalInformation"></div>
+    </section>
+    <section class="control-group submit" id="submit">
+        <label class="checkbox">
+            <p>Cогласен с условиями использования</p>
+            <input type="checkbox" name="isAgreed" ng-model="accidentCtrl.isAgreed" required />
+            <span></span>
+        </label>
+        <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Вы должны согласится с условиями использования</p>
+        <input type="submit" value="{{accidentCtrl.submitValue}}" id="disabled" ng-click="disableClick()" ng-disabled="isDisabled" />
+    </section>
+</form>

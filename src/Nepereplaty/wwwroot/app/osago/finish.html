@@ -1,0 +1,67 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="control-group" id="finish">
+    <div class="chapter" id="chapterFinish" ng-show="isMobile"><h3><span>Шаг5 </span>Завершить покупку</h3></div>
+    <h2><span>Подтверждение заказа</span></h2>
+    <div class="control finishMob">
+        <ul class="finish_main_ul">
+            <li>
+                <p><strong>Уважаемый/ая {{osagoFinishCtrl.data.Name}}, Ваш заказ завершен. Номер заказа:{{osagoFinishCtrl.orderNumber}}.</strong></p> 
+            </li>
+            <li>
+                <p>Вы приобрели:<br/>
+                <strong>Страховой полис {{osagoFinishCtrl.offer.Name}} от компании {{osagoFinishCtrl.offer.Company.Name}}.</strong></p>
+            </li>
+            <li>
+                Начала действия страхового полиса: <strong>{{osagoFinishCtrl.startData}}.</strong><br/>
+                Окончание действия страхового полиса: <strong>{{osagoFinishCtrl.endData}}.</strong>
+            </li>
+            <li>
+                <p><strong>Страховой полис распространяется на {{osagoFinishCtrl.DriversCount}} водителей:</strong></p>
+                <ul class="finish_main_sub_ul" >
+                    <li><p>{{osagoFinishCtrl.data.Surname+ " " + osagoFinishCtrl.data.Name + " " + osagoFinishCtrl.data.Middlename}}, {{osagoFinishCtrl.age}} ,{{osagoFinishCtrl.data.PassportSerial + " " +osagoFinishCtrl.data.PassportnNumber + " " +osagoFinishCtrl.data.PassportWhere + " " +osagoFinishCtrl.data.PassportIssued}} .</p></li>
+                </ul>
+            </li>
+            <li>
+                <p>Цена полиса составляет <strong>{{osagoFinishCtrl.offer.Price}} руб.</strong> Оплата произведена посредством <strong>{{"«Платежное средство»"}}.</strong> Сумма оплаты разбита на <strong>{{"«кол-во платежей»"}}</strong> платежей.</p>
+            </li>
+        </ul>
+        <div class="div_contant">
+            Для получения дополнительной информации, вы можете связаться с компанией <strong>{{osagoFinishCtrl.offer.Company.Name}}«Название компании»</strong> <br/> по телефону <strong>{{"077-777-777"}}.</strong> 
+        </div>
+        <p><strong>Подтверждение заказа и основные положения полиса.</strong></p>
+        <div class="pdf_div" ng-click="osagoFinishCtrl.downloadPdf()">Основные положения страхового полиса вы можете посмотреть</div>
+    </div>
+</section>

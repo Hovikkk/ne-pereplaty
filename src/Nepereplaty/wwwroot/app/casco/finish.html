@@ -1,0 +1,69 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="control-group" id="finish">
+    <div class="chapter" id="chapterFinish" ng-show="isMobile"><h3><span>Шаг5 </span>Завершить покупку</h3></div>
+    <h2><span>Подтверждение заказа</span></h2>
+    <div class="control finishMob">
+        <ul class="finish_main_ul">
+            <li>
+                <p><strong>Уважаемый/ая ,{{cascoFinishCtrl.data.Name}} Ваш заказ завершен. Номер заказа:{{cascoFinishCtrl.orderNumber}}.</strong></p>
+            </li>
+            <li>
+                <p>
+                    Вы приобрели:<br />
+                    <strong>Страховой полис {{cascoFinishCtrl.offer.Name}} от компании {{cascoFinishCtrl.offer.Company.Name}}.</strong>
+                </p>
+            </li>
+            <li>
+                Начала действия страхового полиса: <strong>{{cascoFinishCtrl.startData}}.</strong><br />
+                Окончание действия страхового полиса: <strong>{{cascoFinishCtrl.endData}}.</strong>
+            </li>
+            <li>
+                <p><strong>Страховой полис распространяется на {{cascoFinishCtrl.DriversCount}} водителей:</strong></p>
+                <ul class="finish_main_sub_ul">
+                    <li><p>{{cascoFinishCtrl.data.Surname+ " " + cascoFinishCtrl.data.Name + " " + cascoFinishCtrl.data.Middlename}}, {{cascoFinishCtrl.age}} ,{{cascoFinishCtrl.data.PassportSerial + " " +cascoFinishCtrl.data.PassportnNumber + " "  +cascoFinishCtrl.data.PassportWhere + " " +cascoFinishCtrl.data.PassportIssued}} .</p></li>
+                </ul>
+            </li>
+            <li>
+                <p>Цена полиса составляет <strong>{{cascoFinishCtrl.priceString}} руб.</strong> Оплата произведена посредством <strong>{{"«Платежное средство»"}}.</strong> Сумма оплаты разбита на <strong>{{"«кол-во платежей»"}}</strong> платежей.</p>
+            </li>
+        </ul>
+        <div class="div_contant">
+            Для получения дополнительной информации, вы можете связаться с компанией <strong>«{{cascoFinishCtrl.offer.Company.Name}}»</strong> <br /> по телефону <strong>{{"077-777-777"}}.</strong>
+        </div>
+        <p><strong>Подтверждение заказа и основные положения полиса.</strong></p>
+        <div class="pdf_div" ng-click="cascoFinishCtrl.downloadPdf()">Основные положения страхового полиса вы можете посмотреть</div>
+    </div>
+</section>

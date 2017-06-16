@@ -1,0 +1,37 @@
+<section class="modal">
+    <div class="modal-content">
+        <a class="close-button" ng-click="dismissModal()"><span>+</span></a>
+        <span class="login-icon"  ng-show="!isMobile"></span>
+        <h3 ng-show="!isMobile">Регистрация</h3>
+        <div class="hiderLogin" ng-show="isMobile">
+            <a class="close-button" ng-click="dismissModal()"><span>+</span></a>
+            <h3>Регистрация</h3>
+        </div>
+        <form name="form" ng-submit="registerModalCtrl.register()" novalidate>
+            <p class="error" ng-show="(form.$submitted || form.email.$touched) && form.email.$invalid">Введите email</p>
+            <p class="error" ng-show="(form.$submitted || form.firstName.$touched) && form.firstName.$invalid">Введите имя</p>
+            <p class="error" ng-show="(form.$submitted || form.lastname.$touched) && form.lastname.$invalid">Введите фамилию</p>
+            <p class="error" ng-show="(form.$submitted || form.password.$touched) && form.password.$invalid">Введите пароль</p>
+            <p class="error" ng-show="(form.$submitted || form.passwordConfirm.$touched) && form.passwordConfirm.$invalid">Повторите пароль</p>
+            <p class="error" ng-show="(form.$submitted || form.passwordConfirm.$touched) && (registerModalCtrl.credentials.password != registerModalCtrl.credentials.confirmPassword)">Указаные пароли не совпадают</p>
+            <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Примите условия использования</p>
+            <p class="error" ng-show="registerModalCtrl.credentials.emailExists">Email занят</p>
+            <p class="error" ng-show="registerModalCtrl.credentials.unknownError">Неизвестная ошибка - попробуйте ещё раз</p>
+            <input name="email" type="email" placeholder="Email" ng-model="registerModalCtrl.credentials.login" required/>
+            <input name="firstName"type="text" placeholder="Имя" ng-model="registerModalCtrl.credentials.name" required/>
+            <input name="lastname" type="text" placeholder="Фамилия" ng-model="registerModalCtrl.credentials.surname" required/>
+            <input name="password" type="password" placeholder="Пароль" ng-model="registerModalCtrl.credentials.password" ng-minlength="6" required/>
+            <input name="passwordConfirm" type="password" placeholder="Повторите пароль" ng-model="registerModalCtrl.credentials.confirmPassword" ng-minlength="6" required/>
+            <label class="checkbox">
+                <p>Cогласен с условиями использования</p>
+                <input name="isAgreed" type="checkbox" ng-model="registerModalCtrl.credentials.isAgreed" required/>
+                <span></span>
+            </label>
+            <input type="submit" value="Зарегестрируйтесь" />
+        </form>
+        <div class="another-action">
+            <p>Уже есть на сайте?</p>
+            <a ng-click="dismissModal('login')">Войдите</a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,71 @@
+﻿<!----><nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterPayment" ng-show="isMobile"><h2><span>Шаг4 </span>Заплатить</h2></div>
+    <p id="logoheader">
+        Страхование <strong>{{cascoPaymentCtrl.offers.InsuranceType}}</strong> для
+        <strong>{{cascoPaymentCtrl.offers.CarBrand.split('_')[0]}}</strong>
+        <strong>{{cascoPaymentCtrl.offers.CarModel.split('_')[0]}}</strong>
+        <strong>{{cascoPaymentCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{cascoPaymentCtrl.startData}}</strong> и  до <strong>{{cascoPaymentCtrl.endData}}</strong> для <strong>{{cascoPaymentCtrl.offers.DriversCount}}</strong> <span ng-show="osagoOfferCtrl.offers.DriversCount > 1">водителей</span><span ng-show="osagoOfferCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{cascoPaymentCtrl.offers.DriversMinAge}}</strong>
+    </p>
+    <div class="logo" id="logoCasco">
+        <img ng-src="{{cascoPaymentCtrl.logoUrl}}" />
+    </div>
+</section>
+<form>
+    <section class="control-group" id="casco_paymeny_info">
+        <h2 ng-show="!isMobile"><span>Оплата</span></h2>
+        <div class="control payment_box" id="paymentBoxBlock1">
+            <p class="headerCascoPay">С полисом КАСКО также покупают:<br /></p>
+            <label class="checkbox">
+                <p>полис ОСАГО    <strong class="price">{{cascoPaymentCtrl.osagoOfferString}}</strong></p>
+                <input type="checkbox" name="osagoInclude" ng-model="cascoPaymentCtrl.osagoInclude"  ng-change="cascoPaymentCtrl.updata()"/>
+                <span style="margin-top: 5px"></span>
+            </label>
+        </div>
+        <div class="control payment_box" id="paymentBoxBlock2">
+            <p><strong class="headerCascoPay">К оплате</strong><br/></p>
+            <p>цена КАСКО <strong class="price">{{cascoPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="cascoPaymentCtrl.osagoInclude == 1">цена ОСАГО <strong class="price">{{cascoPaymentCtrl.osagoOfferString}}</strong></span><br /></p>
+            <hr>
+            <p class="footerCascoPay"><strong>Общая сумма</strong><strong class="right price">{{cascoPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="cascoPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit">
+       
+    </section>
+</form>

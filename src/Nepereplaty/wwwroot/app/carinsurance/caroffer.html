@@ -1,0 +1,93 @@
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страховка <strong>{{carOfferCtrl.offers.InsuranceType}}</strong> для
+        <strong>{{carOfferCtrl.offers.CarBrand}}</strong>
+        <strong>{{carOfferCtrl.offers.CarModel}}</strong>
+        <strong>{{carOfferCtrl.offers.CarReleaseYear}} года</strong> выпуска
+        для {{carOfferCtrl.offers.DriversCount}} <span ng-show="carOfferCtrl.offers.DriversCount > 1">водителей</span><span ng-show="carOfferCtrl.offers.DriversCount == 1">водителя</span> старше {{carOfferCtrl.offers.DriversMinAge}}.
+    </p>
+</section>
+<section class="offers">
+    <div class="offer" ng-repeat="offer in carOfferCtrl.offers.Offers">
+        <div class="logo">
+            <img ng-src="{{offer.Company.Logo}}" />
+        </div>
+        <div class="info" >
+            <div class="header">
+                <p>
+                    <strong>{{offer.Company.Name}}</strong>
+                    {{offer.Name}}
+                </p>
+                <div class="price">
+                    {{offer.Price}}
+                </div>
+            </div>
+            <div class="alarm-and-compare">
+                <p class="alarm">
+                    Требования к сигнализацие в рамках данного страхового полиса:<br />
+                    <strong>{{offer.AntiTheftSystem}}</strong>
+                </p>
+                <div class="compare">
+                </div>
+            </div>
+            <div class="controls">
+                <div class="showmore" ng-click="offer.IsShown = !offer.IsShown">
+                    <p class="plus" ng-show="!offer.IsShown"><span>+</span></p><p class="minus" ng-show="offer.IsShown"><span>-</span></p> Подробнее
+                </div>
+                <div class="phone">
+
+                </div>
+                <div class="mail">
+
+                </div>
+                <div class="buy">
+                    Приобрести
+                </div>
+            </div>
+            <div class="more" ng-show="offer.IsShown">
+                <div class="option" ng-repeat="option in offer.AdditionalOptions">
+                    <strong>{{option.Name}}</strong>
+                    <p>{{option.Description}}</p>
+                </div>
+                <div class="option">
+                    <strong>Описание</strong>
+                    <p>{{offer.Description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

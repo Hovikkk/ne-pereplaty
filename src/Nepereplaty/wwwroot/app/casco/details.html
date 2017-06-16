@@ -1,0 +1,459 @@
+﻿<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование <strong>{{cascoDetailsCtrl.offers.InsuranceType}}</strong> для
+        <strong>{{cascoDetailsCtrl.offers.CarBrand.split('_')[0]}}</strong>
+        <strong>{{cascoDetailsCtrl.offers.CarModel.split('_')[0]}}</strong>
+        <strong>{{cascoDetailsCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{cascoDetailsCtrl.startData}}</strong> и  до <strong>{{cascoDetailsCtrl.endData}}</strong> для <strong>{{cascoDetailsCtrl.offers.DriversCount}}</strong> <span ng-show="cascoDetailsCtrl.offers.DriversCount > 1">водителей</span><span ng-show="cascoDetailsCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{cascoDetailsCtrl.offers.DriversMinAge}}</strong>
+    </p>
+    <div class="logo">
+        <img ng-src="{{accidentDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="cascoDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2><span>личные Данные владельца полиса</span></h2>
+        <div class="control">
+            <input type="text" placeholder="Имя" name="name" ng-change="cascoDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMale.$invalid)?"wrong"}}" ng-model="cascoDetailsCtrl.userData.Name" required />
+            <input type="email" placeholder="Email" name="email" class="big second" ng-model="cascoDetailsCtrl.userData.Email" required />
+        </div>
+        <div class="control"  ng-class="{invalid_input:form.$error.city}">
+            <input type="text" placeholder="Фамилия" name="surname" ng-change="cascoDetailsCtrl.updateMiddle()" class="big" ng-model="cascoDetailsCtrl.userData.Surname" required />
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                              placeholder="Город"
+                              selected-object="cascoDetailsCtrl.city"
+                              initial-value="cascoDetailsCtrl.userData.City"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="city"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="city"
+                              pause="300" />
+        </div>
+        <div class="control">
+            <input type="text" placeholder="Отчество" ng-required="!cascoDetailsCtrl.isMiddle" ng-readonly="cascoDetailsCtrl.isMiddle"  name="middlename" class="big" ng-model="cascoDetailsCtrl.userData.Middlename" />
+            <input type="text" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="cascoDetailsCtrl.userData.Adress" required />
+        </div>
+        <div class="control">
+            <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" id="osagoCtrl_osagoInsuranceForm_periodStart" ng-model="cascoDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="cascoDetailsCtrl.showbirthDay = !cascoDetailsCtrl.showbirthDay" required />
+            <div class="telCode"
+                 dropdown-select="cascoDetailsCtrl.telCode"
+                 dropdown-model="cascoDetailsCtrl.userData.MobileCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="cascoDetailsCtrl.userData.Mobile" required />
+        </div>
+        <div pickadate="" ng-show="cascoDetailsCtrl.showbirthDay" ng-model="cascoDetailsCtrl.userData.Birthday"></div>
+        <a class="datepicker-close" ng-show="cascoDetailsCtrl.showbirthDay" ng-click="cascoDetailsCtrl.showbirthDay = !cascoDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+        <div class="control">
+            <div class="maleRadio">
+                <label class="big">
+                    <p class="name">Пол</p>
+                    <p class="error" ng-show="(form.$submitted || form.isMale.$touched) && (form.isMale.$invalid  || cascoDetailsCtrl.userData.IsMale == 0 || cascoDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="true" ng-model="cascoDetailsCtrl.userData.isMale" name="isMale" required />
+                    <span></span>
+                    <p>Мужской</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="false" ng-model="cascoDetailsCtrl.userData.isMale" name="isMale" required />
+                    <span></span>
+                    <p>Женский</p>
+                </label>
+            </div>
+
+            <div class="telCode"
+                 dropdown-select="cascoDetailsCtrl.telCode"
+                 dropdown-model="cascoDetailsCtrl.userData.TelephoneCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="cascoDetailsCtrl.userData.Telephone" required />
+        </div>
+    </section>
+
+    <section class="control-group" id="drivers_details">
+        <h2><span>паспортные Данные владельца полиса </span></h2>
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер</p>
+                <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+            </label>
+            <input type="number" name="passportnNumber" class="big" ng-model="cascoDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Серия</p>
+                <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серия</p>
+            </label>
+            <input type="text" name="passportSerial" class="big" ng-model="cascoDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Где выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportWhere.$touched) && form.$error.passportWhere">Выберите Где выдано </p>
+            </label>
+            <angucomplete-alt id="accident_city"
+                              placeholder="Город"
+                              selected-object="cascoDetailsCtrl.pasportWhere"
+                              initial-value="cascoDetailsCtrl.userData.PassportWhere"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="passportWhere"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="passportWhere"
+                              pause="500" />
+                              
+        </div>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Когда выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || cascoDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату</p>
+            </label>
+            <input type="text"  placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="cascoDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="cascoDetailsCtrl.details.passportShowWhan = !cascoDetailsCtrl.details.passportShowWhan" required />
+        </div>
+        <div pickadate="" ng-show="cascoDetailsCtrl.details.passportShowWhan" ng-model="cascoDetailsCtrl.userData.PassportWhen"></div>
+        <a class="datepicker-close" ng-show="cascoDetailsCtrl.details.passportShowWhan" ng-click="cascoDetailsCtrl.details.passportShowWhan = !cascoDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Кем выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+            </label>
+            <input type="text" name="passportIssued" class="big" ng-model="cascoDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+        </div>
+    </section>
+    <section ng-repeat="driver in cascoDetailsCtrl.userData.drivers" class="control-group" id="drivers_license">
+        <h2><span>данные о водительских правах владельца полиса №{{$index + 1}}</span></h2>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер прав</p>
+                <p class="error" ng-show="(form.$submitted || form.drivernumber{{$index}}.$touched) && form.drivernumber{{$index}}.$invalid">Выберите Номер прав</p>
+            </label>
+            <input type="text" name="drivernumber{{$index}}" class="big" ng-model="driver.number" placeholder="Номер" required />
+        </div>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Год получения прав</p>
+                <p class="error" ng-show="(form.$submitted || form.driveryear{{$index}}.$touched) && form.driveryear{{$index}}.$invalid">Выберите Год</p>
+            </label>
+            <input type="text" name="driveryear{{$index}}" class="big" ng-model="driver.year" placeholder="например 2015" required />
+        </div>
+    </section>
+
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>
+    -->
+
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterDetails" ng-show="isMobile"><h2><span>Шаг3 </span>Дополнить данные</h2></div>
+    <p id="logoheader">
+        Страхование <strong>{{cascoDetailsCtrl.offers.InsuranceType}}</strong> для
+        <strong>{{cascoDetailsCtrl.offers.CarBrand.split('_')[0]}}</strong>
+        <strong>{{cascoDetailsCtrl.offers.CarModel.split('_')[0]}}</strong>
+        <strong>{{cascoDetailsCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{cascoDetailsCtrl.startData}}</strong> и  до <strong>{{cascoDetailsCtrl.endData}}</strong> для <strong>{{cascoDetailsCtrl.offers.DriversCount}}</strong> <span ng-show="cascoDetailsCtrl.offers.DriversCount > 1">водителей</span><span ng-show="cascoDetailsCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{cascoDetailsCtrl.offers.DriversMinAge}}</strong>
+    </p>
+    <div class="logo" id="logoCasco">
+        <img ng-src="{{cascoDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="cascoDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2 ng-click="(isMobile)?(cascoDetailsCtrl.personalData = !cascoDetailsCtrl.personalData): cascoDetailsCtrl.personalData = true;"><span>личные Данные владельца полиса</span></h2>
+        <div ng-show="cascoDetailsCtrl.personalData">
+            <div class="control">
+                <input type="text" placeholder="Имя" name="name" ng-change="cascoDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMalecas1.$invalid)?"wrong"}}" ng-model="cascoDetailsCtrl.userData.Name" required />
+                <input type="email" ng-show="!isMobile" placeholder="Email" name="email" class="big second" ng-model="cascoDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control" ng-class="{invalid_input:form.$error.city}">
+                <input type="text" placeholder="Фамилия" name="surname" ng-change="cascoDetailsCtrl.updateMiddle()" class="big" ng-model="cascoDetailsCtrl.userData.Surname" required />
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="cascoDetailsCtrl.city"
+                                  initial-value="cascoDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="city"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="city"
+                                  pause="300"
+                                  ng-show="!isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" placeholder="Отчество" ng-required="!cascoDetailsCtrl.isMiddle" ng-readonly="cascoDetailsCtrl.isMiddle" name="middlename" class="big" ng-model="cascoDetailsCtrl.userData.Middlename" />
+                <input type="text" ng-show="!isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="cascoDetailsCtrl.userData.Adress" required />
+            </div>
+            <div class="control">
+                <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" ng-model="cascoDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="cascoDetailsCtrl.showbirthDay = !cascoDetailsCtrl.showbirthDay" required />
+                <div class="maleRadio" ng-show="isMobile">
+                    <label class="big" ng-show="!isMobile">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="cascoDetailsCtrl.userData.isMale == 0">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="cascoDetailsCtrl.userData.IsMale" name="isMalecas" ng-checked="{{(cascoDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="cascoDetailsCtrl.userData.IsMale" name="isMalecas" ng-checked="{{(cascoDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+                <div class="telCode"
+                     dropdown-select="cascoDetailsCtrl.telCode"
+                     dropdown-model="cascoDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="!isMobile">
+                </div>
+                <input type="number" ng-show="!isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="cascoDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div pickadate="" ng-show="cascoDetailsCtrl.showbirthDay" ng-model="cascoDetailsCtrl.userData.Birthday" min-date="cascoDetailsCtrl.minDate"></div>
+            <a class="datepicker-close" ng-show="cascoDetailsCtrl.showbirthDay" ng-click="cascoDetailsCtrl.showbirthDay = !cascoDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+            <div class="control tellControl">
+                <div class="maleRadio" ng-show="!isMobile">
+                    <label class="big">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="(form.isMalecas1.$invalid  || cascoDetailsCtrl.userData.IsMale == 0 || cascoDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="cascoDetailsCtrl.userData.IsMale" name="isMalecas1" ng-checked="{{(cascoDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="cascoDetailsCtrl.userData.IsMale" name="isMalecas1" ng-checked="{{(cascoDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+
+                <div class="telCode"
+                     dropdown-select="cascoDetailsCtrl.telCode"
+                     dropdown-model="cascoDetailsCtrl.userData.TelephoneCode"
+                     dropdown-item-label="text">
+                </div>
+                <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="cascoDetailsCtrl.userData.Telephone" required />
+            </div>
+            <div class="control tellControl">
+                <div class="telCode"
+                     dropdown-select="cascoDetailsCtrl.telCode"
+                     dropdown-model="cascoDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="isMobile">
+                </div>
+                <input type="number" ng-show="isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="cascoDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div class="control">
+                <input type="email" ng-show="isMobile" placeholder="Email" name="email" class="big second" ng-model="cascoDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control">
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="cascoDetailsCtrl.city"
+                                  initial-value="cascoDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="city"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="city"
+                                  pause="500"
+                                  ng-show="isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" ng-show="isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="cascoDetailsCtrl.userData.Adress" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoDetailsCtrl.personalData}" ng-show="isMobile" ng-click="cascoDetailsCtrl.personalData = !cascoDetailsCtrl.personalData"></div>
+    </section>
+    <section class="control-group" id="drivers_details">
+        <h2 ng-click="(isMobile)?(cascoDetailsCtrl.openPassportData = !cascoDetailsCtrl.openPassportData): cascoDetailsCtrl.openPassportData = true"><span>паспортные Данные владельца полиса </span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.passportnNumber.$invalid || form.passportSerial.$invalid || form.$error.passportWhere || 
+                                                                 form.passportWhen.$invalid || cascoDetailsCtrl.userData.PassportWhen == undefined || form.passportIssued.$invalid)) }"></div>
+                                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.passportnNumber.$invalid || form.passportSerial.$invalid || form.$error.passportWhere || 
+                                                                 form.passportWhen.$invalid || cascoDetailsCtrl.userData.PassportWhen == undefined || form.passportIssued.$invalid)) }"></div></h2>
+        <div ng-show="cascoDetailsCtrl.openPassportData">
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+                </label>
+                <input type="number" name="passportnNumber" class="big" ng-model="cascoDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Серия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серия</p>
+                </label>
+                <input type="text" name="passportSerial" class="big" ng-model="cascoDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Где выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhere.$touched) && form.$error.passportWhere">Выберите Где выдано </p>
+                </label>
+                <angucomplete-alt id="accident_city"
+                                  placeholder="Город"
+                                  selected-object="cascoDetailsCtrl.pasportWhere"
+                                  initial-value="cascoDetailsCtrl.userData.PassportWhere"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhere"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhere"
+                                  pause="500" />
+                <input type="number" name="passportWhere" class="big" ng-model="cascoDetailsCtrl.userData.PassportWhere" placeholder="Номер" required />
+            </div>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Когда выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || cascoDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату</p>
+                </label>
+                <input type="text" placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="cascoDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="cascoDetailsCtrl.details.passportShowWhan = !cascoDetailsCtrl.details.passportShowWhan" required />
+            </div>
+            <div pickadate="" ng-show="cascoDetailsCtrl.details.passportShowWhan" ng-model="cascoDetailsCtrl.userData.PassportWhen"></div>
+            <a class="datepicker-close" ng-show="cascoDetailsCtrl.details.passportShowWhan" ng-click="cascoDetailsCtrl.details.passportShowWhan = !cascoDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Кем выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+                </label>
+                <input type="text" name="passportIssued" class="big" ng-model="cascoDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoDetailsCtrl.openPassportData}" ng-show="isMobile" ng-click="cascoDetailsCtrl.openPassportData = !cascoDetailsCtrl.openPassportData"></div>
+    </section>
+    <section ng-repeat="driver in cascoDetailsCtrl.userData.drivers" class="control-group" id="drivers_license">
+        <h2 ng-click="(isMobile)?(cascoDetailsCtrl.openDataDriving = !cascoDetailsCtrl.openDataDriving): cascoDetailsCtrl.openDataDriving = true;"><span>данные о водительских правах владельца полиса №{{$index + 1}}</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.drivernumber{{$index}}.$invalid || form.driveryear{{$index}}.$invalid)) }"></div>
+                                                                                        <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.drivernumber{{$index}}.$invalid || form.driveryear{{$index}}.$invalid)) }"></div></h2>
+        <div ng-show="cascoDetailsCtrl.openDataDriving">
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер прав</p>
+                    <p class="error" ng-show="(form.$submitted || form.drivernumber{{$index}}.$touched) && form.drivernumber{{$index}}.$invalid">Выберите Номер прав</p>
+                </label>
+                <input type="number" name="drivernumber{{$index}}" class="big" placeholder="серия / номер" ng-model="driver.number" required />
+            </div>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Год получения прав</p>
+                    <p class="error" ng-show="(form.$submitted || form.driveryear{{$index}}.$touched) && form.driveryear{{$index}}.$invalid">Выберите Год</p>
+                </label>
+                <input type="number" min="1900" max="2015" ng-change="cascoDetailsCtrl.driversYearCheck()" name="driveryear{{$index}}" class="big" ng-model="driver.year" placeholder="например 2015" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:cascoDetailsCtrl.openDataDriving}" ng-show="isMobile" ng-click="cascoDetailsCtrl.openDataDriving = !cascoDetailsCtrl.openDataDriving"></div>
+    </section>
+
+
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>

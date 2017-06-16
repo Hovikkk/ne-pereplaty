@@ -1,0 +1,157 @@
+﻿@import "variables.less";
+@import "mixins.less";
+
+main {
+    & aside{
+        & .need-help{
+            text-align: center;
+            padding-bottom: 18px;
+            background: @white-additional;
+            border-bottom: 4px solid @green;
+
+            & img{
+                display:block;
+                border-bottom: 4px solid @gray-dark;
+            }
+            & h3{
+                background: @green;
+                color: @white-main;
+                font-size: 16px;
+                font-family: 'segoeuib';
+                height: 54px;
+                padding-top: 16px;
+            }
+            & form{
+                padding-top: 25px;
+
+                & input{
+                    .center-me();
+                    .border-radius(7px);
+                    .box-shadow(none);
+
+                    width: 296px;
+                    display: block;
+                    margin-bottom: 5px;
+
+                    &[type="text"], &[type="tel"]{
+                        border: 2px solid @gray-for-border;
+                        background: @white-additional;
+                        text-align: center;
+                        font-family: 'segoeuis';
+                        font-size: 14px;
+                        padding: 5px 0px 7px 0px;;
+                        letter-spacing: 0.020em;
+                        outline: 0px;
+                         -webkit-appearance: none;
+                        &:focus{
+                            border: 2px solid @blue;
+                        }
+                    }
+                    &[type="submit"]{
+                        margin-top: 10px;
+                        font-size: 16px;
+                        border: 2px solid @blue;
+                        background: @blue;
+                        padding: 7px 0px 9px 0px;
+                        font-family: 'segoeuib';
+                        color: @white-main;
+                         -webkit-appearance: none;
+                        &:hover{
+                            background: @white-additional;
+                            color: @blue;
+                        }
+                    }
+                }
+            }
+            & p{
+                color: @black-text-dark;
+                font-family: 'segoeuis';
+                font-size: 14px;
+
+                & strong{
+                    font-family: 'segoeuibl';
+                    font-size: 15px;
+                    color: @blue;
+                }
+            }
+        }
+        & .help{
+            background: @white-additional url("../i/24.png") no-repeat;
+            border-bottom: 4px solid @blue;
+        }
+        & .guarantee{
+            background: @white-additional url("../i/100.png") no-repeat;
+        }
+        & .help, & .guarantee{
+            background-size: 54px 54px;
+            background-position: 16px 50%;
+            height: 90px;
+
+            & strong{
+                display: block;
+                font-family: 'segoeuis';
+                font-size: 17px;
+                color: @black-text;
+                text-transform: uppercase;
+                padding: 26px 0px 0px 93px;
+                letter-spacing: 0.040em;
+            }
+            & p{
+                .opacity(0.65);
+                padding: 4px 0px 0px 93px;
+                color: @black-text;
+                letter-spacing: 0.020em;
+            }
+        }
+        & .timer{
+            text-align: center;
+            font-family: 'segoeuis';
+
+            & .date{
+                background: @black-additional;
+                height: 52px;
+                padding-top: 18px;
+                font-size: 16px;
+                color: @white-main;
+                letter-spacing: 0.020em;
+            }
+            & .time{
+                background: @black-light;
+                height: 66px;
+                padding-top: 16px;
+                font-size: 36px;
+                color: @white-additional-text;
+                letter-spacing: 0.020em;
+
+                & span{
+                    .opacity(0.75);
+                    display: inline-block;
+                    padding: 0px 16px;
+                    vertical-align: top;
+                    line-height: 26px;
+                    letter-spacing: 0.010em;
+                }
+            }
+        }
+        & .satisfied{
+            background: @blue;
+            height: 150px;
+            font-family: 'segoeuis';
+            color: @white-main;
+            text-align: center;
+
+            & strong{
+                display: block;
+                font-size: 41px;
+                padding: 40px 0px 15px 0px;
+                letter-spacing: 0.020em;
+            }
+            & p{
+                .opacity(0.65);
+                font-size: 17px;
+                letter-spacing: 0.040em;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

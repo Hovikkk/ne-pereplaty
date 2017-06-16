@@ -1,0 +1,201 @@
+<form name="manageForm" ng-submit="accountCtrl.editAccount()" novalidate>
+    <section class="control-group accountMob" id="account_details">
+        <h2 ng-click="(isMobile)?(accountCtrl.personalArea = !accountCtrl.personalArea): accountCtrl.personalArea = true;"><span>Личный кабинет</span></h2>
+        <div ng-show="accountCtrl.personalArea">
+            <div class="control">
+                <input type="text" class="big" id="accountCtrl_manageData_Name" ng-change="accountCtrl.updateMiddle()" ng-model="accountCtrl.manageData.Name" placeholder="Имя" />
+                <input type="text" ng-readonly="true" class="big" id="accountCtrl_manageData_Email" ng-model="accountCtrl.manageData.Email" placeholder="Email" />
+            </div>
+            <div class="control">
+                <input type="text" class="big" id="accountCtrl_manageData_Surname" ng-change="accountCtrl.updateMiddle()" ng-model="accountCtrl.manageData.Surname" placeholder="Фамилия" />
+                <angucomplete-alt id="accountCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="accountCtrl.city"
+                                  initial-value="accountCtrl.manageData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="cityReq"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big"
+                                  input-name="city"
+                                  pause="500" />
+
+            </div>
+            <div class="control">
+                <input type="text" class="big" id="accountCtrl_manageData_Patronymic" ng-readonly="accountCtrl.isMiddle" ng-model="accountCtrl.manageData.Middlename" placeholder="Отчество" />
+                <input type="text" class="big" id="accountCtrl_manageData_Adress" ng-model="accountCtrl.manageData.Adress" placeholder="Адрес" />
+            </div>
+            <div class="control">
+                <input type="text" class="big date" id="accountCtrl_manageData_Birthday" ng-readonly="true" ng-model="accountCtrl.manageData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="accountCtrl.showBirthday = !accountCtrl.showBirthday" placeholder="Дата рождения" />
+
+                <div class="telCode" id="telCode1"
+                     dropdown-select="accountCtrl.telCode"
+                     dropdown-model="accountCtrl.manageData.TelephoneCode"
+                     dropdown-item-label="text">
+                </div>
+                <input type="number" placeholder="Телефон" name="Telephone" class="tel" id="accountCtrl_osagoInsuranceForm_year" ng-model="accountCtrl.manageData.Telephone" />
+            </div>
+            <div pickadate="" ng-show="accountCtrl.showBirthday" ng-model="accountCtrl.manageData.Birthday" min-date="accountCtrl.minDate"></div>
+            <a class="datepicker-close" ng-show="accountCtrl.showBirthday" ng-click="accountCtrl.showBirthday = !accountCtrl.showBirthday"><span>Закрыть</span></a>
+            <div class="control">
+                <div class="big radio-group" ng-show="!isMobile">
+                    <label>
+                        <p class="name">Пол</p>
+                        <p class="error"></p>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-ng-value="true" ng-click="accountCtrl.changeMale(true)" name="isMaleaccount" data-ng-model="accountCtrl.manageData.IsMale" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-ng-value="false" ng-click="accountCtrl.changeMale(true)" name="isMaleaccount" data-ng-model="accountCtrl.manageData.IsMale" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+                <div class="telCode" id="telCode2"
+                     dropdown-select="accountCtrl.telCode"
+                     dropdown-model="accountCtrl.manageData.MobileCode"
+                     dropdown-item-label="text">
+                </div>
+                <input type="number" placeholder="Мобильный" name="Mobile" class="tel" id="accountCtrl_osagoInsuranceForm_year" ng-model="accountCtrl.manageData.Mobile" />
+                
+            </div>
+            <div class="control" ng-show="isMobile">
+                <div class="big radio-group">
+                    
+                    <label class="radio">
+                        <input type="radio" ng-value="true" name="isMalea1" ng-model="accountCtrl.manageData.IsMale" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" ng-value="false" name="isMalea1" ng-model="accountCtrl.manageData.IsMale" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                    <label>
+                        <p class="error"></p>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:accountCtrl.personalArea}" ng-show="isMobile" ng-click="accountCtrl.personalArea = !accountCtrl.personalArea"></div>
+    </section>
+    <section class="control-group accountMob">
+        <h2 ng-click="(isMobile)?(accountCtrl.passportData = !accountCtrl.passportData): accountCtrl.passportData = true;"><span>Паспортные данные</span></h2>
+        <div ng-show="accountCtrl.passportData">
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер</p>
+                </label>
+                <input type="number" name="passportnNumber" class="big" ng-model="accountCtrl.manageData.PassportnNumber" placeholder="Номер" />
+            </div>
+            <div class="control">
+                <label>
+                    <p class="name big">Серия</p>
+                </label>
+                <input type="text" name="passportSerial" class="big" ng-model="accountCtrl.manageData.PassportSerial" placeholder="Серия" />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Где выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhere.$touched) && form.$error.passportWhere">Выберите Где выдано </p>
+                </label>
+                <angucomplete-alt id="accident_city"
+                                  placeholder="Город"
+                                  selected-object="accountCtrl.pasportWhere"
+                                  initial-value="accountCtrl.manageData.PassportWhere"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhere"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhere"
+                                  pause="500" />
+
+            </div>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Когда выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && form.passportWhen.$invalid">Выберите дату начала страховки</p>
+                </label>
+                <input type="text" class="big date" id="accountCtrl_manageData_Birthday" ng-readonly="true" ng-model="accountCtrl.manageData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="accountCtrl.issued = !accountCtrl.issued" placeholder="Когда выдано" />
+            </div>
+            <div pickadate="" ng-show="accountCtrl.issued" ng-model="accountCtrl.manageData.PassportWhen"></div>
+            <a class="datepicker-close" ng-show="accountCtrl.issued" ng-click="accountCtrl.issued = !accountCtrl.issued"><span>Закрыть</span></a>
+            <section class="control-group submit buttonSub">
+                <input type="submit" value="Сохранить" />
+            </section>
+        </div>
+        <div class="closeButton" ng-class="{clButton:accountCtrl.passportData}" ng-show="isMobile" ng-click="accountCtrl.passportData = !accountCtrl.passportData"></div>
+    </section>
+    
+</form>
+<form id="changePass" name="changePasswordForm" ng-submit="accountCtrl.changePassword()" novalidate>
+    <section class="control-group accountMob">
+        <h2 ng-click="(isMobile)?(accountCtrl.newChangePassword = !accountCtrl.newChangePassword): accountCtrl.newChangePassword = true;" id="ChangePass" ng-show="isMobile"><span>Смена пароля</span></h2>
+        <div ng-show="accountCtrl.newChangePassword">
+            <p class="error"
+               ng-show="((changePasswordForm.$submitted || changePasswordForm.oldPassword.$touched) && changePasswordForm.oldPassword.$invalid) || ((changePasswordForm.$submitted || changePasswordForm.newPassword.$touched) && changePasswordForm.newPassword.$invalid)">
+                Пароль должен быть не менее 6 символов и включать как минимум одну букву латиницей и одну цифру
+            </p>
+            <p class="error" ng-show="changePasswordForm.$submitted && accountCtrl.isCurrentPasswordIncorrect">Текущий пароль неверен</p>
+            <p class="error" ng-show="changePasswordForm.$submitted && accountCtrl.changePasswordUnknownError">Неизвестная ошибка</p>
+            
+                <div class="control">
+                    <input type="password"
+                           name="oldPassword"
+                           class="big"
+                           id="accountCtrl_changePasswordModel_OldPassword"
+                           ng-model="accountCtrl.changePasswordModel.OldPassword"
+                           placeholder="Старый пароль"
+                           ng-minlength="6"
+                           ng-pattern="/^[a-zA-Z0-9]+$/"
+                           required />
+                </div>
+                <div class="control">
+                    <input type="password"
+                           name="newPassword"
+                           class="big"
+                           id="accountCtrl_changePasswordModel_NewPassword"
+                           ng-model="accountCtrl.changePasswordModel.NewPassword"
+                           placeholder="Новый пароль"
+                           ng-minlength="6"
+                           ng-pattern="/^[a-zA-Z0-9]+$/"
+                           required />
+                    <!--ng-pattern="/^[0-9]*[a-zA-Z]{1,}[0-9]{1,}[A-Za-z]*$/" -->
+                    <input type="password"
+                           name="confirmPassword"
+                           class="big"
+                           id="accountCtrl_changePasswordModel_ConfirmNewPassword"
+                           ng-model="accountCtrl.changePasswordModel.ConfirmNewPassword"
+                           placeholder="Повторить новый пароль"
+                           ng-minlength="6"
+                           ng-pattern="/^[a-zA-Z0-9]+$/"
+                           required />
+                </div>
+            
+            <p class="passwordEquals" ng-show="(changePasswordForm.$submitted || changePasswordForm.newPassword.$touched) && (changePasswordForm.newPassword.$valid) && (accountCtrl.changePasswordModel.NewPassword == accountCtrl.changePasswordModel.ConfirmNewPassword)">Пароли совпадают</p>
+            <p class="passwordNotEquals" ng-show="((changePasswordForm.$submitted || changePasswordForm.newPassword.$touched) && (accountCtrl.changePasswordModel.NewPassword != accountCtrl.changePasswordModel.ConfirmNewPassword))">Пароли не совпадают</p>
+            <section class="control-group submit buttonSub">
+                <input type="submit" value="Сменить пароль" />
+            </section>
+
+        </div>
+        <div class="closeButton" ng-class="{clButton:accountCtrl.newChangePassword}" ng-show="isMobile" ng-click="accountCtrl.newChangePassword = !accountCtrl.newChangePassword"></div>
+    </section>
+    <section class="control-group submit">
+        <input type="button" class="blue" value="Выйти" ng-click="accountCtrl.logout()" />
+    </section>
+</form>

@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "Neperaplaty-test"
+  },
+  "hostingPlanName": {
+    "value": "Neperepaty"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "nepereplaty"
+  },
+  "serverLocation": {
+    "value": "North Europe"
+  },
+  "administratorLogin": {
+    "value": "DBnepereplaty"
+  },
+  "administratorLoginPassword": {
+    "value": "DI7U6KEDJhWr"
+  },
+  "databaseName": {
+    "value": "Neperaplaty-test_db"
+  }
+}

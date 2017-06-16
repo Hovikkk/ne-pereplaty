@@ -1,0 +1,19 @@
+{
+  "home": {
+      "hello_title": "Hello Poland from nepereplaty!"
+  },
+  "auth": {
+    "nav_register_button": "Rejestracja",
+    "login_title": "Logowanie",
+    "form_login_button": "Zaloguj",
+    "login_using_social": "Możesz zalogować się przy użyciu",
+    "create_account": "Utorzyć konto?",
+    "have_account": "Posiadasz już konto?",
+    "nav_login_button": "Zaloguj",
+    "form_create_account_button": "Utwórz konto",
+    "create_account_title": "Utwórz konto",
+    "create_using_social": "lub załóż konto za pomocą",
+    "email": "Email",
+    "password": "Hasło"
+  }
+}

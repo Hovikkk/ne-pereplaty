@@ -1,0 +1,58 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование <strong>{{osagoPaymentCtrl.offers.InsuranceType}}</strong> для
+        <strong>{{osagoPaymentCtrl.offers.CarBrand}}</strong>
+        <strong>{{osagoPaymentCtrl.offers.CarModel}}</strong>
+        <strong>{{osagoPaymentCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{"15.10.2015"}}</strong> и  до <strong>{{"15.10.2016"}}</strong> для <strong>{{osagoPaymentCtrl.offers.DriversCount}}</strong> <span ng-show="osagoOfferCtrl.offers.DriversCount > 1">водителей</span><span ng-show="osagoOfferCtrl.offers.DriversCount == 1">водителя</span> старше <strong>osagoPaymentCtrl.offers.DriversMinAge}}</strong>
+    </p>
+</section>
+<form>
+    <section class="control-group" id="paymeny_info">
+        <h2><span>Сумма к оплате</span></h2>
+        <div class="control payment_box">
+            <p><strong>К оплате</strong><br /></p>
+
+            <p>цена ОСАГО      <strong class="price">{{osagoPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p>        <strong>{{}}</strong><br /></p>
+            <hr>
+            <p><strong>Общая сумма</strong><strong class="right price">{{osagoPaymentCtrl.offer.Price}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="osagoPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit"></section>
+</form>

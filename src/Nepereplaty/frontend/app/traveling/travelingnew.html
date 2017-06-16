@@ -1,0 +1,246 @@
+<nav>
+    <ul>
+        <li class="active">
+            <p>
+                <strong>1</strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<form name="form" id="travling" ng-submit="travelingCtrl.requestOffer()" novalidate>
+    <div class="chapter" ng-show="isMobile"><h2><span>Шаг1 </span>Заполнить данные</h2></div>
+    <section class="control-group">
+        <div class="control choiceInsurance">
+            <label class="big" for="travelingCtrl_travelingInsuranceForm_insurances">
+                <p class="name">Выбор страховки</p>
+                <p class="error" ng-show="(form.$submitted) && travelingCtrl.travelingInsuranceForm.choiceInsurance.value==null">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="travelingCtrl.insuranceOptions"
+                 dropdown-model="travelingCtrl.travelingInsuranceForm.choiceInsurance"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+    </section>
+    <section class="control-group" id="period">
+        <h2>
+            <span>Период страховки</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.periodStart.$invalid || form.periodFinish.$invalid)) }"></div>
+            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.periodStart.$invalid || form.periodFinish.$invalid)) }"></div>
+        </h2>
+        <div class="control">
+            <label class="big" for="travelingCtrl_travelingInsuranceForm_periodStart">
+                <p class="name">Начало страховки/поездки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodStart.$touched) && form.periodStart.$invalid">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodStart" class="big date" id="travelingCtrl_travelingInsuranceForm_periodStart" ng-model="travelingCtrl.travelingInsuranceForm.periodStart | amDateFormat:'DD MMMM YYYY'" ng-click="travelingCtrl.showPeriodStart = !travelingCtrl.showPeriodStart; travelingCtrl.updateEndDate()" required />
+        </div>
+        <div pickadate="" ng-show="travelingCtrl.showPeriodStart" ng-model="travelingCtrl.travelingInsuranceForm.periodStart" min-date="travelingCtrl.minStartData"></div>
+        <a class="datepicker-close" ng-show="travelingCtrl.showPeriodStart" ng-click="travelingCtrl.showPeriodStart = !travelingCtrl.showPeriodStart; travelingCtrl.updateEndDate()"><span>Закрыть</span></a>
+        <div class="control" ng-show="travelingCtrl.travelingInsuranceForm.choiceInsurance.value==2">
+            <label class="big" for="travelingCtrl_travelingInsuranceForm_insurances">
+                <p class="name">Количество дней страхования</p>
+                <p class="error" ng-show="(form.$submitted) && travelingCtrl.travelingInsuranceForm.duration.value==null">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="travelingCtrl.durationOptions"
+                 dropdown-model="travelingCtrl.travelingInsuranceForm.duration"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control" ng-show="travelingCtrl.travelingInsuranceForm.choiceInsurance.value!=2">
+            <label class="big" for="travelingCtrl_travelingInsuranceForm_periodStart">
+                <p class="name">Окончание страховки/поездки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodFinish.$touched) && form.periodFinish.$invalid">Выберите дату окончание страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodFinish" class="big date" id="travelingCtrl_travelingInsuranceForm_periodFinish" ng-model="travelingCtrl.travelingInsuranceForm.periodFinish | amDateFormat:'DD MMMM YYYY'" ng-click="travelingCtrl.showPeriodFinish = !travelingCtrl.showPeriodFinish" required />
+        </div>
+        <div pickadate="" ng-show="travelingCtrl.travelingInsuranceForm.choiceInsurance.value!=2 && travelingCtrl.showPeriodFinish" ng-model="travelingCtrl.travelingInsuranceForm.periodFinish" min-date="travelingCtrl.minEndData"></div>
+        <a class="datepicker-close" ng-show="travelingCtrl.travelingInsuranceForm.choiceInsurance.value!=2 && travelingCtrl.showPeriodFinish" ng-click="travelingCtrl.showPeriodFinish = !travelingCtrl.showPeriodFinish"><span>Закрыть</span></a>
+    </section>
+    <section class="control-group">
+        <h2 ng-click="(isMobile)?(travelingCtrl.dataOnInsured = !travelingCtrl.dataOnInsured):travelingCtrl.dataOnInsured = true;">
+            <span>Данные по страхуемому</span>
+            <div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && travelingCtrl.firstbd) }"></div>
+            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !travelingCtrl.firstbd) }"></div>
+        </h2>
+        <div ng-show="travelingCtrl.dataOnInsured">
+            <div class="control">
+                <label class="big" for="travelingCtrl_travelingInsuranceForm_modification">
+                    <p class="name">Количество страхуемых</p>
+                </label>
+                <div dropdown-select="travelingCtrl.insuredOptions"
+                     dropdown-model="travelingCtrl.insuredCountModel"
+                     dropdown-onchange="travelingCtrl.insuredsCountChange()"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div ng-repeat="insured in travelingCtrl.travelingInsuranceForm.insureds">
+                <div class="control">
+                    <label class="big" for="travelingCtrl_travelingInsuranceForm_periodStart">
+                        <p class="name">Дата рождения страхуемого №{{$index + 1}}</p>
+                        <p class="error" ng-show="(form.$submitted || form.birthDay{{$index}}.$touched) && insured.bd == null">Выберите дату рождения</p>
+                    </label>
+                    <input type="text" ng-readonly="true" placeholder="Укажите дату" ng-change="updataBirths()" name="birthDay{{$index}}" class="big date" id="travelingCtrl_travelingInsuranceForm_birthDay" ng-model="insured.bd | amDateFormat:'DD MMMM YYYY'" ng-click="insured.bdShow = !insured.bdShow" required />
+                </div>
+                <div pickadate="" ng-show="insured.bdShow" ng-model="insured.bd" min-date="travelingCtrl.BirthDate"></div>
+                <a class="datepicker-close" ng-show="insured.bdShow" ng-click="insured.bdShow = !insured.bdShow"><span>Закрыть</span></a>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:travelingCtrl.dataOnInsured}" ng-show="isMobile" ng-click="travelingCtrl.dataOnInsured = !travelingCtrl.dataOnInsured"></div>
+    </section>
+    <section class="control-group" id="hostCountry">
+        <h2 ng-click="(isMobile)?(travelingCtrl.dataTravel = !travelingCtrl.dataTravel): travelingCtrl.dataTravel = true;">
+            <span>Данные по поездке</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.$error.countyRequired{{$index}} || travelingCtrl.travelingInsuranceForm.currencyAndSum.value==null)) }"></div>
+            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.$error.countyRequired{{$index}} || travelingCtrl.travelingInsuranceForm.currencyAndSum.value==null)) }"></div>
+        </h2>
+        <div ng-show="travelingCtrl.dataTravel">
+            <!--<div class="control" ng-show="!isMobile" ng-repeat="country in travelingCtrl.travelingInsuranceForm.countries">
+                <label class="big" for="travelingCtrl_houseInsuranceForm_city">
+                    <p class="name">Страна пребывания</p>
+                    <p class="error" ng-show="(form.$submitted || form.country{{$index}}.$touched) && form.$error.countyRequired{{$index}}">Выберите страну</p>
+                </label>
+                <angucomplete-alt id="travelingCtrl_travelingInsuranceForm_city"
+                                  placeholder="укажите"
+                                  selected-object="country.value"
+                                  local-data="travelingCtrl.countryOptions"
+                                  title-field="name"
+                                  minlength="1"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="countyRequired{{$index}}"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big"
+                                  input-name="country{{$index}}" />
+
+            </div>-->
+            <div class="control"  ng-repeat="country in travelingCtrl.travelingInsuranceForm.countries">
+                <label class="big" for="travelingCtrl_travelingInsuranceForm_city{{$index}}">
+                    <p class="name">Страна пребывания</p>
+                    <p class="error" ng-show="(form.$submitted || form.country{{$index}}.$touched) && form.$error.countyRequired{{$index}}">Выберите страну</p>
+                </label>
+                <angucomplete-alt id="travelingCtrl_travelingInsuranceForm_city{{$index}}"
+                                  placeholder="укажите"
+                                  selected-object="country.value"
+                                  remote-url="api/handbook/countrymobile/"
+                                  title-field="name"
+                                  minlength="1"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="countyRequired{{$index}}"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big"
+                                  remote-url-response-formatter="country.countryFunc"
+                                  input-name="country{{$index}}" />
+
+            </div>
+            <div class="estate addCountry" ng-click="travelingCtrl.addCountriesCount()">
+                <button type="button">Добавить еще страну</button>
+            </div>
+            
+            <div class="control" id="currency">
+                <label class="big" for="travelingCtrl_travelingInsuranceForm_insurances">
+                    <p class="name">Валюта</p>
+                    <p class="error" ng-show="(form.$submitted) && travelingCtrl.travelingInsuranceForm.currencyAndSum.value==null">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="travelingCtrl.currencyAndSumOptions"
+                     dropdown-model="travelingCtrl.travelingInsuranceForm.currencyAndSum"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:travelingCtrl.dataTravel}" ng-show="isMobile" ng-click="travelingCtrl.dataTravel = !travelingCtrl.dataTravel"></div>
+    </section>
+    <section class="control-group" id="additionalRisks">
+        <h2 ng-click="(isMobile)?(travelingCtrl.protectionAdditionalRisks = !travelingCtrl.protectionAdditionalRisks): travelingCtrl.protectionAdditionalRisks = true;">
+            <span>Защита от дополнительных рисков</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.leisureOrSports.$invalid || form.chronicDisease.$invalid || form.forPregnant.$invalid)) }"></div>
+            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.leisureOrSports.$invalid || form.chronicDisease.$invalid || form.forPregnant.$invalid)) }"></div>
+        </h2>
+        <div ng-show="travelingCtrl.protectionAdditionalRisks">
+            <div class="control">
+                <label class="big riskProtection">
+                    <p class="name" ng-show="!isMobile">Планируются занятия активными видами отдыха или спортом</p>
+                    <p class="name" ng-show="isMobile">Планируются занятия активными видами <br /> отдыха или спортом</p>
+                    <p class="error" ng-show="(form.$submitted || form.leisureOrSports.$touched) && form.leisureOrSports.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" name="leisureOrSports" ng-model="travelingCtrl.travelingInsuranceForm.leisureOrSports" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="radio riskProtectionNo">
+                    <input type="radio" value="false" name="leisureOrSports" ng-model="travelingCtrl.travelingInsuranceForm.leisureOrSports" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+            <div class="control">
+                <label class="big riskProtection">
+                    <p class="name">Страхование хронических заболеваний</p>
+                    <p class="error" ng-show="(form.$submitted || form.chronicDisease.$touched) && form.chronicDisease.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" name="chronicDisease" ng-model="travelingCtrl.travelingInsuranceForm.chronic" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="radio riskProtectionNo">
+                    <input type="radio" value="false" name="chronicDisease" ng-model="travelingCtrl.travelingInsuranceForm.chronic" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+            <div class="control" id="pregnant">
+                <label class="big riskProtection">
+                    <p class="name" ng-show="!isMobile">Дополнительное страхование для беременных (до 31 недели включительно)</p>
+                    <p class="name" ng-show="isMobile">Дополнительное страхование для беременных <br />(до 31 недели включительно)</p>
+                    <p class="error" ng-show="(form.$submitted || form.forPregnant.$touched) && form.forPregnant.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" name="forPregnant" ng-model="travelingCtrl.travelingInsuranceForm.pregnant" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="radio riskProtectionNo">
+                    <input type="radio" value="false" name="forPregnant" ng-model="travelingCtrl.travelingInsuranceForm.pregnant" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:travelingCtrl.protectionAdditionalRisks}" ng-show="isMobile" ng-click="travelingCtrl.protectionAdditionalRisks = !travelingCtrl.protectionAdditionalRisks"></div>
+    </section>
+    <section class="control-group submit" id="submit">
+        <label class="checkbox">
+            <p>Cогласен с условиями использования</p>
+            <input type="checkbox" name="isAgreed" ng-model="travelingCtrl.travelingInsuranceForm.isAgreed" required />
+            <span></span>
+        </label>
+        <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Вы должны согласится с условиями использования</p>
+        <input type="submit" value="{{travelingCtrl.submitValue}}" id="disabled" ng-click="disableClick()" ng-disabled="isDisabled" />
+    </section>
+</form>

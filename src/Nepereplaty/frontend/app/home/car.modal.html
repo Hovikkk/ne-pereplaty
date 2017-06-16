@@ -1,0 +1,22 @@
+<section class="modal">
+    <div class="modal-content car-modal" id="openCompare">
+        <a class="close-button" ng-click="dismissModal()"><span>+</span></a>
+        <h3>Выберите интересующий вас пакет</h3>
+        <div class="car casco" ng-show="!isMobile">
+            <h2>КАСКО</h2>
+            <p>По привлекательным ценам</p>
+            <a ng-click="dismissModal('casco')">Получить</a>
+        </div>
+        <div class="car casco" ng-show="isMobile" ng-click="dismissModal('casco')">
+            <h2>КАСКО</h2>
+        </div>
+        <div class="car osago" ng-show="!isMobile">
+            <h2>ОСАГО</h2>
+            <p>По привлекательным ценам</p>
+            <a ng-click="dismissModal('osago')">Получить</a>
+        </div>
+        <div class="car osago" ng-show="isMobile" ng-click="dismissModal('osago')">
+            <h2>ОСАГО</h2>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,125 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование <strong>{{cascoCompareCtrl.offers.InsuranceType}}</strong> для автомобиля
+        <strong>{{cascoCompareCtrl.offers.CarBrand.split('_')[0]}}</strong>
+        <strong>{{cascoCompareCtrl.offers.CarModel.split('_')[0]}}</strong>
+        <strong>{{cascoCompareCtrl.offers.CarReleaseYear}} года</strong> выпуска,
+        начиная с <strong>{{cascoCompareCtrl.startData}}</strong> и  до <strong>{{cascoCompareCtrl.endData}}</strong> для <strong>{{cascoCompareCtrl.offers.DriversCount}}</strong> <span ng-show="cascoCompareCtrl.offers.DriversCount > 1">водителей</span><span ng-show="cascoCompareCtrl.offers.DriversCount == 1">водителя</span> старше <strong>{{cascoCompareCtrl.offers.DriversMinAge}}.</strong>
+    </p>
+    <div class="compare_button">
+        <button class="compare_button_active" ng-click="cascoCompareCtrl.back()">Назад</button>
+    </div>
+</section>
+<section class="compare_table">
+    <table>
+        <tr class="table_header casco-compare">
+            <th>Параграфы</th>
+            <td></td>
+            <td></td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.Company.Name}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Аварийный комиссар</th>
+            <td class="ok"></td>
+            <td class="ok"></td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Эвакуация автомобиля</th>
+            <td class="ok"></td>
+            <td class="ok"></td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Техпомощь</th>
+            <td>не включено</td>
+            <td>не включено</td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Выплата без справок ГИБДД</th>
+            <td>данные не доступны</td>
+            <td>данные не доступны</td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <!--<tr ng-repeat="additol in cascoCompareCtrl.AdditionalOptions">
+            <th>{{$index==0 ? 'Дополнительные покрытия:' : ''}}</th>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{$index}}</td>
+        </tr>-->
+        
+        <tr class="table_body">
+            <th>Дополнительные покрытия:</th>
+            <td>страхование от любых повреждений</td>
+            <td>страхование от любых повреждений</td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>страхование от угона и хищения</td>
+            <td>страхование от угона и хищения</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>Эвакуация автомобиля</td>
+            <td>Эвакуация автомобиля</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>страхование только на случай угона или полной гибели автомобиля</td>
+            <td>страхование только на случай угона или полной гибели автомобиля</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>ремонт в тех. центре кроме диллеров</td>
+            <td>ремонт в тех. центре кроме диллеров</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>ремонт в тех. центре диллеров</td>
+            <td>ремонт в тех. центре диллеров</td>
+        </tr>
+        <tr class="table_end">
+            <th>Полные условия страхового<br/>полиса</th>
+            <td ng-click=""></td>
+            <td ng-click=""></td>
+            <td ng-repeat="offer in cascoCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+    </table>
+    <p id="tip"><span>1</span>Только полные параграфы и условия полиса,  фигурирующие в документе, предоставленном  различными страховыми
+        компаниями, являются обязательными  для страх. компаний
+    </p>
+</section>

@@ -1,0 +1,37 @@
+<section ng-controller="AuthController as authCtrl">
+    <a ui-sref="home" class="logo">
+        <img src="../i/logo_big.png" />
+    </a>
+    <div class="login"  ng-show="!isMobile">
+        <a ng-if="!authCtrl.auth.isAuthorized" ng-click="authCtrl.login()" id="force_login">Войти</a>
+        <a ng-if="authCtrl.auth.isAuthorized" ui-sref="account">{{authCtrl.auth.userName}} {{authCtrl.auth.userSurname}}</a>
+        <a ng-click="authCtrl.logout()" id="logout_click"></a>
+    </div>
+    <div class="login" ng-show="isMobile" ng-click="authCtrl.openLogin = !authCtrl.openLogin; authCtrl.updata()">
+       
+    </div>
+    <div class="loginPopup"  ng-show="authCtrl.openLogin">
+        <a ng-if="!authCtrl.auth.isAuthorized" ng-click="authCtrl.login(); authCtrl.openLogin = false; authCtrl.updata()" id="force_login">Войти</a>
+        <a ng-if="authCtrl.auth.isAuthorized" ng-click="authCtrl.openLogin = false; authCtrl.updata()" ui-sref="account">{{authCtrl.auth.userName}} {{authCtrl.auth.userSurname}}</a>
+        <a ng-if="!authCtrl.auth.isAuthorized" ng-click="authCtrl.register(); authCtrl.openLogin = false; authCtrl.updata()" id="force_login">Зарегестрируйтесь</a>
+        <a ng-if="authCtrl.auth.isAuthorized" ng-click="authCtrl.logout(); authCtrl.updata()">Выйти</a>
+        
+    </div>  
+    <div class="help" ng-show="isMobile" ng-click="authCtrl.openTelephone = !authCtrl.openTelephone">
+
+    </div>
+    <div class="helpPopup" ng-show="authCtrl.openTelephone">
+        
+        <section class="need-help">
+            <h3>Нужна помощь?</h3>
+            <a class="close-button" ng-click="authCtrl.openTelephone = false"></a>
+            <img src="../i/girl.jpg" class="support-photo" />
+            <form>
+                <input type="text" name="name" placeholder="Имя" />
+                <input type="tel" name="telephone" placeholder="Телефон" />
+                <input type="submit" value="Отправить" />
+                <p>или позвоните <strong>(812) 555-12-34</strong></p>
+            </form>
+        </section>
+    </div>
+</section>

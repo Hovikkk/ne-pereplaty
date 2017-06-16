@@ -1,0 +1,589 @@
+﻿<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование для поездки за рубеж для пребывания в странах : <strong>{{travelingDetailsCtrl.content.country}}</strong> на <strong>{{travelingDetailsCtrl.content.travelingDur}}</strong> дней,
+        начиная с <strong>{{travelingDetailsCtrl.startData}}</strong> и до <strong>{{travelingDetailsCtrl.endData}}</strong>, для <strong>{{travelingDetailsCtrl.content.insuredsCount}}</strong> человек <strong>{{travelingDetailsCtrl.content.insuredsAges}}</strong> лет.
+    </p>
+    <div class="logo">
+        <img ng-src="{{accidentDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="travelingDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2><span>личные Данные владельца полиса</span></h2>
+        <div class="control">
+            <input type="text" placeholder="Имя" name="name" ng-change="travelingDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMale.$invalid)?"wrong"}}" ng-model="travelingDetailsCtrl.userData.Name" required />
+            <input type="email" placeholder="Email" name="email" class="big second" ng-model="travelingDetailsCtrl.userData.Email" required />
+        </div>
+        <div class="control" ng-class="{invalid_input:form.$error.city}">
+            <input type="text" placeholder="Фамилия" name="surname" ng-change="travelingDetailsCtrl.updateMiddle()" class="big" ng-model="travelingDetailsCtrl.userData.Surname" required />
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                              placeholder="Город"
+                              selected-object="travelingDetailsCtrl.city"
+                              initial-value="travelingDetailsCtrl.userData.City"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="city"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="city"
+                              pause="300" 
+                              />
+        </div>
+        <div class="control">
+            <input type="text" placeholder="Отчество" ng-required="!travelingDetailsCtrl.isMiddle"  ng-readonly="travelingDetailsCtrl.isMiddle"  name="middlename" class="big" ng-model="travelingDetailsCtrl.userData.Middlename" />
+            <input type="text" ng-show="!isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="travelingDetailsCtrl.userData.Adress" required />
+        
+        </div>
+        <div class="control">
+            <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" ng-model="travelingDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="travelingDetailsCtrl.showbirthDay = !travelingDetailsCtrl.showbirthDay" required />
+            <div class="telCode"
+                 dropdown-select="travelingDetailsCtrl.telCode"
+                 dropdown-model="travelingDetailsCtrl.userData.MobileCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="travelingDetailsCtrl.userData.Mobile" required />
+        </div>
+        <div pickadate="" ng-show="travelingDetailsCtrl.showbirthDay" ng-model="travelingDetailsCtrl.userData.Birthday"></div>
+        <a class="datepicker-close" ng-show="travelingDetailsCtrl.showbirthDay" ng-click="travelingDetailsCtrl.showbirthDay = !travelingDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+        <div class="control">
+            <div class="maleRadio">
+                <label class="big">
+                    <p class="name">Пол</p>
+                    <p class="error" ng-show="(form.$submitted || form.isMale.$touched) && (form.isMale.$invalid  || travelingDetailsCtrl.userData.IsMale == 0 || travelingDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="1" ng-model="travelingDetailsCtrl.userData.IsMale" name="isMale" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                    <span></span>
+                    <p>Мужской</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="2" ng-model="travelingDetailsCtrl.userData.IsMale" name="isMale" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                    <span></span>
+                    <p>Женский</p>
+                </label>
+            </div>
+
+            <div class="telCode"
+                 dropdown-select="travelingDetailsCtrl.telCode"
+                 dropdown-model="travelingDetailsCtrl.userData.TelephoneCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="travelingDetailsCtrl.userData.Telephone" required />
+        </div>
+    </section>
+
+    <section class="control-group" id="drivers_details">
+        <h2><span>Данные загран. паспорта владельца полиса </span></h2>
+        <div class="control">
+            <label class="big">
+                <p class="name">Имя</p>
+                <p class="error" ng-show="(form.$submitted || form.passportName.$touched) && form.passportName.$invalid">Выберите Имя</p>
+            </label>
+            <input type="text" name="passportName" class="big" ng-model="travelingDetailsCtrl.userData.Name" placeholder="Имя" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Фамилия</p>
+                <p class="error" ng-show="(form.$submitted || form.passportSurname.$touched) && form.passportSurname.$invalid">Выберите Фамилию</p>
+            </label>
+            <input type="text" name="passportSurname" class="big" ng-model="travelingDetailsCtrl.userData.Surname" placeholder="Фамилия" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Серия</p>
+                <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серию</p>
+            </label>
+            <input type="text" name="passportSerial" class="big" ng-model="travelingDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер</p>
+                <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+            </label>
+            <input type="number" name="passportnNumber" class="big" ng-model="travelingDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Когда выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || travelingDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="travelingDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="travelingDetailsCtrl.details.passportShowWhan = !travelingDetailsCtrl.details.passportShowWhan" required />
+        </div>
+        <div pickadate="" ng-show="travelingDetailsCtrl.details.passportShowWhan" ng-model="travelingDetailsCtrl.userData.PassportWhen"></div>
+        <a class="datepicker-close" ng-show="travelingDetailsCtrl.details.passportShowWhan" ng-click="travelingDetailsCtrl.details.passportShowWhan = !travelingDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big">
+                <p class="name">Кем выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+            </label>
+            <input type="text" name="passportIssued" class="big" ng-model="travelingDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+        </div>
+    </section>
+    <div ng-repeat="additiolData in travelingDetailsCtrl.userData.additiolData">
+        <section class="control-group" id="personal">
+            <h2><span>личные данные дополнительного страхуемого лица №{{$index+1}}</span></h2>
+            <div class="control">
+                <label>
+                    <input type="text" placeholder="Имя" ng-change="travelingDetailsCtrl.onMiddlesCahsnge()" name="namePolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.NamePolis" required />
+                    <p class="error" ng-show="(form.$submitted || form.namePolis.$touched) && form.namePolis.$invalid">Выберите имя</p>
+                </label>
+            </div>
+            <div class="control">
+                <label>
+                    <input type="text" placeholder="Фамилия" ng-change="travelingDetailsCtrl.onMiddlesCahsnge()" name="surnamePolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.SurnamePolis" required/>
+                    <p class="error" ng-show="(form.$submitted || form.surnamePolis.$touched) && form.surnamePolis.$invalid">Выберите фамилию</p>
+                </label>
+            </div>
+            <div class="control">
+                <label>
+                    <input type="text" placeholder="Отчество" ng-required="!additiolData.isMiddle" ng-readonly="additiolData.isMiddle"  name="patronymicPolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.PatronymicPolis"  />
+                    <p class="error" ng-show="(form.$submitted || form.patronymicPolis.$touched) && form.patronymicPolis.$invalid">Выберите отчество</p>
+                </label>
+            </div>
+            <div class="control">
+                <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDayPolis" class="big date" ng-model="additiolData.privateData.BirthdayPolis | amDateFormat:'DD MMMM YYYY'" ng-click="additiolData.privateData.isShow = !additiolData.privateData.isShow" required />
+            </div>
+             <div class="control">
+                <div class="gender">
+                    <label class="big" id="gender">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="(form.$submitted || form.gender.$touched) && form.gender.$invalid">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" value="true" ng-model="additiolData.privateData.Gender" name="gender" required />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" value="false" ng-model="additiolData.privateData.Gender" name="gender" required />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+            </div>
+        </section>
+        <section class="control-group" id="drivers_details">
+            <h2><span>Данные загран. паспорта дополнительного страхуемого лица №{{$index+1}}</span></h2>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Имя</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportNameHuman.$touched) && form.passportNameHuman.$invalid">Выберите Имя</p>
+                </label>
+                <input type="text" name="passportNameHuman" class="big" ng-model="additiolData.outBorderPassport.PassportNameHuman" placeholder="Имя" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Фамилия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSurnameHuman.$touched) && form.passportSurnameHuman.$invalid">Выберите Фамилию</p>
+                </label>
+                <input type="text" name="passportSurnameHuman" class="big" ng-model="additiolData.outBorderPassport.PassportSurnameHuman" placeholder="Фамилия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Серия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSerialHuman.$touched) && form.passportSerialHuman.$invalid">Выберите Серию</p>
+                </label>
+                <input type="text" name="passportSerialHuman" class="big" ng-model="additiolData.outBorderPassport.PassportSerialHuman" placeholder="Серия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportnNumberHuman.$touched) && form.passportnNumberHuman.$invalid">Выберите Номер</p>
+                </label>
+                <input type="number" name="passportnNumberHuman" class="big" ng-model="additiolData.outBorderPassport.PassportnNumberHuman" placeholder="Номер" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Когда выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhenHuman.$touched) && ( form.passportWhenHuman.$invalid || additiolData.outBorderPassport.PassportWhenHuman == undefined)">Выберите дату</p>
+                </label>
+                <input type="text"  placeholder="Укажите дату" ng-readonly="true" name="passportWhenHuman" class="big date" ng-model="additiolData.outBorderPassport.PassportWhenHuman | amDateFormat:'DD MMMM YYYY'" ng-click="additiolData.outBorderPassport.passportShowWhanHuman = !additiolData.outBorderPassport.passportShowWhanHuman" required />
+            </div>
+            <div pickadate="" ng-show="additiolData.outBorderPassport.passportShowWhanHuman" ng-model="additiolData.outBorderPassport.PassportWhenHuman"></div>
+            <a class="datepicker-close" ng-show="additiolData.outBorderPassport.passportShowWhanHuman" ng-click="additiolData.outBorderPassport.passportShowWhanHuman = !additiolData.outBorderPassport.passportShowWhanHuman"><span>Закрыть</span></a>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Кем выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportIssuedHuman.$touched) && form.passportIssuedHuman.$invalid">Укажите кем выдано</p>
+                </label>
+                <input type="text" name="passportIssuedHuman" class="big" ng-model="additiolData.outBorderPassport.PassportIssuedHuman" placeholder="Кем выдано" required />
+            </div>
+        </section>
+    </div>
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>
+    -->
+
+
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterDetails" ng-show="isMobile"><h2><span>Шаг3 </span>Дополнить данные</h2></div>
+    <p id="logoheader">
+        Страхование для поездки за рубеж для пребывания в странах : <strong>{{travelingDetailsCtrl.content.country}}</strong> на <strong>{{travelingDetailsCtrl.content.travelingDur}}</strong> дней,
+        начиная с <strong>{{travelingDetailsCtrl.startData}}</strong> и до <strong>{{travelingDetailsCtrl.endData}}</strong>, для <strong>{{travelingDetailsCtrl.content.insuredsCount}}</strong> человек <strong>{{travelingDetailsCtrl.content.insuredsAges}}</strong> лет.
+    </p>
+    <div class="logo" id="logoTravel">
+        <img ng-src="{{travelingDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="travelingDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2 ng-click="(isMobile)?(travelingDetailsCtrl.personalData = !travelingDetailsCtrl.personalData): travelingDetailsCtrl.personalData = true;"><span>личные Данные владельца полиса</span></h2>
+        <div ng-show="travelingDetailsCtrl.personalData">
+            <div class="control">
+                <input type="text" placeholder="Имя" name="name" ng-change="travelingDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMaletra1.$invalid)?"wrong"}}" ng-model="travelingDetailsCtrl.userData.Name" required />
+                <input type="email" ng-show="!isMobile" placeholder="Email" name="email" class="big second" ng-model="travelingDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control" ng-class="{invalid_input:form.$error.city}">
+                <input type="text" placeholder="Фамилия" name="surname" ng-change="travelingDetailsCtrl.updateMiddle()" class="big" ng-model="travelingDetailsCtrl.userData.Surname" required />
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="travelingDetailsCtrl.city"
+                                  initial-value="travelingDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="city"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="city"
+                                  pause="300"
+                                  ng-show="!isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" placeholder="Отчество" ng-required="!travelingDetailsCtrl.isMiddle" ng-readonly="travelingDetailsCtrl.isMiddle" name="middlename" class="big" ng-model="travelingDetailsCtrl.userData.Middlename" />
+                <input type="text" ng-show="!isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="travelingDetailsCtrl.userData.Adress" required />
+            </div>
+            <div class="control">
+                <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" ng-model="travelingDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="travelingDetailsCtrl.showbirthDay = !travelingDetailsCtrl.showbirthDay" required />
+                <div class="maleRadio" ng-show="isMobile">
+                    <label class="big" ng-show="!isMobile">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="travelingDetailsCtrl.userData.isMale == 0">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="travelingDetailsCtrl.userData.IsMale" name="isMaletra" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="travelingDetailsCtrl.userData.IsMale" name="isMaletra" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+                <div class="telCode"
+                     dropdown-select="travelingDetailsCtrl.telCode"
+                     dropdown-model="travelingDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="!isMobile">
+                </div>
+                <input type="number" ng-show="!isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="travelingDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div pickadate="" ng-show="travelingDetailsCtrl.showbirthDay" ng-model="travelingDetailsCtrl.userData.Birthday" min-date="travelingDetailsCtrl.minDate"></div>
+            <a class="datepicker-close" ng-show="travelingDetailsCtrl.showbirthDay" ng-click="travelingDetailsCtrl.showbirthDay = !travelingDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+            <div class="control tellControl">
+                <div class="maleRadio" ng-show="!isMobile">
+                    <label class="big">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="(form.isMaletra1.$invalid  || travelingDetailsCtrl.userData.IsMale == 0 || travelingDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="travelingDetailsCtrl.userData.IsMale" name="isMaletra1" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="travelingDetailsCtrl.userData.IsMale" name="isMaletra1" ng-checked="{{(travelingDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+
+                <div class="telCode"
+                     dropdown-select="travelingDetailsCtrl.telCode"
+                     dropdown-model="travelingDetailsCtrl.userData.TelephoneCode"
+                     dropdown-item-label="text">
+                </div>
+                <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="travelingDetailsCtrl.userData.Telephone" required />
+            </div>
+            <div class="control tellControl">
+                <div class="telCode"
+                     dropdown-select="travelingDetailsCtrl.telCode"
+                     dropdown-model="travelingDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="isMobile">
+                </div>
+                <input type="number" ng-show="isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="travelingDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div class="control">
+                <input type="email" ng-show="isMobile" placeholder="Email" name="email" class="big second" ng-model="travelingDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control">
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="travelingDetailsCtrl.city"
+                                  initial-value="travelingDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhereHuman"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhereHuman"
+                                  pause="500"
+                                  ng-show="isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" ng-show="isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="travelingDetailsCtrl.userData.Adress" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:travelingDetailsCtrl.personalData}" ng-show="isMobile" ng-click="travelingDetailsCtrl.personalData = !travelingDetailsCtrl.personalData"></div>
+    </section>
+    <section class="control-group" id="drivers_details">
+        <h2 ng-show="!isMobile"><span>Данные загран. паспорта владельца полиса </span></h2>
+        <h2 ng-show="isMobile" ng-click="(isMobile)?(travelingDetailsCtrl.openTravelPassport = !travelingDetailsCtrl.openTravelPassport): travelingDetailsCtrl.openTravelPassport = true;"><span>Данные загран. паспорта <br />владельца полиса </span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.passportName.$invalid || form.passportSurname.$invalid || form.passportSerial.$invalid || 
+                                                                       form.passportnNumber.$invalid || form.passportWhen.$invalid || travelingDetailsCtrl.userData.PassportWhen == undefined || form.passportIssued.$invalid)) }"></div>
+                                                                  <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.passportName.$invalid || form.passportSurname.$invalid || form.passportSerial.$invalid || 
+                                                                       form.passportnNumber.$invalid || form.passportWhen.$invalid || travelingDetailsCtrl.userData.PassportWhen == undefined || form.passportIssued.$invalid)) }"></div></h2>
+        <div ng-show="travelingDetailsCtrl.openTravelPassport">
+            <div class="control">
+                <label class="big">
+                    <p class="name">Имя</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportName.$touched) && form.passportName.$invalid">Выберите Имя</p>
+                </label>
+                <input type="text" name="passportName" class="big" ng-model="travelingDetailsCtrl.userData.Name" placeholder="Имя" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Фамилия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSurname.$touched) && form.passportSurname.$invalid">Выберите Фамилию</p>
+                </label>
+                <input type="text" name="passportSurname" class="big" ng-model="travelingDetailsCtrl.userData.Surname" placeholder="Фамилия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Серия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серию</p>
+                </label>
+                <input type="text" name="passportSerial" class="big" ng-model="travelingDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+                </label>
+                <input type="number" name="passportnNumber" class="big" ng-model="travelingDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Когда выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || travelingDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату начала страховки</p>
+                </label>
+                <input type="text" placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="travelingDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="travelingDetailsCtrl.details.passportShowWhan = !travelingDetailsCtrl.details.passportShowWhan" required />
+            </div>
+            <div pickadate="" ng-show="travelingDetailsCtrl.details.passportShowWhan" ng-model="travelingDetailsCtrl.userData.PassportWhen"></div>
+            <a class="datepicker-close" ng-show="travelingDetailsCtrl.details.passportShowWhan" ng-click="travelingDetailsCtrl.details.passportShowWhan = !travelingDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Кем выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+                </label>
+                <input type="text" name="passportIssued" class="big" ng-model="travelingDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:travelingDetailsCtrl.openTravelPassport}" ng-show="isMobile" ng-click="travelingDetailsCtrl.openTravelPassport = !travelingDetailsCtrl.openTravelPassport"></div>
+    </section>
+    <div ng-repeat="additiolData in travelingDetailsCtrl.userData.additiolData">
+        <section class="control-group" id="personal">
+            <h2 ng-click="travelingDetailsCtrl.openPersonalData = !travelingDetailsCtrl.openPersonalData"><span>личные данные дополнительного страхуемого лица №{{$index+2}}</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.namePolis.$invalid || form.surnamePolis.$invalid || form.patronymicPolis.$invalid || form.gender.$invalid)) }"></div>
+                                                                                        <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.namePolis.$invalid || form.surnamePolis.$invalid || form.patronymicPolis.$invalid || form.gender.$invalid)) }"></div></h2>
+            <div ng-show="travelingDetailsCtrl.openPersonalData">
+                <div class="control">
+                    <label>
+                        <input type="text" placeholder="Имя" ng-change="travelingDetailsCtrl.onMiddlesCahsnge()" name="namePolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.NamePolis" required />
+                        <p class="error" ng-show="(form.$submitted || form.namePolis.$touched) && form.namePolis.$invalid">Выберите имя</p>
+                    </label>
+                </div>
+                <div class="control">
+                    <label>
+                        <input type="text" placeholder="Фамилия" ng-change="travelingDetailsCtrl.onMiddlesCahsnge()" name="surnamePolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.SurnamePolis" required />
+                        <p class="error" ng-show="(form.$submitted || form.surnamePolis.$touched) && form.surnamePolis.$invalid">Выберите фамилию</p>
+                    </label>
+                </div>
+                <div class="control">
+                    <label>
+                        <input type="text" placeholder="Отчество" ng-required="!additiolData.isMiddle" ng-readonly="additiolData.isMiddle" name="patronymicPolis" class="big" id="travelingDetailsCtrl_osagoInsuranceForm_year" ng-model="additiolData.privateData.PatronymicPolis" />
+                        <p class="error" ng-show="(form.$submitted || form.patronymicPolis.$touched) && form.patronymicPolis.$invalid">Выберите отчество</p>
+                    </label>
+                </div>
+                <div class="control">
+                    <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDayPolis" class="big date" ng-model="additiolData.privateData.BirthdayPolis | amDateFormat:'DD MMMM YYYY'" ng-click="additiolData.privateData.isShow = !additiolData.privateData.isShow" required />
+                </div>
+                <div class="control">
+                    <div class="gender">
+                        <label class="big" id="gender" ng-show="!isMobile">
+                            <p class="name">Пол</p>
+                            <p class="error" ng-show="(form.$submitted || form.gender.$touched) && form.gender.$invalid">Укажите пол</p>
+                        </label>
+                        <label class="big_radio">
+                            <input type="radio" value="true" ng-model="additiolData.privateData.Gender" name="gender" required />
+                            <span></span>
+                            <p>Мужской</p>
+                        </label>
+                        <label class="big_radio">
+                            <input type="radio" value="false" ng-model="additiolData.privateData.Gender" name="gender" required />
+                            <span></span>
+                            <p>Женский</p>
+                        </label>
+                        <label class="big" id="gender" ng-show="isMobile">
+                            <p class="error" ng-show="(form.$submitted || form.gender.$touched) && form.gender.$invalid">Укажите пол</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="closeButton" ng-class="{clButton:travelingDetailsCtrl.openPersonalData}" ng-show="isMobile" ng-click="travelingDetailsCtrl.openPersonalData = !travelingDetailsCtrl.openPersonalData"></div>
+        </section>
+        <section class="control-group" id="drivers_details">
+            <h2 ng-click="(isMobile)?(travelingDetailsCtrl.openTravelData = !travelingDetailsCtrl.openTravelData): travelingDetailsCtrl.openTravelData = true;"><span>Данные загран. паспорта дополнительного страхуемого лица №{{$index+2}}</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.passportNameHuman.$invalid || form.passportSurnameHuman.$invalid || form.passportSerialHuman.$invalid || 
+                                                                                                        form.passportnNumberHuman.$invalid || form.passportWhenHuman.$invalid || additiolData.outBorderPassport.PassportWhenHuman == undefined || form.passportIssuedHuman.$invalid)) }"></div>
+                                                                                                    <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.passportNameHuman.$invalid || form.passportSurnameHuman.$invalid || form.passportSerialHuman.$invalid || 
+                                                                                                         form.passportnNumberHuman.$invalid || form.passportWhenHuman.$invalid || additiolData.outBorderPassport.PassportWhenHuman == undefined || form.passportIssuedHuman.$invalid)) }"></div></h2>
+            <div ng-show="travelingDetailsCtrl.openTravelData">
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Имя</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportNameHuman.$touched) && form.passportNameHuman.$invalid">Выберите Имя</p>
+                    </label>
+                    <input type="text" name="passportNameHuman" class="big" ng-model="additiolData.outBorderPassport.PassportNameHuman" placeholder="Имя" required />
+                </div>
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Фамилия</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportSurnameHuman.$touched) && form.passportSurnameHuman.$invalid">Выберите Фамилию</p>
+                    </label>
+                    <input type="text" name="passportSurnameHuman" class="big" ng-model="additiolData.outBorderPassport.PassportSurnameHuman" placeholder="Фамилия" required />
+                </div>
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Серия</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportSerialHuman.$touched) && form.passportSerialHuman.$invalid">Выберите Серию</p>
+                    </label>
+                    <input type="text" name="passportSerialHuman" class="big" ng-model="additiolData.outBorderPassport.PassportSerialHuman" placeholder="Серия" required />
+                </div>
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Номер</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportnNumberHuman.$touched) && form.passportnNumberHuman.$invalid">Выберите Номер</p>
+                    </label>
+                    <input type="number" name="passportnNumberHuman" class="big" ng-model="additiolData.outBorderPassport.PassportnNumberHuman" placeholder="Номер" required />
+                </div>
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Когда выдано</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportWhenHuman.$touched) && ( form.passportWhenHuman.$invalid || additiolData.outBorderPassport.PassportWhenHuman == undefined)">Выберите дату</p>
+                    </label>
+                    <input type="text" placeholder="Укажите дату" ng-readonly="true" name="passportWhenHuman" class="big date" ng-model="additiolData.outBorderPassport.PassportWhenHuman | amDateFormat:'DD MMMM YYYY'" ng-click="additiolData.outBorderPassport.passportShowWhanHuman = !additiolData.outBorderPassport.passportShowWhanHuman" required />
+                </div>
+                <div pickadate="" ng-show="additiolData.outBorderPassport.passportShowWhanHuman" ng-model="additiolData.outBorderPassport.PassportWhenHuman"></div>
+                <a class="datepicker-close" ng-show="additiolData.outBorderPassport.passportShowWhanHuman" ng-click="additiolData.outBorderPassport.passportShowWhanHuman = !additiolData.outBorderPassport.passportShowWhanHuman"><span>Закрыть</span></a>
+                <div class="control">
+                    <label class="big">
+                        <p class="name">Кем выдано</p>
+                        <p class="error" ng-show="(form.$submitted || form.passportIssuedHuman.$touched) && form.passportIssuedHuman.$invalid">Укажите кем выдано</p>
+                    </label>
+                    <input type="text" name="passportIssuedHuman" class="big" ng-model="additiolData.outBorderPassport.PassportIssuedHuman" placeholder="Кем выдано" required />
+                </div>
+            </div>
+            <div class="closeButton" id="travling_close_end" ng-class="{clButton:travelingDetailsCtrl.openTravelData}" ng-show="isMobile" ng-click="travelingDetailsCtrl.openTravelData = !travelingDetailsCtrl.openTravelData"></div>
+        </section>
+    </div>
+
+
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>

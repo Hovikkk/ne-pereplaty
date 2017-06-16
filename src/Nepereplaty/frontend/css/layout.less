@@ -1,0 +1,159 @@
+﻿@import "variables.less";
+@import "mixins.less";
+.bg {
+    position: absolute;
+    background-color: rgba(15,15,15,0.3);
+    width: 100vw;
+    height: 96.5vh;
+    margin-top: 16vw;
+    z-index: 0;
+}
+header{
+    width: 100%;
+    height: 82px;
+    background: @blue-dark;
+    @media screen and (max-width: 800px) {
+        height: 16vw;
+        width: 100vw !important;
+    }
+    @media screen and (max-width: 1280px) {
+      width: 1246px;
+      .mod &{
+             //   width:100%;
+           }
+    }
+    & section{
+        .center-me();
+        width: 1346px;
+        display: table;
+        @media screen and (max-width: 800px) {
+            width: 100vw !important;
+        }
+        @media screen and (max-width: 1280px) {
+          width: 1246px;
+          .mod &{
+             //   width:100%;
+            }
+        }
+    }
+}
+
+main{
+    .center-me();
+    width: 1346px;
+    display: table;
+    height: inherit;
+    margin-top: -82px;
+    padding-top: 82px;
+    padding-bottom: 116px;
+    vertical-align: top;
+    @media screen and (max-width: 800px) {
+        width: 100vw !important;
+        padding-bottom: 0vw;
+    }
+    @media screen and (max-width: 1280px) {
+        width: 1246px;
+        margin-left: 0;
+        .mod &{
+               // width:100%;
+           }
+    }
+    & .main-view-container{
+        width: 1020px;
+        max-width: 1020px;
+        display: table-cell;
+        vertical-align: top;
+        background: @gray-light;
+        padding-left: 66px;
+        padding-right: 86px;
+        @media screen and (max-width: 800px) {
+            width: 100vw !important;
+            margin: 0px;
+            padding: 0px;
+            padding-left: 0px !important; 
+            padding-right: 0px !important;
+        }
+        @media screen and (max-width: 1280px) {
+            width: 896px;
+            max-width: 896px;
+            padding-left: 25px;
+            padding-right: 35px;
+            &.apartment-offer{
+                padding-left: 25px;
+                padding-right: 30px;
+                width: 954px
+            }
+            &.apartment-offer, &.apartment-details, &.apartment-payment, &.house-offer, &.house-details, &.house-payment, &.accident-offer, &.accident-details, &.accident-payment, &.traveling, &.traveling-offer, &.traveling-details, &.traveling-payment{
+                width: 896px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            &.accident, &.casco-offer, &.casco-details, &.casco-payment, &.osago-offer, &.osago-details, &.osago-payment{
+                width: 896px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+        
+        }
+         @media screen and (max-width: 1024px) {
+             padding-left: 25px;
+         }
+        
+    }
+
+    & aside{
+        width: 326px;
+        max-width: 326px;
+        display: table-cell;
+        vertical-align: top;
+        background: transparent;
+        @media screen and (max-width: 1280px) {
+            width: 311px;
+            max-width: 311px;
+        }
+    }
+}
+
+footer{
+    width: 100%;
+    margin-top: -116px;
+    height: 116px;
+    background: @black;
+    @media screen and (max-width: 800px) {
+        width: 100% !important;
+    }
+    @media screen and (max-width: 1280px) {
+      width: 1246px;
+      .mod &{
+             //   width:100%;
+           }
+    }
+    & section{
+        .center-me();
+        width: 1346px;
+        display: table;
+        @media screen and (max-width: 800px) {
+            width: 100vw !important;
+        }
+        @media screen and (max-width: 1280px) {
+            width: 1246px;
+            .mod &{
+             //   width:100%;
+           }
+        }
+    }
+    @media screen and (max-width: 800px) {
+        height: 21vw;
+        margin-top: -11.4vw;
+        display:table-cell;
+        
+    }
+}
+.footerBottom{
+    @media screen and (max-width: 800px) {
+        margin-bottom: 30vw;
+        //margin-top:0vw;
+        display:none;
+    }
+    
+}

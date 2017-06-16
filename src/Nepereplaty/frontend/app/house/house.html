@@ -1,0 +1,147 @@
+﻿<nav>
+    <ul>
+        <li class="active">
+            <p>
+                <strong>1</strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<form name="form" ng-submit="houseCtrl.requestOffer()" novalidate>
+    <div class="chapter" ng-show="isMobile"><h2><span>Шаг1 </span>Заполнить данные</h2></div>
+    <section class="control-group" id="period">
+        <h2><span>Период страховки</span></h2>
+        <div class="control">
+            <label class="big" for="houseCtrl_houseInsuranceForm_periodStart">
+                <p class="name">Начало страховки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodStart.$touched) && form.periodStart.$invalid">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodStart" class="big date" id="houseCtrl_houseInsuranceForm_periodStart" ng-model="houseCtrl.houseInsuranceForm.periodStart | amDateFormat:'DD MMMM YYYY'" ng-click="houseCtrl.showPeriodStart = !houseCtrl.showPeriodStart" required />
+        </div>
+        <div pickadate=""  min-date = "houseCtrl.insuranceStartMinData"  ng-show="houseCtrl.showPeriodStart" ng-model="houseCtrl.houseInsuranceForm.periodStart"></div>
+        <a class="datepicker-close" ng-show="houseCtrl.showPeriodStart" ng-click="houseCtrl.showPeriodStart = !houseCtrl.showPeriodStart"><span>Закрыть</span></a>
+    </section>
+    <section class="control-group" id="about-car">
+        <h2 ng-click="(isMobile)?(houseCtrl.dataOnTheProperty = !houseCtrl.dataOnTheProperty): houseCtrl.dataOnTheProperty = true;"><span>Данные по имуществу</span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.releaseYear.$invalid || form.$error.regionRequired || form.houseForRent.$invalid || houseCtrl.houseInsuranceForm.cover.value==null)) }"></div>
+                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.releaseYear.$invalid || form.$error.regionRequired || form.houseForRent.$invalid || houseCtrl.houseInsuranceForm.cover.value==null)) }"></div></h2>
+        <div ng-show="houseCtrl.dataOnTheProperty">
+            <div class="control">
+                <label class="big" for="houseCtrl_houseInsuranceForm_year">
+                    <p class="name">Год постройки</p>
+                    <p class="error" ng-show="(form.$submitted || form.releaseYear.$touched ) && form.releaseYear.$invalid">Год постройки</p>
+                    <p class="error" ng-show="houseCtrl.houseInsuranceForm.releaseYearIsLarge">Не должен превышать нынешний год</p>
+                    <p class="error" ng-show="form.$submitted && houseCtrl.houseInsuranceForm.year < 1965 && houseCtrl.houseInsuranceForm.year!=null">Не должен быть меньше 1965 г.</p>
+                </label>
+                <input type="number" name="releaseYear" class="big" ng-change="houseCtrl.yearBigValue()" id="houseCtrl_houseInsuranceForm_releaseYear" ng-model="houseCtrl.houseInsuranceForm.year" min="0" placeholder="например: 2015" required />
+            </div>
+            <div class="control">
+                <label class="big" for="houseCtrl_houseInsuranceForm_city">
+                    <p class="name">Регион</p>
+                    <p class="error" ng-show="(form.$submitted || form.region.$touched) && form.$error.regionRequired">Выберите регион</p>
+                </label>
+                <angucomplete-alt id="houseCtrl_houseInsuranceForm_city"
+                                  placeholder="укажите"
+                                  selected-object="houseCtrl.houseInsuranceForm.region"
+                                  local-data="houseCtrl.regions"
+                                  title-field="title"
+                                  minlength="1"
+                                  field-required="true"
+                                  search-fields="title"
+                                  field-required-class="regionRequired"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big"
+                                  input-name="region" />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Дом сдается в аренду?</p>
+                    <p class="error" ng-show="(form.$submitted || form.houseForRent.$touched) && form.houseForRent.$invalid">Выберите один из вариантов</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" name="houseForRent" ng-model="houseCtrl.houseInsuranceForm.rent" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="false" name="houseForRent" ng-model="houseCtrl.houseInsuranceForm.rent" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+
+            <div class="control">
+                <label class="big" for="houseCtrl_houseInsuranceForm_walls">
+                    <p class="name">Перекрытия и стены</p>
+                    <p class="error" ng-show="(form.$submitted) && houseCtrl.houseInsuranceForm.cover.value==null">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="houseCtrl.wallsOptions"
+                     dropdown-model="houseCtrl.houseInsuranceForm.cover"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div class="control" ng-repeat="estate in houseCtrl.houseInsuranceForm.AdditionalStructure">
+                <label class="big" for="houseCtrl_houseInsuranceForm_addBuilding">
+                    <p class="name">Дополнительное строения на участке N {{$index+1}}</p>
+                    <p class="error" ng-show="(form.$submitted || form.houseCost{{$index}}.$touched) && form.houseCost{{$index}}.$invalid">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="houseCtrl.AdditionalBuildingsOptions"
+                     dropdown-model="estate.type"
+                     dropdown-item-label="text">
+                </div>
+                <div id="houseCost">
+                    <label class="big" id="houseMob">
+                        <input type="number" ng-readonly="!estate.type.value" name="houseCost{{$index}}" class="money big houseCost" id="houseCtrl_houseInsuranceForm_houseCost" ng-model="estate.cost" min="0" max="200000" required />
+                        <div class="features">
+                            <span>*максимальная стоимость - 200 000 руб</span>
+                        </div>
+                        <p class="error" ng-show="(form.$submitted || form.houseCost{{$index}}.$touched ) && form.houseCost{{$index}}.$invalid">Выберите стоимость</p>
+                    </label>
+                </div>
+            </div>
+            <div class="control estate" ng-show="isMobile">
+                <button type="button" ng-show="isMobile" class="" ng-click="houseCtrl.addEstatesCount()">Добавить еще строение</button>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{houseCloseButton:houseCtrl.dataOnTheProperty}" ng-show="isMobile" ng-click="houseCtrl.dataOnTheProperty = !houseCtrl.dataOnTheProperty"></div>
+    </section>
+    <section class="control-group" ng-show="!isMobile">
+        <div class="control estate">
+            <button type="button" class="" ng-click="houseCtrl.addEstatesCount()">Добавить еще строение</button>
+        </div>
+    </section>
+    <section class="control-group submit" id="submit">
+        <label class="checkbox">
+            <p>Cогласен с условиями использования</p>
+            <input type="checkbox" name="isAgreed" ng-model="houseCtrl.houseInsuranceForm.isAgreed" required />
+            <span></span>
+        </label>
+        <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Вы должны согласится с условиями использования</p>
+        <input type="submit" value="{{houseCtrl.submitValue}}" id="disabled" ng-click="disableClick()" ng-disabled="isDisabled" />
+    </section>
+</form>

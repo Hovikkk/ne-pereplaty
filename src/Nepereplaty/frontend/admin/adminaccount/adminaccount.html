@@ -1,0 +1,180 @@
+﻿<div id='wrap'>
+
+    <div class="container">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading">
+                <h4>Кабинет</h4>
+            </div>
+            <div class="panel-body collapse in">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"><div class="col-sm-12"><h3 class="text-center">Личные данные</h3> </div> </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Имя</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Name}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Фамилия</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Surname}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Отчество</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Middlename}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Email}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Город</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.City}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Адрес</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Adress}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">датa рождения</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.Birthday}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Телефон</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.TelephoneCode}}{{accountCtrl.account.Telephone}}</span><span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.MobileCode}}{{accountCtrl.account.Mobile}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Пол</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{(accountCtrl.account.IsMale)?"Мужской":"Женский"}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Роль</label>
+                        <div class="col-sm-6">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="accountCtrl.account.isAdmin" name="isAmdin" value="true" ng-checked="accountCtrl.account.isAdmin == true"> Администратор
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="accountCtrl.account.isAdmin" name="isAdmin" value="false" ng-checked="!accountCtrl.account.isAdmin"> Пользователь
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">комментарии</label>
+                        <div class="col-sm-6">
+                            <textarea ng-model="accountCtrl.account.comments" class="form-control autosize"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button  ng-click="accountCtrl.edit()"  class="btn-primary btn">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body collapse in">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"><div class="col-sm-12"><h3 class="text-center">Паспортные данные</h3> </div> </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Номер</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.PassportnNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Серия</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.PassportSerial}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Где выдано</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.PassportWhere}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Когда выдано</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.PassportWhen}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Кем выдано</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{accountCtrl.account.PassportIssued}}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-sky">
+                                <div class="panel-heading">
+                                    <h4>Data Tables</h4>
+
+                                </div>
+                                <div class="panel-body collapse in">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables dataTable" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>Номер заказа</th>
+                                                <th>Вид страховки</th>
+                                                <th>Компания-партнер</th>
+                                                <th>Дата заказа</th>
+                                                <th>Стоимость заказа</th>
+                                                <th>Коментарии</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="offer in accountCtrl.offers" class="odd gradeX">
+                                                <td ng-click="accountCtrl.selectOffer(offer.offerId)" class="center btn-default-alt">{{offer.offerId}}</td>
+                                                <td>{{accountCtrl.types[offer.type]}}</td>
+                                                <td ng-click="accountCtrl.selectCompany(offer.companyId)" class="btn-default-alt">{{offer.companyName}}</td>
+                                                <td class="center">{{offer.startDate | date:'dd.MM.yyyy'}}</td>
+                                                <td class="center">{{offer.cost}}</td>
+                                                <td class="center">
+                                                    <div class="input-group">
+                                                        <input type="text" ng-model="offer.comments" class="form-control">
+                                                        <div class="input-group-btn" ng-click="accountCtrl.saveComments(offer)">
+                                                            <button type="button" class="btn btn-info">Сохранить</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- container -->
+            </div>
+        </div>
+    </div>
+</div>

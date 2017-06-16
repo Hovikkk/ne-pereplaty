@@ -1,0 +1,29 @@
+<div class="description">
+    <h1>Выбор страховки</h1>
+    <p>Не пропустите скидки<br>от ведущих страховых компаний!<br>Сравнивайте и не переплачивайте!
+</p>
+</div><div class="car" ng-show="!isMobile">
+       <h2>Страхование автомобиля</h2>
+    <a ng-click="homeCtrl.carModal()">Сравнить</a>
+</div><div class="appartment" ng-show="!isMobile">
+    <h2>Страхование имущества</h2>
+    <a ng-click="homeCtrl.appartment()">Сравнить</a>
+</div><div class="traveling" ng-show="!isMobile">
+    <h2>Страхование<br /> выезжающих за рубеж</h2>
+    <a ng-click="homeCtrl.gotoTraveling()">Сравнить</a>
+</div><div class="health" ng-show="!isMobile">
+    <h2>Страхование здоровья</h2>
+    <a ng-click="homeCtrl.health()">Сравнить</a>
+</div><div class="car" ng-show="isMobile" ng-click="homeCtrl.carModal()">
+    <h2>Страхование автомобиля</h2>
+    <a>Сравнить</a>
+</div><div class="appartment" ng-show="isMobile" ng-click="homeCtrl.appartment()">
+    <h2>Страхование имущества</h2>
+    <a>Сравнить</a>
+</div><div class="traveling" ng-show="isMobile" ng-click="homeCtrl.gotoTraveling()">
+    <h2>Страхование<br /> выезжающих за рубеж</h2>
+    <a>Сравнить</a>
+</div><div class="health" ng-show="isMobile" ng-click="homeCtrl.health()">
+    <h2>Страхование здоровья</h2>
+    <a>Сравнить</a>
+</div>

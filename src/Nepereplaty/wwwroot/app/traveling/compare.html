@@ -1,0 +1,104 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование для поездки за рубеж для пребывания в странах : <strong>{{travelingCompareCtrl.content.country}}</strong> на <strong>{{travelingCompareCtrl.content.travelingDur}}</strong> дней,
+        начиная с <strong>{{travelingCompareCtrl.startData}}</strong> и до <strong>{{travelingCompareCtrl.endData}}</strong>, для <strong>{{travelingCompareCtrl.content.insuredsCount}}</strong> человек <strong>{{travelingCompareCtrl.content.insuredsAges}}</strong> лет.
+    </p>
+    <div class="compare_button">
+        <button class="compare_button_active" ng-click="travelingCompareCtrl.back()">Назад</button>
+    </div>
+</section>
+<section class="compare_table">
+    <table>
+        <tr class="table_header traveling-compare">
+            <th>Параграфы</th>
+            <td></td>
+            <td></td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.Company.Name}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Параметр 1</th>
+            <td class="ok"></td>
+            <td class="ok"></td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Параметр 2</th>
+            <td class="ok"></td>
+            <td class="ok"></td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Параметр 3</th>
+            <td>не включено</td>
+            <td>покрытие 500 руб</td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th>Параметр 4</th>
+            <td>данные не доступны</td>
+            <td>покрытие 700 руб</td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <!--<tr ng-repeat="additol in houseCompareCtrl.AdditionalOptions">
+            <th>{{$index==0 ? 'Дополнительные покрытия:' : ''}}</th>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{$index}}</td>
+        </tr>-->
+
+        <tr class="table_body">
+            <th>Дополнительные покрытия:</th>
+            <td>опция 1</td>
+            <td>опция 1</td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>опция 2</td>
+            <td>опция 2</td>
+        </tr>
+        <tr class="table_body">
+            <th></th>
+            <td>опция 3</td>
+            <td>опция 3</td>
+        </tr>
+        <tr class="table_end">
+            <th>Полные условия страхового<br />полиса</th>
+            <td ng-click="houseCompareCtrl.openPdf()"></td>
+            <td ng-click="houseCompareCtrl.openPdf()"></td>
+            <td ng-repeat="offer in houseCompareCtrl.offers.Offer">{{offer.AntiTheftSystem}}</td>
+        </tr>
+    </table>
+</section>

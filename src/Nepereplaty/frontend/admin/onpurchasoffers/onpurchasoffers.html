@@ -1,0 +1,54 @@
+﻿<div id='wrap'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-sky">
+                    <div class="panel-heading">
+                        <h4>Неоплаченные</h4>
+                    </div>
+                    <div class="panel-body collapse in" ng-show="onpurchasoffersCtrl.offers.length > 0">
+                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables dataTable" id="example">
+                            <thead>
+                                <tr>
+                                    <th>Номер заказа</th>
+                                    <th>Вид страховки</th>
+                                    <th>Компания-партнер</th>
+                                    <th>Дата заказа</th>
+                                    <th>Заказчик</th>
+                                    <th>Стоимость заказа</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="offer in onpurchasoffersCtrl.offers" class="odd gradeX">
+                                    <td ng-click="onpurchasoffersCtrl.selectOffer(offer.offerId)" class="center btn-default-alt">{{offer.offerId}}</td>
+                                    <td>{{onpurchasoffersCtrl.types[offer.type]}}</td>
+                                    <td ng-click="onpurchasoffersCtrl.selectCompany(offer.companyId)" class="btn-default-alt">{{offer.companyName}}</td>
+                                    <td class="center">{{offer.startDat | date:'dd.MM.yyyy'}}</td>
+                                    <td ng-click="onpurchasoffersCtrl.selectUser(offer.buyerId)" class="btn-default-alt">{{offer.buyer}}</td>
+                                    <td class="center">{{offer.cost}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- container -->
+</div>
+<!--<script type="text/javascript">
+    function createTable() {
+        console.log('--------------');
+        $('.datatables').dataTable({
+            "sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+            "sPaginationType": "bootstrap",
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ записей в странице",
+                "sSearch": ""
+            }
+        });
+        $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'поиск...');
+        $('.dataTables_length select').addClass('form-control');
+    } <script type='text/javascript' src='assets/demo/demo-datatables.js'></script>
+</script> -->

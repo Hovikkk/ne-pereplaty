@@ -1,0 +1,67 @@
+﻿<div id='wrap'>
+
+    <div class="container">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading">
+                <h4>Компания</h4>
+            </div>
+            <div class="panel-body collapse in">
+                <form  class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Название компании</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.company.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ответственное лицо</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.company.contactName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Адрес компании</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.company.address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Телефон</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.company.telephone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Мейл</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.company.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Предоставляемые страховки</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="companyCtrl.type" readonly="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">комментарии</label>
+                        <div class="col-sm-6">
+                            <textarea ng-model="companyCtrl.company.comments" class="form-control autosize"></textarea>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <button ng-click="companyCtrl.updateData()" class="btn-primary btn">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<section class="modal">
+    <div class="modal-content car-modal" id="openCompare">
+        <a class="close-button" ng-click="dismisssModal()"><span>+</span></a>
+        <h3>Выберите интересующий вас пакет</h3>
+        <div class="car house" ng-show="!isMobile">
+            <h2>ДОМ</h2>
+            <a ng-click="dismisssModal('house')">Получить</a>
+        </div>
+        <div class="car house" ng-show="isMobile" ng-click="dismisssModal('house')">
+            <h2>ДОМ</h2>
+        </div>
+        <div class="car apartment" ng-show="!isMobile">
+            <h2>КВАРТИРА</h2>
+            <a ng-click="dismisssModal('apartment')">Получить</a>
+        </div>
+        <div class="car apartment" ng-show="isMobile" ng-click="dismisssModal('apartment')">
+            <h2>КВАРТИРА</h2>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+﻿{
+  "AppSettings": {
+    "SiteTitle": "Nepereplaty"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Nepereplaty-37dfd055-d439-480b-bb84-e532bbf7ba3a;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

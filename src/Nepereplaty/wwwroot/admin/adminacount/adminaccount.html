@@ -1,0 +1,19 @@
+﻿/// <reference path='../app.ts' />
+
+module admin.menu {
+    export class MenuController {
+        constructor(private $state: angular.ui.IStateService,
+            private $q: angular.IQService,
+            private $timeout: angular.ITimeoutService,
+            private $scope: angular.IScope,
+            private $rootScope: any) {
+            console.log('MenuController');
+        }
+
+        gotoPage(url: string): void {
+            console.log(url);
+            this.$state.go(url);
+        }
+    }
+    angular.module('admin').controller('admin.menu.MenuController', MenuController);
+}

@@ -1,0 +1,572 @@
+﻿<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование имущества <strong>{{houseDetailsCtrl.content.submodule}}</strong> на <strong>{{houseDetailsCtrl.content.termInsurance}}</strong>,
+        начиная с <strong>{{houseDetailsCtrl.startData}}</strong>.<span ng-show=" houseDetailsCtrl.content.AdditionalStructures!=''"> Страхование включает также <strong>{{houseDetailsCtrl.content.AdditionalStructures}}</strong>.</span>
+    </p>
+    <div class="logo">
+        <img ng-src="{{accidentDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="houseDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2><span>личные Данные владельца полиса</span></h2>
+        <div class="control">
+            <input type="text" placeholder="Имя" name="name" ng-change="houseDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMale.$invalid)?"wrong"}}" ng-model="houseDetailsCtrl.userData.Name" required />
+            <input type="email" placeholder="Email" name="email" class="big second" ng-model="houseDetailsCtrl.userData.Email" required />
+        </div>
+        <div class="control"  ng-class="{invalid_input:form.$error.city}">
+            <input type="text" placeholder="Фамилия" name="surname" ng-change="houseDetailsCtrl.updateMiddle()" class="big" ng-model="houseDetailsCtrl.userData.Surname" required />
+            <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                              placeholder="Город"
+                              selected-object="houseDetailsCtrl.city"
+                              initial-value="houseDetailsCtrl.userData.City"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="city"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="city"
+                              pause="300" />
+        </div>
+        <div class="control">
+            <input type="text" placeholder="Отчество" ng-required="!houseDetailsCtrl.isMiddle" ng-readonly="houseDetailsCtrl.isMiddle"  name="middlename" class="big" ng-model="houseDetailsCtrl.userData.Middlename"/>
+            <input type="text" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="houseDetailsCtrl.userData.Adress" required />
+        </div>
+        <div class="control">
+            <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" ng-model="houseDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="houseDetailsCtrl.showbirthDay = !houseDetailsCtrl.showbirthDay" required />
+            <div class="telCode"
+                 dropdown-select="houseDetailsCtrl.telCode"
+                 dropdown-model="houseDetailsCtrl.userData.MobileCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="houseDetailsCtrl.userData.Mobile" required />
+        </div>
+        <div pickadate="" ng-show="houseDetailsCtrl.showbirthDay" ng-model="houseDetailsCtrl.userData.Birthday" min-date="houseDetailsCtrl.minDate"></div>
+        <a class="datepicker-close" ng-show="houseDetailsCtrl.showbirthDay" ng-click="houseDetailsCtrl.showbirthDay = !houseDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+        <div class="control">
+            <div class="maleRadio">
+                <label class="big">
+                    <p class="name">Пол</p>
+                    <p class="error" ng-show="(form.isMale.$invalid  || houseDetailsCtrl.userData.IsMale == 0 || houseDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="1" ng-model="houseDetailsCtrl.userData.IsMale" name="isMale" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                    <span></span>
+                    <p>Мужской</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="2" ng-model="houseDetailsCtrl.userData.IsMale" name="isMale" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                    <span></span>
+                    <p>Женский</p>
+                </label>
+            </div>
+
+            <div class="telCode"
+                 dropdown-select="houseDetailsCtrl.telCode"
+                 dropdown-model="houseDetailsCtrl.userData.TelephoneCode"
+                 dropdown-item-label="text">
+            </div>
+            <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="houseDetailsCtrl.userData.Telephone" required />
+        </div>
+    </section>
+    <section class="control-group" id="drivers_details">
+        <h2><span>паспортные Данные владельца полиса </span></h2>
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер</p>
+                <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+            </label>
+            <input type="number" name="passportnNumber" class="big" ng-model="houseDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Серия</p>
+                <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серия</p>
+            </label>
+            <input type="text" name="passportSerial" class="big" ng-model="houseDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Где выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportWhere.$touched) && form.$error.passportWhere">Выберите Где выдано </p>
+            </label>
+            <angucomplete-alt id="accident_city"
+                              placeholder="Город"
+                              selected-object="houseDetailsCtrl.pasportWhere"
+                              initial-value="houseDetailsCtrl.userData.PassportWhere"
+                              remote-url="api/handbook/city/"
+                              title-field="name"
+                              minlength="3"
+                              field-required="true"
+                              search-fields="name"
+                              field-required-class="passportWhere"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big small_font"
+                              input-name="passportWhere"
+                              pause="500" />
+        </div>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Когда выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату</p>
+            </label>
+
+            <input type="text"  placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="houseDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="houseDetailsCtrl.details.passportShowWhan = !houseDetailsCtrl.details.passportShowWhan" required />
+        </div>
+        <div pickadate="" ng-show="houseDetailsCtrl.details.passportShowWhan" ng-model="houseDetailsCtrl.userData.PassportWhen"></div>
+        <a class="datepicker-close" ng-show="houseDetailsCtrl.details.passportShowWhan" ng-click="houseDetailsCtrl.details.passportShowWhan = !houseDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Кем выдано</p>
+                <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+            </label>
+            <input type="text" name="passportIssued" class="big" ng-model="houseDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+        </div>
+    </section>-->
+    <!--<section ng-repeat="driver in houseDetailsCtrl.userData.drivers" class="control-group" id="drivers_license">
+        <h2><span>данные о водительских правах владельца полиса №{{$index + 1}}</span></h2>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер прав</p>
+                <p class="error" ng-show="(form.$submitted || form.drivernumber{{$index}}.$touched) && form.drivernumber{{$index}}.$invalid">Выберите Номер прав</p>
+            </label>
+            <input type="text" name="drivernumber{{$index}}" class="big" ng-model="driver.number" placeholder="Номер" required />
+        </div>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Год получения прав</p>
+                <p class="error" ng-show="(form.$submitted || form.driveryear{{$index}}.$touched) && form.driveryear{{$index}}.$invalid">Выберите Год</p>
+            </label>
+            <input type="text" name="driveryear{{$index}}" class="big" ng-model="driver.year" placeholder="например 2015" required />
+        </div>
+    </section>-->
+    <!--<section class="control-group" id="personal_details">
+        <h2><span>данные по имуществу </span></h2>
+        <div class="control">
+            <div class="coincidence">
+                <label class="big">
+                    <p class="name">Адрес совпадает с адресом дома</p>
+                    <p class="error" ng-show="(form.$submitted || form.Coincidence.$touched) && form.Coincidence.$invalid">Укажите совпадение</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="true" ng-model="houseDetailsCtrl.userData.Coincidence" name="Coincidence" checked="checked" required />
+                    <span></span>
+                    <p>Да</p>
+                </label>
+                <label class="big_radio">
+                    <input type="radio" value="false" ng-model="houseDetailsCtrl.userData.Coincidence"  name="Coincidence" required />
+                    <span></span>
+                    <p>Нет</p>
+                </label>
+            </div>
+       </div>
+            
+            <div class="control propertyCity" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                <angucomplete-alt id="houseDetailsCtrl_osagoInsuranceForm_year"
+                                  placeholder="Регион"
+                                  selected-object="houseDetailsCtrl.userData.Region"
+                                  local-data="houseDetailsCtrl.regions"
+                                  title-field="title"
+                                  minlength="1"
+                                  field-required="true"
+                                  search-fields="title"
+                                  field-required-class="regionRequired"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big"
+                                  input-name="region" />
+                <p class="error" ng-show="(form.$submitted || form.region.$touched) && form.$error.regionRequired">Выберите регион</p>
+            </div>
+            <div class="control propertyCity" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                    <angucomplete-alt id="accident_city"
+                                      placeholder="Город"
+                                      selected-object="houseDetailsCtrl.userData.InformationCity"
+                                      initial-value="houseDetailsCtrl.userData.InformationCity"
+                                      remote-url="api/handbook/city/"
+                                      title-field="name"
+                                      minlength="3"
+                                      field-required="true"
+                                      search-fields="name"
+                                      field-required-class="InformationCity"
+                                      text-searching="Идёт поиск..."
+                                      text-no-results="Ничего не найдено"
+                                      input-class="big small_font"
+                                      input-name="InformationCity"
+                                      pause="500" />
+                    <p class="error" ng-show="(form.$submitted || form.InformationCity.$touched) && houseDetailsCtrl.userData.InformationCity == null">Выберите Город</p>
+            </div>
+            <div class="control propertyCity" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                <label>
+                    <input type="text" placeholder="Полный точный адрес" name="FullAdress" class="big" ng-model="houseDetailsCtrl.userData.FullAdress" min="0" />
+                    <p class="error" ng-show="(form.$submitted || form.FullAdress.$touched) && houseDetailsCtrl.userData.FullAdress == null">Выберите полный точный адрес</p>
+                </label>
+            </div>
+    </section>
+    
+
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>
+-->
+
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterDetails" ng-show="isMobile"><h2><span>Шаг3 </span>Дополнить данные</h2></div>
+    <p id="logoheader">
+        Страхование имущества <strong>{{houseDetailsCtrl.content.submodule}}</strong> на <strong>{{houseDetailsCtrl.content.termInsurance}}</strong>,
+        начиная с <strong>{{houseDetailsCtrl.startData}}</strong>.<span ng-show=" houseDetailsCtrl.content.AdditionalStructures!=''"> Страхование включает также <strong>{{houseDetailsCtrl.content.AdditionalStructures}}</strong>.</span>
+    </p>
+    <div class="logo">
+        <img ng-src="{{houseDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form name="form" class="form" ng-submit="houseDetailsCtrl.requestBuyOffer()" novalidate>
+    <section class="control-group" id="personal_details">
+        <h2 ng-click="(isMobile)?(houseDetailsCtrl.personalData = !houseDetailsCtrl.personalData): houseDetailsCtrl.personalData = true;"><span>личные Данные владельца полиса</span></h2>
+        <div ng-show="houseDetailsCtrl.personalData">
+            <div class="control">
+                <input type="text" placeholder="Имя" name="name" ng-change="houseDetailsCtrl.updateMiddle()" class="big {{((form.$submitted || form.isMale.$touched) && form.isMalehous1.$invalid)?"wrong"}}" ng-model="houseDetailsCtrl.userData.Name" required />
+                <input type="email" ng-show="!isMobile" placeholder="Email" name="email" class="big second" ng-model="houseDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control">
+                <input type="text" placeholder="Фамилия" name="surname" ng-change="houseDetailsCtrl.updateMiddle()" class="big" ng-model="houseDetailsCtrl.userData.Surname" required />
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="houseDetailsCtrl.city"
+                                  initial-value="houseDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhereHuman"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhereHuman"
+                                  pause="500"
+                                  ng-show="!isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" placeholder="Отчество" ng-required="!houseDetailsCtrl.isMiddle" ng-readonly="houseDetailsCtrl.isMiddle" name="middlename" class="big" ng-model="houseDetailsCtrl.userData.Middlename" />
+                <input type="text" ng-show="!isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="houseDetailsCtrl.userData.Adress" required />
+            </div>
+            <div class="control">
+                <input type="text" ng-readonly="true" placeholder="Укажите дату рождения" name="birthDay" class="big date" ng-model="houseDetailsCtrl.userData.Birthday | amDateFormat:'DD MMMM YYYY'" ng-click="houseDetailsCtrl.showbirthDay = !houseDetailsCtrl.showbirthDay" required />
+                <div class="maleRadio" ng-show="isMobile">
+                    <label class="big" ng-show="!isMobile">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="houseDetailsCtrl.userData.isMale == 0">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="houseDetailsCtrl.userData.IsMale" name="isMalehous" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="houseDetailsCtrl.userData.IsMale" name="isMalehous" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+                <div class="telCode"
+                     dropdown-select="houseDetailsCtrl.telCode"
+                     dropdown-model="houseDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="!isMobile">
+                </div>
+                <input type="number" ng-show="!isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="houseDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div pickadate="" ng-show="houseDetailsCtrl.showbirthDay" ng-model="houseDetailsCtrl.userData.Birthday" min-date="houseDetailsCtrl.minDate"></div>
+            <a class="datepicker-close" ng-show="houseDetailsCtrl.showbirthDay" ng-click="houseDetailsCtrl.showbirthDay = !houseDetailsCtrl.showbirthDay"><span>Закрыть</span></a>
+            <div class="control tellControl">
+                <div class="maleRadio" ng-show="!isMobile">
+                    <label class="big">
+                        <p class="name">Пол</p>
+                        <p class="error" ng-show="(form.isMalehous1.$invalid  || houseDetailsCtrl.userData.IsMale == 0 || houseDetailsCtrl.userData.IsMale == null)">Укажите пол</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="1" data-ng-model="houseDetailsCtrl.userData.IsMale" name="isMalehous1" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 1)?true:false}}" />
+                        <span></span>
+                        <p>Мужской</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" data-ng-value="2" data-ng-model="houseDetailsCtrl.userData.IsMale" name="isMalehous1" ng-checked="{{(houseDetailsCtrl.userData.IsMale == 2)?true:false}}" />
+                        <span></span>
+                        <p>Женский</p>
+                    </label>
+                </div>
+
+                <div class="telCode"
+                     dropdown-select="houseDetailsCtrl.telCode"
+                     dropdown-model="houseDetailsCtrl.userData.TelephoneCode"
+                     dropdown-item-label="text">
+                </div>
+                <input type="number" placeholder="Телефон" name="tel2" class="tel" ng-model="houseDetailsCtrl.userData.Telephone" required />
+            </div>
+            <div class="control tellControl">
+                <div class="telCode"
+                     dropdown-select="houseDetailsCtrl.telCode"
+                     dropdown-model="houseDetailsCtrl.userData.MobileCode"
+                     dropdown-item-label="text"
+                     ng-show="isMobile">
+                </div>
+                <input type="number" ng-show="isMobile" string-to-number placeholder="Телефон" name="tel1" class="tel" ng-model="houseDetailsCtrl.userData.Mobile" required />
+            </div>
+            <div class="control">
+                <input type="email" ng-show="isMobile" placeholder="Email" name="email" class="big second" ng-model="houseDetailsCtrl.userData.Email" required />
+            </div>
+            <div class="control">
+                <angucomplete-alt id="cascoCtrl_cascoInsuranceForm_city"
+                                  placeholder="Город"
+                                  selected-object="houseDetailsCtrl.city"
+                                  initial-value="houseDetailsCtrl.userData.City"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhereHuman"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhereHuman"
+                                  pause="500"
+                                  ng-show="isMobile" />
+            </div>
+            <div class="control">
+                <input type="text" ng-show="isMobile" placeholder="Улица, дом / кв" name="adress" class="big second" ng-model="houseDetailsCtrl.userData.Adress" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:houseDetailsCtrl.personalData}" ng-show="isMobile" ng-click="houseDetailsCtrl.personalData = !houseDetailsCtrl.personalData"></div>
+    </section>
+    <section class="control-group" id="drivers_details">
+        <h2 ng-click="(isMobile)?(houseDetailsCtrl.passportData = !houseDetailsCtrl.passportData): houseDetailsCtrl.passportData = true;">
+            <span>паспортные Данные владельца полиса </span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.passportnNumber.$invalid || form.passportSerial.$invalid || form.passportWhere.$invalid
+                                                                 (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined) || (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined)
+                                                                 || form.passportIssued.$invalid)) }"></div>
+            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.passportnNumber.$invalid || form.passportSerial.$invalid || form.passportWhere.$invalid
+                                                                 (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined) || (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined)
+                                                                 || form.passportIssued.$invalid)) }"></div>
+        </h2>
+        <div ng-show="houseDetailsCtrl.passportData">
+            <div class="control">
+                <label class="big">
+                    <p class="name">Номер</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportnNumber.$touched) && form.passportnNumber.$invalid">Выберите Номер</p>
+                </label>
+                <input type="number" name="passportnNumber" class="big" ng-model="houseDetailsCtrl.userData.PassportnNumber" placeholder="Номер" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Серия</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportSerial.$touched) && form.passportSerial.$invalid">Выберите Серия</p>
+                </label>
+                <input type="text" name="passportSerial" class="big" ng-model="houseDetailsCtrl.userData.PassportSerial" placeholder="Серия" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Где выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhere.$touched) && form.passportWhere.$invalid">Выберите Где выдано </p>
+                </label>
+                <angucomplete-alt id="accident_city"
+                                  placeholder="Город"
+                                  selected-object="houseDetailsCtrl.pasportWhere"
+                                  initial-value="houseDetailsCtrl.userData.PassportWhere"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="passportWhere"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="passportWhere"
+                                  pause="500" />
+            </div>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Когда выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportWhen.$touched) && (form.passportWhen.$invalid || houseDetailsCtrl.userData.PassportWhen == undefined)">Выберите дату</p>
+                </label>
+                <input type="text" placeholder="Укажите дату" ng-readonly="true" name="passportWhen" class="big date" ng-model="houseDetailsCtrl.userData.PassportWhen | amDateFormat:'DD MMMM YYYY'" ng-click="houseDetailsCtrl.details.passportShowWhan = !houseDetailsCtrl.details.passportShowWhan" required />
+            </div>
+            <div pickadate="" ng-show="houseDetailsCtrl.details.passportShowWhan" ng-model="houseDetailsCtrl.userData.PassportWhen"></div>
+            <a class="datepicker-close" ng-show="houseDetailsCtrl.details.passportShowWhan" ng-click="houseDetailsCtrl.details.passportShowWhan = !houseDetailsCtrl.details.passportShowWhan"><span>Закрыть</span></a>
+
+            <div class="control">
+                <label class="big">
+                    <p class="name">Кем выдано</p>
+                    <p class="error" ng-show="(form.$submitted || form.passportIssued.$touched) && form.passportIssued.$invalid">Укажите кем выдано</p>
+                </label>
+                <input type="text" name="passportIssued" class="big" ng-model="houseDetailsCtrl.userData.PassportIssued" placeholder="Кем выдано" required />
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:houseDetailsCtrl.passportData}" ng-show="isMobile" ng-click="houseDetailsCtrl.passportData = !houseDetailsCtrl.passportData"></div>
+    </section>
+    <!--<section ng-repeat="driver in houseDetailsCtrl.userData.drivers" class="control-group" id="drivers_license">
+        <h2><span>данные о водительских правах владельца полиса №{{$index + 1}}</span></h2>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Номер прав</p>
+                <p class="error" ng-show="(form.$submitted || form.drivernumber{{$index}}.$touched) && form.drivernumber{{$index}}.$invalid">Выберите Номер прав</p>
+            </label>
+            <input type="text" name="drivernumber{{$index}}" class="big" ng-model="driver.number" placeholder="Номер" required />
+        </div>
+
+        <div class="control">
+            <label class="big">
+                <p class="name">Год получения прав</p>
+                <p class="error" ng-show="(form.$submitted || form.driveryear{{$index}}.$touched) && form.driveryear{{$index}}.$invalid">Выберите Год</p>
+            </label>
+            <input type="text" name="driveryear{{$index}}" class="big" ng-model="driver.year" placeholder="например 2015" required />
+        </div>
+    </section>-->
+    <section class="control-group" id="personal_details">
+        <h2 ng-click="(isMobile)?(houseDetailsCtrl.propertyDetails = !houseDetailsCtrl.propertyDetails): houseDetailsCtrl.propertyDetails = true;">
+            <span>данные по имуществу </span><div ng-show="isMobile" ng-class="{wrong:((form.$submitted) && (form.Coincidence.$invalid)) }"></div>
+                                            <div ng-show="isMobile" ng-class="{valid:((form.$submitted) && !(form.Coincidence.$invalid)) }"></div>
+        </h2>
+        <div ng-show="houseDetailsCtrl.propertyDetails">
+            <div class="control">
+                <div class="coincidence">
+                    <label class="big">
+                        <p class="name">Адрес совпадает с адресом дома</p>
+                        <p class="error" ng-show="(form.$submitted || form.Coincidence.$touched) && form.Coincidence.$invalid">Укажите совпадение</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" value="true" ng-model="houseDetailsCtrl.userData.Coincidence" name="Coincidence" checked="checked" required />
+                        <span></span>
+                        <p>Да</p>
+                    </label>
+                    <label class="big_radio">
+                        <input type="radio" value="false" ng-model="houseDetailsCtrl.userData.Coincidence" name="Coincidence" required />
+                        <span></span>
+                        <p>Нет</p>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control propertyCity" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                <angucomplete-alt id="houseDetailsCtrl_osagoInsuranceForm_year"
+                                  placeholder="Регион"
+                                  selected-object="houseDetailsCtrl.userData.Region"
+                                  remote-url="api/handbook/city/"
+                                  title-field="name"
+                                  minlength="3"
+                                  field-required="true"
+                                  search-fields="name"
+                                  field-required-class="regionRequired"
+                                  text-searching="Идёт поиск..."
+                                  text-no-results="Ничего не найдено"
+                                  input-class="big small_font"
+                                  input-name="region"
+                                  pause="500" />
+
+                <p class="error" ng-show="(form.$submitted || form.region.$touched) && houseDetailsCtrl.regions.originalObject.value==null">Выберите регион</p>
+            </div>
+            <div class="control" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                <label>
+                    <input type="text" placeholder="Город" name="InformationCity" class="big" id="houseDetailsCtrl_osagoInsuranceForm_year" ng-model="houseDetailsCtrl.userData.InformationCity" />
+                    <p class="error" ng-show="(form.$submitted || form.InformationCity.$touched) && houseDetailsCtrl.userData.InformationCity == null">Выберите Город</p>
+                </label>
+            </div>
+            <div class="control" ng-show="houseDetailsCtrl.userData.Coincidence == 'false'">
+                <label>
+                    <input type="text" placeholder="Полный точный адрес" name="FullAdress" class="big" ng-model="houseDetailsCtrl.userData.FullAdress" min="0" />
+                    <p class="error" ng-show="(form.$submitted || form.FullAdress.$touched) && houseDetailsCtrl.userData.FullAdress == null">Выберите Польный точный адрес</p>
+                </label>
+            </div>
+        </div>
+        <div class="closeButton" ng-class="{clButton:houseDetailsCtrl.propertyDetails}" ng-show="isMobile" ng-click="houseDetailsCtrl.propertyDetails = !houseDetailsCtrl.propertyDetails"></div>
+    </section>
+
+
+
+    <section class="control-group submit" id="submit">
+        <input type="submit" value="Получить предложение" />
+    </section>
+
+</form>

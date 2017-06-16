@@ -1,0 +1,454 @@
+html,
+body,
+body div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video,
+details,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+article,
+aside,
+figure,
+footer,
+header,
+nav,
+section,
+details,
+summary {
+  display: block;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+img,
+object,
+embed {
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+td {
+  font-weight: normal;
+  vertical-align: top;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+input,
+select {
+  vertical-align: middle;
+}
+pre {
+  white-space: pre;
+  /* CSS2 */
+  white-space: pre-wrap;
+  /* CSS 2.1 */
+  white-space: pre-line;
+  /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word;
+  /* IE */
+}
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+.ie6 input {
+  vertical-align: text-bottom;
+}
+select,
+input,
+textarea {
+  font: 99% sans-serif;
+}
+table {
+  font-size: inherit;
+  font: 100%;
+}
+small {
+  font-size: 85%;
+}
+strong {
+  font-weight: bold;
+}
+td,
+td img {
+  vertical-align: top;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, sans-serif;
+}
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+  cursor: pointer;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+button,
+input[type=button] {
+  width: auto;
+  overflow: visible;
+}
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+a {
+  text-decoration: none;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+@font-face {
+  font-family: 'seguibl';
+  src: url('../f/seguibl.eot');
+  src: url('../f/seguibl.eot') format('embedded-opentype'), url('../f/seguibl.woff') format('woff'), url('../f/seguibl.ttf') format('truetype'), url('../f/seguibl.svg') format('svg');
+}
+@font-face {
+  font-family: 'segoeui';
+  src: url('../f/segoeui.eot');
+  src: url('../f/segoeui.eot') format('embedded-opentype'), url('../f/segoeui.woff') format('woff'), url('../f/segoeui.ttf') format('truetype'), url('../f/segoeui.svg') format('svg');
+}
+@font-face {
+  font-family: 'segoeuib';
+  src: url('../f/segoeuib.eot');
+  src: url('../f/segoeuib.eot') format('embedded-opentype'), url('../f/segoeuib.woff') format('woff'), url('../f/segoeuib.ttf') format('truetype'), url('../f/segoeuib.svg') format('svg');
+}
+@font-face {
+  font-family: 'segoeuil';
+  src: url('../f/segoeuil.eot');
+  src: url('../f/segoeuil.eot') format('embedded-opentype'), url('../f/segoeuil.woff') format('woff'), url('../f/segoeuil.ttf') format('truetype'), url('../f/segoeuil.svg') format('svg');
+}
+@font-face {
+  font-family: 'segoeuis';
+  src: url('../f/seguisb.eot');
+  src: url('../f/seguisb.eot') format('embedded-opentype'), url('../f/seguisb.woff') format('woff'), url('../f/seguisb.ttf') format('truetype'), url('../f/seguisb.svg') format('svg');
+}
+* {
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+body {
+  background: #f2f4f5;
+}
+.center-me {
+  margin: 0 auto;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.registerlogin {
+  height: 100%;
+}
+.registerlogin .content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 25px;
+}
+.registerlogin .content nav {
+  float: right;
+  color: #ffffff;
+  font-family: 'segoeui';
+}
+.registerlogin .content nav span {
+  margin-right: 30px;
+}
+.registerlogin .content nav a {
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 10px 15px;
+  display: inline-block;
+}
+.registerlogin .content nav a:hover {
+  border: 2px solid #ffffff;
+}
+.top {
+  height: 50%;
+  width: 100%;
+  background: url("../i/register-bg.png") top center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+.top .logo {
+  display: block;
+  background: url("../i/register-logo.png") center center no-repeat;
+  width: 222px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  left: 50%;
+  margin-left: -111px;
+}
+.top .logo:hover {
+  opacity: 0.8;
+}
+.bottom {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+.bottom .content {
+  padding: 75px 0px;
+}
+.bottom .left {
+  width: 430px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.bottom .left h3 {
+  font-size: 42px;
+  color: #323231;
+  font-family: 'segoeuil';
+  text-transform: uppercase;
+}
+.bottom .left input[type="text"],
+.bottom .left input[type="password"] {
+  border: none;
+  width: 400px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0);
+  border-bottom: 1px solid #dbdbdb;
+  font-size: 18px;
+  font-family: 'segoeuil';
+  margin-bottom: 27px;
+   -webkit-appearance: none;
+}
+.bottom .left input[type="submit"] {
+  background: #e94638;
+  width: 93%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0px 29px;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  font-family: 'seguibl';
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+   -webkit-appearance: none;
+}
+.bottom .right {
+  width: 430px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.bottom .right span {
+  color: #323231;
+  font-size: 18px;
+  font-family: 'segoeuil';
+}
+.bottom .right ul {
+  margin-top: 25px;
+  text-align: center;
+}
+.bottom .right ul li {
+  display: inline-block;
+  margin: 0px 2px;
+}
+.bottom .right ul li a:hover {
+  opacity: 0.7;
+}
+.bottom .right ul li img {
+  width: 54px;
+}
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+}
+footer .links {
+  width: 100%;
+  text-align: center;
+  font-family: 'segoeuil';
+}
+footer .links a {
+  margin: 0 12px;
+  display: inline-block;
+  color: #323231;
+}
+footer .langs {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0px;
+  font-family: 'segoeuil';
+}
+footer .langs a {
+  margin: 0 12px;
+  display: inline-block;
+  color: #323231;
+  padding: 5px 10px;
+}
+footer .langs a.active {
+  background: none repeat scroll 0 0 #ccc;
+  color: #fff;
+}
+footer span {
+  display: block;
+  text-align: center;
+  color: #323231;
+  font-size: 14px;
+  font-family: 'segoeuil';
+}

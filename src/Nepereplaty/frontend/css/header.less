@@ -1,0 +1,208 @@
+﻿@import "variables.less";
+@import "mixins.less";
+
+header {
+    & section{
+        & .logo{
+            display: table-cell;
+            padding: 22px 33px;
+            @media screen and (max-width: 800px) {
+                float: right;
+                padding: 5vw 0vw;
+                margin-right: 31vw;
+            }
+            & img{
+                width: 183px;
+                display: block;
+                @media screen and (max-width: 800px) {
+                    width: 40vw;
+                }
+                .mz &{
+                    display: inline-block;
+                }
+            }
+        }
+        & .loginPopup{
+            width: 77vw;
+            height: 47vw;
+            margin-top: 16vw;
+            position: absolute;
+            background-color: @blue;
+            z-index: 2;
+            & a{
+                display:block;
+                color: @white-main;
+                font-family: 'segoeuib';
+                font-size: 17px;
+                padding: 8vw 0vw 7vw 14vw;
+            }
+        }
+        & .login{
+            display: table-cell;
+            height: 82px;
+            width: 326px;
+            background: @blue url("../i/login.png") no-repeat;
+            background-size: 20px 20px;
+            background-position: 270px 50%;
+            vertical-align:top;
+            cursor: pointer;
+            @media screen and (max-width: 1280px) {
+//                 width: 324px;
+                
+            }
+            .mz &{
+                background-position: 270px 21%;
+            }
+            @media screen and (max-width: 800px) {
+                background-position: 4vw 50%;
+                width: 14vw !important;
+                height: 16vw;
+                float: left;
+                background-size:5.5vw 5.5vw;
+            }
+            @media screen and (max-width: 1280px) {
+              width: 322px;
+              .mod &{
+                  width: 322px;
+              }
+            }
+
+            @media screen and (max-width: 1024px) {
+              width: 322px;
+              .mod &{
+                  width: 322px;
+              }
+            }
+
+            & a{
+                vertical-align:top;
+                display:inline-block;
+                width: 100%;
+                height: 100%;
+                color: @white-main;
+                font-family: 'segoeuib';
+                font-size: 17px;
+                padding: 30px 70px 0px 0px;
+                text-align: right;
+                @media screen and (max-width: 800px) {
+                   // display: none;
+                }
+            }
+            
+        }
+        @media screen and (max-width: 800px) {
+            & .help{
+                display: table-cell;
+                width: 14vw;
+                height: 16vw;
+                position: absolute;
+                right: 0;
+                background: @green url("../i/tell.png") no-repeat;
+                background-size: 5.5vw 5.5vw;
+                background-position: 4vw 5vw;
+                //vertical-align:top;
+                cursor: pointer;
+    }
+            & .helpPopup{
+                position:absolute;
+                z-index: 1;
+                right: 0;
+                & .need-help{
+                    text-align: center;
+                    width: 86vw;
+                    padding-bottom: 18px;
+                    background: @white-additional;
+                    border-bottom: 4px solid @green;
+                    & .close-button{
+                        display: block;
+                        position: absolute;
+                        right: 2vw;
+                        top: 3vw;
+                        height: 30px;
+                        width: 30px;
+                        padding-left:5px;
+                        background: @green url("../i/close.png") no-repeat;
+                        text-align: center;
+                        cursor: pointer;
+                        background-size: 20px;
+                        background-position: 2vw 2vw;
+                        & span{
+                            color: @white-additional-nav;
+                            font-family: 'segoeuib';
+                            font-size: 14vw;
+                            display: inline-block;
+                            .rotate(45deg);
+                        }
+                    }
+                    & img{
+                        display:block;
+                        border-bottom: 4px solid @gray-dark;
+                    }
+                    & h3{
+                        background: @green;
+                        color: @white-main;
+                        font-size: 16px;
+                        font-family: 'segoeuib';
+                        height: 51px;
+                        padding-top: 16px;
+                    }
+                    & form{
+                        padding-top: 25px;
+
+                        & input{
+                            .center-me();
+                            .border-radius(7px);
+                            .box-shadow(none);
+
+                            width: 76vw;;
+                            display: block;
+                            margin-bottom: 5px;
+
+                            &[type="text"], &[type="tel"]{
+                                border: 2px solid @gray-for-border;
+                                background: @white-additional;
+                                text-align: center;
+                                font-family: 'segoeuis';
+                                font-size: 14px;
+                                padding: 5px 0px 7px 0px;;
+                                letter-spacing: 0.020em;
+                                outline: 0px;
+                                 -webkit-appearance: none;
+                                &:focus{
+                                    border: 2px solid @blue;
+                                }
+                            }
+                            &[type="submit"]{
+                                margin-top: 10px;
+                                font-size: 16px;
+                                border: 2px solid @blue;
+                                background: @blue;
+                                padding: 7px 0px 9px 0px;
+                                font-family: 'segoeuib';
+                                color: @white-main;
+                                -webkit-appearance: none;
+                                &:hover{
+                                    background: @white-additional;
+                                    color: @blue;
+                                }
+                            }
+                        }
+                    }
+                    & p{
+                        color: @black-text-dark;
+                        font-family: 'segoeuis';
+                        font-size: 14px;
+
+                        & strong{
+                            font-family: 'segoeuibl';
+                            font-size: 15px;
+                            color: @blue;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+}

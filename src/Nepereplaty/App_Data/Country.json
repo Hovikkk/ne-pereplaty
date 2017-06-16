@@ -1,0 +1,2323 @@
+﻿[
+  {
+    "id": "b3edfe15-1ed7-4228-9e82-d586609e7ee1",
+    "name": "Австралия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "AU"
+  },
+  {
+    "id": "60ec4dbd-e5d1-4eac-a656-144e66c487a3",
+    "name": "Австрия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 14,
+    "c": 1,
+    "ps1": 0,
+    "code": "AT"
+  },
+  {
+    "id": "f0e13206-0ef8-43ec-9a94-f63b325d0a4f",
+    "name": "Азербайджан",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "AZ"
+  },
+  {
+    "id": "4e386942-3f68-4de0-ae94-290598075aca",
+    "name": "Аландские острова",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 30000,
+    "code": "AX"
+  },
+  {
+    "id": "d038c5a0-0615-49b7-bdbd-e7402a5ac33c",
+    "name": "Албания",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "AL"
+  },
+  {
+    "id": "79eaf676-419f-4f1f-824f-3e7a7e7ef189",
+    "name": "Алжир",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 50000,
+    "code": "DZ"
+  },
+  {
+    "id": "b39f802f-da4a-4826-84e3-6391fcea69fb",
+    "name": "Американское Самоа",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "AS"
+  },
+  {
+    "id": "2a57bd46-91e3-45f1-b51c-c9a10c7eae89",
+    "name": "Ангилья",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "AI"
+  },
+  {
+    "id": "bfdc6dda-b70f-49e5-ba50-db2d6cceff60",
+    "name": "Ангола",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "AO"
+  },
+  {
+    "id": "ba938a62-0a15-4379-86f4-73b048b097fc",
+    "name": "Андорра",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "AD"
+  },
+  {
+    "id": "ad88cefd-87eb-4a82-926a-0853029ccfe3",
+    "name": "Антарктика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "AQ"
+  },
+  {
+    "id": "7fcc5a3b-2d44-4d5d-9c72-f5b6be2b8410",
+    "name": "Антигуа и Барбуда ",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "AG"
+  },
+  {
+    "id": "0305d11a-00d3-4302-b50f-2bb94d3683a3",
+    "name": "Аргентина",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "AR"
+  },
+  {
+    "id": "8dd17bb9-6af9-453b-bdd9-a327885a9f96",
+    "name": "Армения",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "AM"
+  },
+  {
+    "id": "d88cbae7-c7a9-49a4-9b83-1e1d2b1e5819",
+    "name": "Аруба",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "AW"
+  },
+  {
+    "id": "e0a9d63d-b4df-43e9-900e-ff6a07da28d6",
+    "name": "Багамские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BS"
+  },
+  {
+    "id": "5bdda5e9-f914-4867-92a8-49d843a4d532",
+    "name": "Бангладеш",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "BD"
+  },
+  {
+    "id": "5fbaad23-57b6-45b6-9f56-578c44c0b245",
+    "name": "Барбадос",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BB"
+  },
+  {
+    "id": "74204c2d-e875-46b1-9bc3-d09dda2730c0",
+    "name": "Бахрейн",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "BH"
+  },
+  {
+    "id": "bf2d1afc-4ec1-467c-a3d4-49b1d0247073",
+    "name": "Беларусь",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "BY"
+  },
+  {
+    "id": "358944ea-5675-4f86-ac41-dcc8a529606d",
+    "name": "Белиз",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BZ"
+  },
+  {
+    "id": "fe7c3be9-8558-48df-bc79-10148b5a2bd2",
+    "name": "Бельгия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "BE"
+  },
+  {
+    "id": "de27aa71-0f5c-42cd-a24a-9879fcefe71d",
+    "name": "Бенин",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "BJ"
+  },
+  {
+    "id": "0a29ae88-a877-4db7-96d7-d7d364203ab4",
+    "name": "Бермудские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "BM"
+  },
+  {
+    "id": "1eb18247-8344-43f4-9147-0b9bb5260f56",
+    "name": "Бирма (Мьянма)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "MM"
+  },
+  {
+    "id": "398d0bcc-6ae6-4d16-9c0e-783c0287ea3e",
+    "name": "Болгария",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "BG"
+  },
+  {
+    "id": "2b3ced54-736c-44b3-bcad-323114957e3f",
+    "name": "Боливия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BO"
+  },
+  {
+    "id": "eb29c40e-c079-4732-97e0-4c2ab2fde120",
+    "name": "Босния и Герцеговина",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "BA"
+  },
+  {
+    "id": "4f22537a-3556-49a5-9dc4-e08a90aaff01",
+    "name": "Ботсвана",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "BW"
+  },
+  {
+    "id": "1e12ca95-a500-4a64-86db-7d40594540ac",
+    "name": "Бразилия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BR"
+  },
+  {
+    "id": "87a928e7-c96e-4351-a15a-6a4669ab9de4",
+    "name": "Британская территория в Индийском океане",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "IO"
+  },
+
+  {
+    "id": "18a72712-fd6a-4b7d-b815-27b8c4f154a3",
+    "name": "Бруней",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "BN"
+  },
+  {
+    "id": "bf760867-f33b-43ee-bceb-f33e23975835",
+    "name": "Буркина Фасо",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "BF"
+  },
+  {
+    "id": "034371bb-62b3-4e92-8a16-1afe318bed74",
+    "name": "Бурунди",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "BI"
+  },
+  {
+    "id": "2558bc0d-b50e-4cdd-9164-42d628bc4ec2",
+    "name": "Бутан",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "BT"
+  },
+  {
+    "id": "99deef7c-1556-4811-88bc-862a24ab4655",
+    "name": "Вануату",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "VU"
+  },
+  {
+    "id": "982fdbf2-8018-4b73-95ed-0888d8c622bc",
+    "name": "Ватикан",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "VA"
+  },
+  {
+    "id": "eae7ab58-87bc-48b7-a231-c86c556c8047",
+    "name": "Великобритания",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "GB"
+  },
+  {
+    "id": "c2930981-98f5-4f1f-9e7c-a08cb5aaa1e2",
+    "name": "Венгрия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "HU"
+  },
+  {
+    "id": "cf480bb9-7f7e-4fb7-a77f-01867b5a9dea",
+    "name": "Венесуэла",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "VE"
+  },
+
+  {
+    "id": "aa100611-4490-44a1-9e21-e920a37516b7",
+    "name": "Виргинские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "VI"
+  },
+
+  {
+    "id": "851d11e9-f849-47a9-a1db-cd5931f40bd8",
+    "name": "Вьетнам",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "VN"
+  },
+  {
+    "id": "5c950969-aeed-43ce-91e1-2f6a93d68cb6",
+    "name": "Габон",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GA"
+  },
+  {
+    "id": "4213aff3-95fa-4522-ad13-394416ca9b56",
+    "name": "Гайана",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "GY"
+  },
+  {
+    "id": "99b13e55-f94a-4ef9-91eb-8569fbe907b2",
+    "name": "Гаити",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "HT"
+  },
+  {
+    "id": "3eb224d0-47c4-49e2-8763-005118a6f440",
+    "name": "Гамбия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GM"
+  },
+  {
+    "id": "d90c0a94-d8b4-49fa-929d-943e7995deb9",
+    "name": "Гана",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GH"
+  },
+  {
+    "id": "479f5b6e-7c20-4183-9825-436db71e0aef",
+    "name": "Гваделупа",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "GP"
+  },
+  {
+    "id": "a3fd3f8c-dea4-4091-9a63-b3add6891f57",
+    "name": "Гватемала",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "GT"
+  },
+  {
+    "id": "33c98518-077b-46ec-990c-e3acb3f823ad",
+    "name": "ГВИАНА (ФР.)",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "GF"
+  },
+  {
+    "id": "70a13b03-aa41-4597-a68a-ba6b08fd9a3a",
+    "name": "Гвинея",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GN"
+  },
+  {
+    "id": "65dbd78c-1d40-4d68-ad03-c5684f8a998f",
+    "name": "Гвинея-Бисау",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GW"
+  },
+  {
+    "id": "b86f2a65-2ff8-4d01-b51d-a10b7e9e39f4",
+    "name": "Германия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 15,
+    "c": 1,
+    "ps1": 0,
+    "code": "DE"
+  },
+  {
+    "id": "f170ec4f-f805-46f5-86da-1f9db807535e",
+    "name": "Гернси",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 30000,
+    "code": "GG"
+  },
+  {
+    "id": "f57b697a-2eba-43bb-b97a-b672f7d9969d",
+    "name": "Гибралтар",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "GI"
+  },
+  {
+    "id": "9b3872bd-db8e-408a-92fd-250ec9126e6d",
+    "name": "Гондурас",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "HN"
+  },
+  {
+    "id": "608ff962-0e8f-46fc-b369-4ca94ca9d70f",
+    "name": "Гонконг",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "HK"
+  },
+  {
+    "id": "5e61ee47-4670-41d1-970c-273a7093f97b",
+    "name": "Гренада",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "GD"
+  },
+  {
+    "id": "f770244f-69ed-489e-8dbf-e7bcf47656d7",
+    "name": "Гренландия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "GL"
+  },
+  {
+    "id": "f69ee29b-5137-4de9-a4ee-82a898191f56",
+    "name": "Греция",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "GR"
+  },
+  {
+    "id": "449cddf1-35ec-4377-98ed-4f94cadc6e3f",
+    "name": "Грузия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 30000,
+    "code": "GE"
+  },
+  {
+    "id": "2859ddd6-1464-49a6-9dba-5dbdd3f5af91",
+    "name": "Гуам",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "GU"
+  },
+  {
+    "id": "ac0138b3-2036-4df2-9fae-6be9a0385296",
+    "name": "Дания",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 15,
+    "c": 1,
+    "ps1": 0,
+    "code": "DK"
+  },
+  {
+    "id": "490fd902-2b98-4794-9607-63e1086ee202",
+    "name": "Джерси",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 30000,
+    "code": "JE"
+  },
+  {
+    "id": "9a692a16-1f9d-49f0-aff3-f26669319a0b",
+    "name": "Джибути",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "DJ"
+  },
+
+  {
+    "id": "1d3b6da0-5757-4fca-8de3-d3fe6fd76419",
+    "name": "Доминика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "DM"
+  },
+  {
+    "id": "6c1aedfe-46ef-495c-a026-a0049f6f88c9",
+    "name": "Доминиканская республика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "DO"
+  },
+  {
+    "id": "2816606e-66b5-4d91-8855-51bef2089b88",
+    "name": "Египет",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "EG"
+  },
+  {
+    "id": "48474c9a-dc8f-427e-a2d0-f47237a1b4be",
+    "name": "Замбия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ZM"
+  },
+  {
+    "id": "8d486dde-7974-4c59-935e-3e4c984f8ba8",
+    "name": "Западная Сахара",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "EH"
+  },
+  {
+    "id": "6c233041-8187-485d-9f12-51372c042846",
+    "name": "Зимбабве",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ZW"
+  },
+  {
+    "id": "a537dc00-a172-4e8f-942c-302d7d1e1070",
+    "name": "Израиль",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "IL"
+  },
+  {
+    "id": "9deac31e-145a-45bd-be28-998fb119e86b",
+    "name": "Индия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "IN"
+  },
+  {
+    "id": "2af2084a-85ec-478f-b3c0-1dbac17da4c4",
+    "name": "Индонезия (в том числе Бали)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "ID"
+  },
+  {
+    "id": "0c5be5f0-e7f3-4709-9d05-ab0170acf95f",
+    "name": "Иордания",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "JO"
+  },
+  {
+    "id": "9bc10a06-c670-4db8-9cbc-b17e591fdf26",
+    "name": "Иран",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "IR"
+  },
+  {
+    "id": "3f3537ad-f497-4919-a332-5997c5100115",
+    "name": "Ирландия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "IE"
+  },
+  {
+    "id": "0f2577d6-ba1a-4710-94a8-3f4d9808c4dd",
+    "name": "Исландия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "IS"
+  },
+  {
+    "id": "a2208267-2efb-4f94-b7c8-1767745bc713",
+    "name": "Испания",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "ES"
+  },
+  {
+    "id": "0c805847-f634-4114-8a1e-ad5812db6bea",
+    "name": "Италия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "IT"
+  },
+  {
+    "id": "5687ca78-0f61-443d-9c35-4f4364ddcefc",
+    "name": "Кабо-Верде",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "CV"
+  },
+  {
+    "id": "3082226e-6e95-421b-89d7-b94570f280c1",
+    "name": "Казахстан",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "KZ"
+  },
+  {
+    "id": "4174bce6-01db-4cf8-b924-a94be6a4b7e3",
+    "name": "Каймановы острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "KY"
+  },
+  {
+    "id": "bb012344-743b-4623-938d-5fc7d03c94a7",
+    "name": "Камбоджа",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "KH"
+  },
+  {
+    "id": "b12a98ef-df43-4816-963e-1c6b5eae1fd0",
+    "name": "Камерун",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "CM"
+  },
+  {
+    "id": "17a5218a-51f6-433d-b13e-f57f0d7a3b65",
+    "name": "Канада",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "CA"
+  },
+  {
+    "id": "a055fc95-6040-4a58-98a3-3d90ea9bbbe5",
+    "name": "Катар",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "QA"
+  },
+  {
+    "id": "c921edeb-9adc-42f8-a9a6-a9a2151f42e1",
+    "name": "Кения",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "KE"
+  },
+  {
+    "id": "9842b082-0b59-407b-8163-fe6ce41bfe4d",
+    "name": "Кипр",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "CY"
+  },
+  {
+    "id": "55f213e2-7622-45a9-a44a-97f024a1bd96",
+    "name": "Киргизия",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "KG"
+  },
+  {
+    "id": "333b44f6-5ef3-4e70-82cd-2eaea89bfe79",
+    "name": "Кирибати",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "KI"
+  },
+  {
+    "id": "ec373971-5e0a-49a4-9842-d4fd310f2e73",
+    "name": "Китай",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "CN"
+  },
+
+  {
+    "id": "b8a3c6e1-298a-4131-824d-a8532c6e28b2",
+    "name": "Кокосовые острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "CC"
+  },
+  {
+    "id": "d46899de-1f0b-4613-80f8-b9905c9ec254",
+    "name": "Колумбия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "CO"
+  },
+  {
+    "id": "fa69decd-c644-4fc7-8662-d491458980a2",
+    "name": "Коморские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "KM"
+  },
+  {
+    "id": "81e99ee2-b0df-4303-b5cf-cfd92b977fb2",
+    "name": "Косово",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 30000,
+    "code": "XK"
+  },
+  {
+    "id": "3e956815-0fd3-4999-8f8f-334ed7fc0b0f",
+    "name": "Коста-Рика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "CR"
+  },
+  {
+    "id": "34720edc-5d5a-48cb-a853-4a9d77488309",
+    "name": "Куба",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "CU"
+  },
+  {
+    "id": "dd3c8d1f-9f52-4896-9a18-0a71b5916cdc",
+    "name": "Кувейт",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "KW"
+  },
+  {
+    "id": "dd71a703-9186-4f74-8d4a-bd1938d9c7d3",
+    "name": "Лаос",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "LA"
+  },
+  {
+    "id": "b97e118d-6ff2-4514-9a40-b887fe1395ac",
+    "name": "Латвия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 15,
+    "c": 1,
+    "ps1": 0,
+    "code": "LV"
+  },
+  {
+    "id": "e899d73d-88a4-4850-adef-d6f979651b94",
+    "name": "Лесото",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "LS"
+  },
+  {
+    "id": "71c502e0-05df-4497-ae59-640d6fc92cba",
+    "name": "Либерия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "LR"
+  },
+  {
+    "id": "2c1eef68-b169-42c5-8421-d2d8e4b70555",
+    "name": "Ливан",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "LB"
+  },
+  {
+    "id": "17cecfc0-02a0-4780-aa2f-810b0890bfdf",
+    "name": "Литва",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "LT"
+  },
+  {
+    "id": "7d1bbeac-7e0a-499b-808f-b46b28b7b739",
+    "name": "Лихтенштейн",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "LI"
+  },
+  {
+    "id": "0618e7ca-b3b8-445d-af69-3f008a92034e",
+    "name": "Люксембург",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "LU"
+  },
+  {
+    "id": "362e8376-2119-4c40-ba8d-c2ae6e128c24",
+    "name": "Маврикий",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MU"
+  },
+  {
+    "id": "8e118080-ca08-4942-ae8b-c0e1327b2a06",
+    "name": "Мавритания",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MR"
+  },
+  {
+    "id": "1a25295e-be59-427c-bed3-c0a336e94329",
+    "name": "Мадагаскар",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MG"
+  },
+  {
+    "id": "eb231fac-0869-4c9c-9ee4-fbf83a59044b",
+    "name": "Майотта",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "YT"
+  },
+  {
+    "id": "9dae330d-8402-4c7e-a4b7-e169d0ef7b8b",
+    "name": "Макао",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "MO"
+  },
+  {
+    "id": "60576a27-7ab9-4be2-818a-64b94a567014",
+    "name": "Македония",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "MK"
+  },
+  {
+    "id": "d9c7ac5c-9713-487a-8780-12344c7a665a",
+    "name": "Малави",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MW"
+  },
+  {
+    "id": "ce4760f5-3cbe-441f-b539-dc99befb8ba7",
+    "name": "Малайзия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "MY"
+  },
+  {
+    "id": "91cf3daa-05b3-4dd4-8cfd-f612dbda46bf",
+    "name": "Мали",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ML"
+  },
+  {
+    "id": "5dd68878-0fa0-4260-8e2e-2781bfcf3054",
+    "name": "Малые Тихоокеанские отдаленные острова Соединенных Штатов",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "UM"
+  },
+  {
+    "id": "631dc857-be5f-4ea9-93a1-3d1c40c5e7c2",
+    "name": "Мальдивы",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "MV"
+  },
+  {
+    "id": "a9000980-51e7-41aa-b4a6-390c194da19f",
+    "name": "Мальта",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "MT"
+  },
+  {
+    "id": "94cc0beb-c85a-42b9-8745-21f35e348da3",
+    "name": "Марокко",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 50000,
+    "code": "MA"
+  },
+  {
+    "id": "16029063-4ecb-48fd-b839-045eabeabec1",
+    "name": "Мартиника",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "MQ"
+  },
+  {
+    "id": "7b5ffb9f-bad5-4849-b3ad-2cc74e9deb76",
+    "name": "Маршалловы Острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MH"
+  },
+  {
+    "id": "0cefa367-c3a3-4730-b2dd-2ef7ff9c5673",
+    "name": "Мексика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "MX"
+  },
+  {
+    "id": "c9fc24c5-e533-49e5-828c-c0b7b9146355",
+    "name": "Мозамбик",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "MZ"
+  },
+  {
+    "id": "2279e18e-ec53-41a2-85e0-eb0b2cace7f7",
+    "name": "Молдавия",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "MD"
+  },
+  {
+    "id": "a0b37d05-ea0e-44a6-ac02-64b85a91ce93",
+    "name": "Монако",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "MC"
+  },
+  {
+    "id": "dbbfb1d9-73a8-4480-a7ae-c2cc1d02255e",
+    "name": "Монголия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "MN"
+  },
+  {
+    "id": "453c5eb7-e57e-49f0-959a-ab34be24e590",
+    "name": "Монтсеррат",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "MS"
+  },
+  {
+    "id": "ab119fb9-44b2-4183-bdec-b936d9e4f978",
+    "name": "Мьянма",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 30000,
+    "code": "MM"
+  },
+  {
+    "id": "97b47805-34ba-43a8-9f11-199bd8663173",
+    "name": "Намибия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "NA"
+  },
+  {
+    "id": "c046ce0c-3d9c-4f67-9f5f-e489c2e25229",
+    "name": "Науру",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "NR"
+  },
+  {
+    "id": "3fb50901-8af9-4ba3-8023-d4fc50b1eb8d",
+    "name": "Непал",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "NP"
+  },
+  {
+    "id": "067092e7-2394-4534-afad-4a22f25c3a2c",
+    "name": "Нигер",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "NE"
+  },
+  {
+    "id": "b85a25bc-182f-4a55-a387-8e32dca6c190",
+    "name": "Нигерия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "NG"
+  },
+  {
+    "id": "cb05e6ff-0f92-4c01-93ec-cb7d18bac685",
+    "name": "Нидерландские Антильские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "AN"
+  },
+  {
+    "id": "6e10d9e3-9b59-4399-a1c8-b50b41e31e8a",
+    "name": "Нидерланды",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "NL"
+  },
+  {
+    "id": "afa46bd5-bb36-4e95-9c95-f104cc81e21e",
+    "name": "Никарагуа",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "NI"
+  },
+  {
+    "id": "1e0498ac-f6ad-4cf0-ad9b-3d36cca6b7c1",
+    "name": "Ниуэ",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "NU"
+  },
+  {
+    "id": "380bbdb8-9c04-420c-a9bf-6dbfdfbf4411",
+    "name": "Новая Зеландия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "NZ"
+  },
+  {
+    "id": "fcaa4f91-ebfa-4c7a-94dd-fd462f905948",
+    "name": "Новая Каледония",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "NC"
+  },
+  {
+    "id": "01ad0b7e-b129-4900-befd-921542edd905",
+    "name": "Норвегия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "NO"
+  },
+  {
+    "id": "246233c0-6c95-43aa-9a7c-c43c40894430",
+    "name": "Норфолк",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "NF"
+  },
+  {
+    "id": "7094d2ba-4df6-4760-b91b-b0452dba69da",
+    "name": "Объединенные Арабские Эмираты (ОАЭ)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "AE"
+  },
+  {
+    "id": "e1c5f2e9-70a1-4073-8cf9-11544244906d",
+    "name": "Оман",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "OM"
+  },
+  {
+    "id": "e5c687d8-0585-421f-a95a-526d254a3020",
+    "name": "Остров Буве",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "BV"
+  },
+
+  {
+    "id": "e0b3a0b9-33ce-4a47-b6a1-bdc315f1ca57",
+    "name": "Остров Мэн",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "IM"
+  },
+  {
+    "id": "5cac0249-6397-4a12-8262-e9163f8b9985",
+    "name": "Остров Рождества",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "CX"
+  },
+  {
+    "id": "3bb0d557-000b-4c26-b791-9a1fdd9909a4",
+    "name": "Остров Святой Елены",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "SH"
+  },
+  {
+    "id": "a56548f0-e573-4059-a79f-4f10b9c4a7b7",
+    "name": "Остров Херд и Острова Макдоналд",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "HM"
+  },
+  {
+    "id": "fb230189-3246-4222-9e96-fd18a1de13cf",
+    "name": "Острова Кука",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "CK"
+  },
+
+
+  {
+    "id": "f1fab820-2bf8-42f9-935a-3a019104dfa5",
+    "name": "Палау",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "PW"
+  },
+  {
+    "id": "5b000cdf-8fa8-4f11-a941-dc8d3b6469cf",
+    "name": "Панама",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "PA"
+  },
+  {
+    "id": "f597f9a2-6130-462c-8da4-08a322bfd762",
+    "name": "Папуа-Новая Гвинея",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "PG"
+  },
+  {
+    "id": "7491f9c4-4b15-43f9-b365-afd88c867cf4",
+    "name": "Парагвай",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "PY"
+  },
+  {
+    "id": "39552f0e-2430-48f7-9251-30788f274851",
+    "name": "Перу",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "PE"
+  },
+  {
+    "id": "ac61a6cc-363c-4911-931d-af38e96e483a",
+    "name": "Польша",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "PL"
+  },
+  {
+    "id": "6842ed13-4d25-497c-8f5f-c1793a0d005d",
+    "name": "Португалия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "PT"
+  },
+  {
+    "id": "8fc8b233-ef81-44a5-bb71-3d9969e63205",
+    "name": "Пуэрто-Рико",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "PR"
+  },
+  {
+    "id": "59fbf8f6-b1c9-4ff0-832e-650766be6fcb",
+    "name": "Реюньон",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "RE"
+  },
+  {
+    "id": "361c1a73-34a5-483a-b5a3-40319485d452",
+    "name": "Руанда",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "RW"
+  },
+  {
+    "id": "5e0f5dc5-6326-48b1-a349-784fb54a1996",
+    "name": "Румыния",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "RO"
+  },
+  {
+    "id": "41dc28c0-218f-4f2d-a9b3-ee1314a5fcdf",
+    "name": "Сальвадор/Эль-Сальвадор",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "SV"
+  },
+  {
+    "id": "4898ee76-db9d-4593-885e-928680d9ffd0",
+    "name": "Самоа",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "WS"
+  },
+  {
+    "id": "0d1e321d-8247-4e93-9889-3f88868eee59",
+    "name": "Сан-Марино",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "SM"
+  },
+  {
+    "id": "782abfde-8a9e-4881-9cfe-15ccdc6443f0",
+    "name": "Сан-Томе и Принсипи",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ST"
+  },
+  {
+    "id": "51078e0f-1add-4119-8eb8-0fd021315aab",
+    "name": "Саудовская Аравия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "SA"
+  },
+  {
+    "id": "5e39f2eb-321e-44ba-a76f-0f0590f8ee56",
+    "name": "Свазиленд",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SZ"
+  },
+  {
+    "id": "42815335-c0f5-4dcd-82af-c6dd3d6388b9",
+    "name": "Северная Корея (КНДР)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "KP"
+  },
+  {
+    "id": "091fe90b-2091-4d90-9a14-1de23ad56f59",
+    "name": "Северные Марианские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "MP"
+  },
+  {
+    "id": "37cdf488-a24d-4008-a0a9-164f39e3507e",
+    "name": "Сейшельские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SC"
+  },
+  {
+    "id": "e6eadcbf-b5b7-4a2c-8ab9-59d93ae8d339",
+    "name": "Сен-Бартельми",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "BL"
+  },
+  {
+    "id": "f9623a15-5e90-4359-a047-6e7a084195dc",
+    "name": "Сенегал",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SN"
+  },
+  {
+    "id": "8b8316da-2dd1-4e6c-ba4e-2ba87caab744",
+    "name": "Сен-Мартен",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "MF"
+  },
+  {
+    "id": "dc3b2c2d-9bbb-48ca-b52a-0032368cc8ff",
+    "name": "Сен-Пьер и Микелон",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "MF"
+  },
+  {
+    "id": "56c8b655-c3d1-4c1b-a0c5-a95462e176bd",
+    "name": "Сент-Винсент и Гренадины",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "VC"
+  },
+  {
+    "id": "7c1e8a6a-cd7a-4142-ae03-d57994608f32",
+    "name": "Сент-Китс и Невис",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "KN"
+  },
+  {
+    "id": "e07798e8-2525-4f0c-a72e-02580afdca92",
+    "name": "Сент-Люсия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "LC"
+  },
+  {
+    "id": "32bc2637-0439-4f55-8fe0-3cf722f0a0c4",
+    "name": "Сербия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "RS"
+  },
+  {
+    "id": "09d917ad-eb07-4639-b8a9-5308d92b1583",
+    "name": "Сингапур",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "SG"
+  },
+  {
+    "id": "b4e7fdf6-8627-4a52-96a8-c89d305a1054",
+    "name": "Словакия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "SK"
+  },
+  {
+    "id": "41a34243-e891-400f-8778-8ddf1b481b60",
+    "name": "Словения",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "SI"
+  },
+  {
+    "id": "4bdf355f-965f-4b9b-b383-48a99ff644bc",
+    "name": "Соломоновы острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SB"
+  },
+  {
+    "id": "170ce921-5efc-4acd-b502-aea76f1e05c2",
+    "name": "Судан",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SD"
+  },
+  {
+    "id": "72b689a9-b68b-4d7e-9ed4-42d44d71e844",
+    "name": "Суринам",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "SR"
+  },
+  {
+    "id": "2d7d1fb9-a10c-4945-a288-b17336d976d8",
+    "name": "США (Соединенные Штаты Америки)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "US"
+  },
+  {
+    "id": "46cabd21-c4a7-4d52-a720-c2bf5d146595",
+    "name": "Сьерра-Леоне",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "SL"
+  },
+  {
+    "id": "48204509-047a-4108-a915-1522b5e1f13f",
+    "name": "Таджикистан",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "TJ"
+  },
+  {
+    "id": "006aa5a2-f107-468c-881b-75e16295a74a",
+    "name": "Тайвань",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "TW"
+  },
+  {
+    "id": "c009475a-a660-4011-bb26-f5a4bd57fc15",
+    "name": "Таиланд",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "TH"
+  },
+  {
+    "id": "58b9ec05-3d34-4a91-a6c0-251353519082",
+    "name": "Танзания",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "TZ"
+  },
+  {
+    "id": "95eb4fc9-4a72-407a-b840-71314b5a3333",
+    "name": "Того",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "TG"
+  },
+  {
+    "id": "0dee53b0-3ccd-402b-bf4c-a18a9db5d8fb",
+    "name": "Токелау",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "TK"
+  },
+  {
+    "id": "4fb37a28-d3ad-45ef-ac87-d182f039d41f",
+    "name": "Тонга",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "TO"
+  },
+  {
+    "id": "d3cf011c-d8ab-4b93-a599-dfe9371ad5df",
+    "name": "Тринидад и Тобаго",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "TT"
+  },
+  {
+    "id": "494eea9f-327e-43c7-8e84-ba2b665ea451",
+    "name": "Тувалу",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "TV"
+  },
+  {
+    "id": "371b04b3-63a2-46f3-a190-d1d0f6f75d49",
+    "name": "Тунис",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "TN"
+  },
+  {
+    "id": "7ca923e7-952b-452b-bc98-d42cf30bdce0",
+    "name": "Туркменистан",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "TM"
+  },
+  {
+    "id": "fd1fff80-499e-4a08-9588-00b1e7dfd406",
+    "name": "Турция",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "TR"
+  },
+  {
+    "id": "0d5bc788-fb9b-4469-8878-245f0ad7804c",
+    "name": "Уганда",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "UG"
+  },
+  {
+    "id": "37b60010-fa81-4bbb-b2ef-feaf8537fb94",
+    "name": "Узбекистан",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "UZ"
+  },
+  {
+    "id": "24b48a4e-1dc9-42ab-b8e0-47b4951ec078",
+    "name": "Украина",
+    "sheng": false,
+    "cis": true,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 15000,
+    "code": "UA"
+  },
+  {
+    "id": "24f0e7b6-1da0-426c-bbc4-ec92e04a735e",
+    "name": "Уоллис и Футуна",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "WF"
+  },
+  {
+    "id": "4c2f2171-c57b-451c-a347-c44731915b40",
+    "name": "Уругвай",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "UY"
+  },
+  {
+    "id": "67088d15-210c-459c-9471-255759ac363b",
+    "name": "Фарерские острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "FO"
+  },
+
+  {
+    "id": "c528da74-0167-4c84-9f9c-705bd16c9ad9",
+    "name": "Фиджи",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "FJ"
+  },
+  {
+    "id": "a3c74ae5-9315-4dda-ba2a-2d298bad2fdf",
+    "name": "Филиппины",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "PH"
+  },
+  {
+    "id": "b59c248a-1911-4e9f-b242-8c695132a8a4",
+    "name": "Финляндия",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "FI"
+  },
+  {
+    "id": "dc25c588-50bd-4114-9307-421b6789eb7f",
+    "name": "Фолклендские острова (Мальвинские острова)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "FK"
+  },
+  {
+    "id": "677668cd-a6e0-4efe-960c-340502bc49d5",
+    "name": "Франция",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "FR"
+  },
+  {
+    "id": "4008231f-eaff-47d9-9afe-2e7528a5a94c",
+    "name": "Французская Полинезия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "PF"
+  },
+  {
+    "id": "6bb2fc64-f612-4ae9-8b9a-dc8f03087976",
+    "name": "Французские Южные и Антарктические территории",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 50000,
+    "code": "TF"
+  },
+  {
+    "id": "04604c03-972a-4ecd-9dd6-10613846ff05",
+    "name": "Хорватия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "HR"
+  },
+  {
+    "id": "efbc52de-e838-4989-aedc-1ed777c4f854",
+    "name": "Центральная Африканская Республика",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "CF"
+  },
+  {
+    "id": "6819f489-35c6-4797-bea5-8ff3f8f7ff30",
+    "name": "Чад",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "TD"
+  },
+  {
+    "id": "e2e87d00-8513-4838-a185-37ed63118716",
+    "name": "Черногория",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "ME"
+  },
+  {
+    "id": "c642b75e-571b-4355-9603-0bc2d5e3f036",
+    "name": "Чешская Республика (Чехия)",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 15,
+    "c": 1,
+    "ps1": 0,
+    "code": "CZ"
+  },
+  {
+    "id": "a18ed065-a406-4571-9fa7-1bc882a70da6",
+    "name": "Чили",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "CL"
+  },
+  {
+    "id": "359477ae-4980-4fe0-bdd6-6181c3eea6fd",
+    "name": "Швейцария",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "CH"
+  },
+  {
+    "id": "506b20b4-1044-4575-9d4f-6bdf7b69d9c9",
+    "name": "Швеция",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "SE"
+  },
+
+  {
+    "id": "b01a492c-93e1-4934-80d7-d7d7a8bd1cd0",
+    "name": "Шпицберген и Ян-Майен ",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 0,
+    "ps1": 0,
+    "code": "SJ"
+  },
+  {
+    "id": "4b255b86-962d-485b-a26a-7b4716cdb15f",
+    "name": "Шри-Ланка",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "LK"
+  },
+  {
+    "id": "039cf84f-5266-4a96-bb14-b2ddc04b2f92",
+    "name": "Эквадор",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "EC"
+  },
+  {
+    "id": "2316cd89-2c89-452d-b016-2a39ee2dabc5",
+    "name": "Экваториальная Гвинея",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GQ"
+  },
+  {
+    "id": "b1eb7a9c-d9bc-4efe-8cd2-443e10d7bdb8",
+    "name": "Эритрея",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ER"
+  },
+  {
+    "id": "a4728129-b486-48e8-b632-98ac18ec4592",
+    "name": "Эстония",
+    "sheng": true,
+    "cis": false,
+    "ipInc": 0,
+    "c": 1,
+    "ps1": 0,
+    "code": "EE"
+  },
+  {
+    "id": "69adc5fc-7bbc-43a9-9f46-4b028b54fe86",
+    "name": "Эфиопия",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ET"
+  },
+  {
+    "id": "d9c67c5b-300b-4a4e-bcec-ce26f74097c2",
+    "name": "Южная Георгия и Южные Сандвичевы острова",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "GS"
+  },
+  {
+    "id": "5f63d5ef-e285-439c-a3f2-a14bb012aa9a",
+    "name": "Южная Корея",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 0,
+    "code": "KR"
+  },
+
+  {
+    "id": "fd364863-67ae-47bb-a3bb-fd7c519dfd3f",
+    "name": "Южно-Африканская Республика (ЮАР)",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2.3,
+    "ps1": 50000,
+    "code": "ZA"
+  },
+  {
+    "id": "1d5b23ef-dd5f-4791-ad78-9e7fc7ce71a9",
+    "name": "Ямайка",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "JM"
+  },
+  {
+    "id": "005e51a8-2224-472d-8db4-11d37d05b63f",
+    "name": "Япония",
+    "sheng": false,
+    "cis": false,
+    "ipInc": 0,
+    "c": 2,
+    "ps1": 50000,
+    "code": "JP"
+  }
+] 

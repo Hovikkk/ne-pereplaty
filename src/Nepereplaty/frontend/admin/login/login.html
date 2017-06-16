@@ -1,0 +1,40 @@
+﻿<div class="modal-backdrop fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="verticalcenter">
+                <a href="index.htm"><img src="../../i/logo_small.png" alt="Logo" class="brand" /></a>
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="text-center" style="margin-bottom: 25px;">Log in to get started</h4>
+                        <form action="#" class="form-horizontal" style="margin-bottom: 0px !important;">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        <input type="text" ng-model="loginModalCtrl.userName" class="form-control" id="username" placeholder="Username">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        <input type="password" ng-model="loginModalCtrl.password" class="form-control" id="password" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Remember Me</label></div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="pull-right">
+                            <a href="#" ng-click="loginModalCtrl.login()" class="btn btn-primary">Log In</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div><!-- /.modal-dialog -->
+</div>

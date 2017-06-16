@@ -1,0 +1,114 @@
+@import "variables.less";
+@import "mixins.less";
+
+.compare_table{
+    margin-top: 4%;
+    & table{
+        width: 100%;
+        & .table_body:nth-child(odd){
+            background: @gray-table-odd;
+        }
+        & .table_body{
+            & th{
+                font-weight: normal;
+                text-align: left;
+                padding-left: 19px;
+            }
+            & td{
+                font-size: 0.9em;
+            }
+        }
+        & th{
+            width: 28%;
+            background: @gray;
+            vertical-align: middle;
+            border-right: 1px solid @gray-table-border;
+            border-bottom: 1px solid @gray-table-border;
+        }
+        & td{
+            width:38%;
+            text-align: center;
+            height: 52px;
+            vertical-align: middle;
+            border-bottom: 1px solid @gray-table-border;
+            border-left: 1px solid @gray-table-border;    
+        }
+        & .ok{
+            background: url(../i/ok.sravneniya.png) no-repeat;
+            background-position: center;
+        }
+        & .house_compare{
+            background: @white-main !important;
+            & td:nth-child(even){
+                background: url(../i/vtb_standart.png) no-repeat;
+                background-position: center;
+            }
+            & td:nth-child(odd){
+                background: url(../i/ingosstrax_premium.png) no-repeat;
+                background-position: center;
+            }
+        }
+        & .traveling-compare{
+            background: @white-main !important;
+            & td:nth-child(even){
+                background: url(../i/partners/rgs.png) no-repeat;
+                background-position: center;
+            }
+            & td:nth-child(odd){
+                background: url(../i/partners/logo3.png) no-repeat;
+                background-position: center;
+            }
+        }
+        & .casco-compare{
+            background: @white-main !important;
+            & td:nth-child(even){
+                background: url(../i/partners/logo1.png) no-repeat;
+                background-position: center;
+            }
+            & td:nth-child(odd){
+                background: url(../i/partners/logo3.png) no-repeat;
+                background-position: center;
+            }
+        }
+        & .table_header{
+            height:70px;
+            & th{
+                background: @black-additional;
+                vertical-align: middle;
+                font-family: 'segoeuis';
+            }
+            & td{
+                vertical-align: middle;
+                font-family: 'segoeuis';
+            }
+            background: @black-light;
+            color: @white-main;  
+        }
+        & .table_end{
+            & th{
+                vertical-align: middle;
+                font-weight: normal;
+                padding-left: 19px;
+                text-align: left;
+                height: 75px;
+            };
+            & td{
+                background: url(../i/pdf_icon_invers.2x.png) no-repeat;
+                background-position: center;
+                &:hover {
+                    cursor: pointer;
+                    opacity:0.5;
+                }
+            }
+            
+        }
+    }
+}
+#tip{
+    & span{
+        color: @blue;
+        float: left;
+        margin-right: 10px;
+    }
+    margin-top: 50px;
+}

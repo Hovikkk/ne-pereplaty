@@ -1,0 +1,72 @@
+﻿<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="control-group" id="finish">
+    <div class="chapter" id="chapterFinish" ng-show="isMobile"><h3><span>Шаг5 </span>Завершить покупку</h3></div>
+    <h2><span>Подтверждение заказа</span></h2>
+    <div class="control finishMob">
+        <ul class="finish_main_ul">
+            <li>
+                <p><strong>Уважаемый/ая {{accidentFinishCtrl.content.name}}, Ваш заказ завершен. Номер заказа:{{accidentFinishCtrl.content.orderNumber}}.</strong></p>
+            </li>
+            <li>
+                <p>
+                    Вы приобрели:<br />
+                    <strong>Страховой полис {{accidentFinishCtrl.content.insurancePolicy}} от компании {{accidentFinishCtrl.content.companyName}}.</strong>
+                </p>
+            </li>
+            <li>
+                Начала действия страхового полиса: <strong>{{accidentFinishCtrl.content.startData}}.</strong><br />
+                Окончание действия страхового полиса: <strong>{{accidentFinishCtrl.content.endData}}.</strong>
+            </li>
+            <li>
+                <p><strong>Страховой полис распространяется на:</strong></p>
+                <ul class="finish_main_sub_ul">
+                    <li><p>{{accidentFinishCtrl.data.additiolData.privateData.surName+ " " +accidentFinishCtrl.data.additiolData.privateData.name}}, {{accidentFinishCtrl.content.age}}, {{accidentFinishCtrl.content.passportData}}.</p></li> <!--repeat-->
+                </ul>
+            </li>
+            <li>
+                <p>Цена полиса составляет <strong>{{accidentFinishCtrl.content.priceString}} руб.</strong> Оплата произведена посредством <strong>{{"«Платежное средство»"}}.</strong> Сумма оплаты разбита на <strong>{{"«кол-во платежей»"}}</strong> платежей.</p>
+            </li>
+            <li>
+                <p>*Обратите внимание, <strong>{{"«ограничение»"}}</strong>. </p>
+            </li>
+        </ul>
+        <div class="div_contant">
+            Для получения дополнительной информации, вы можете связаться с компанией <strong>{{accidentFinishCtrl.content.companyName}}</strong>  по <br /> телефону <strong>{{"077-777-777"}}.</strong>
+        </div>
+        <p><strong>Подтверждение заказа и основные положения полиса.</strong></p>
+        <div class="pdf_div" ng-click="accidentFinishCtrl.downloadPdf()">Основные положения страхового полиса вы можете посмотреть</div>
+    </div>
+</section>

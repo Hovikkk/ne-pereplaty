@@ -1,0 +1,166 @@
+<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование от несчастного случая на <strong>{{accidentPaymentCtrl.duration}}</strong>,
+        начиная с <strong>{{accidentPaymentCtrl.content.startData}}</strong>, для страхуемого <strong>{{accidentPaymentCtrl.content.age}}</strong> лет. Страхование <strong>{{(accidentPaymentCtrl.content.amateurSports)?"Включает":"Не включает"}}</strong> любительский спорт.
+    </p>
+    <div class="logo">
+        <img ng-src="{{accidentDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form>
+    <section class="control-group" id="casco_paymeny_info">
+        <h2><span>Оплата</span></h2>
+        <div class="control payment_box">
+            <p>Вместе с этой страховкой люди обычно заказывают:<br /></p>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Дополнение 1</span><span class="rigth_text" id="rigth_text"> Страховое покрытие: 100 р <strong class="price">{{accidentPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="accidentPaymentCtrl.additianalPay[0].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Дополнение 1</span><span class="rigth_text" id="rigth_text"> Страховое покрытие: 100 р <strong class="price">{{accidentPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="accidentPaymentCtrl.additianalPay[1].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+        </div>
+        <div class="control payment_box">
+            <p><strong>К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{accidentPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="accidentPaymentCtrl.add">пример2 <strong class="price costPrice">{{accidentPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p><strong>Общая сумма</strong><strong class="right price">{{accidentPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="accidentPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit"></section>
+</form>
+    -->
+
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterPayment" ng-show="isMobile"><h2><span>Шаг4 </span>Заплатить</h2></div>
+    <p id="logoheader">
+        Страхование от несчастного случая на <strong>{{accidentPaymentCtrl.duration}}</strong>,
+        начиная с <strong>{{accidentPaymentCtrl.content.startData}}</strong>, для страхуемого <strong>{{accidentPaymentCtrl.content.age}}</strong> лет. Страхование <strong>{{(accidentPaymentCtrl.content.amateurSports)?"Включает":"Не включает"}}</strong> любительский спорт.
+    </p>
+    <div class="logo" id="logoAccident">
+        <img ng-src="{{accidentPaymentCtrl.logoUrl}}" />
+    </div>
+</section>
+<form>
+    <section class="control-group" id="casco_paymeny_info">
+        <h2 ng-show="!isMobile"><span>Оплата</span></h2>
+        <div class="control payment_box" ng-show="!isMobile">
+            <p>Вместе с этой страховкой люди обычно заказывают:<br /></p>
+
+            <label class="checkbox">
+                <p><span class="left_text">Гражданская <br />ответственность</span><span class="rigth_text">покрытие: 200 000руб  <strong class="price">{{accidentPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="accidentPaymentCtrl.additianalPay[0].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox">
+                <p><span class="left_text">Страхование от<br />несчастного случая</span><span class="rigth_text">покрытие: 500 000руб  <strong class="price">{{accidentPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="accidentPaymentCtrl.additianalPay[1].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+        </div>
+
+        <div class="control payment_box" ng-show="!isMobile">
+            <p><strong>К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{accidentPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="accidentPaymentCtrl.add">пример2 <strong class="price costPrice">{{accidentPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p><strong>Общая сумма</strong><strong class="right price">{{accidentPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <div class="control payment_box" id="payment_boxHeader" ng-show="isMobile">
+            <p class="paymentBoxHeader">С ЭТОЙ СТРАХОВКОЙ ОБЫЧНО ЗАКАЗЫВАЮТ:<br /></p>
+
+            <label class="checkbox">
+                <p><span class="left_text">Гражданская <br />ответственность</span><span class="rigth_text">200 000руб  <strong class="price">{{accidentPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="accidentPaymentCtrl.additianalPay[0].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox">
+                <p><span class="left_text">Страхование от<br />несчастного случая</span><span class="rigth_text">500 000руб  <strong class="price">{{accidentPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="accidentPaymentCtrl.additianalPay[1].b" ng-change="accidentPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+        </div>
+        <div class="control payment_box" ng-show="isMobile">
+            <p><strong class="headerCascoPay">К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{accidentPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="accidentPaymentCtrl.add">пример2 <strong class="price costPrice">{{accidentPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p class="footerCascoPay"><strong>Общая сумма</strong><strong class="right price">{{accidentPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="accidentPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit"></section>
+</form>

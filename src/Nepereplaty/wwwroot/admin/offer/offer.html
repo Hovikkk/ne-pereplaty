@@ -1,0 +1,137 @@
+﻿<div id='wrap'>
+
+    <div class="container">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading">
+                <h4>Просмотр заказа</h4>
+            </div>
+            <div class="panel-body collapse in">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Номер заказа</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.offerinfo.offerId}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Вид страховки</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.types[offerCtrl.offerinfo.type]}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Стоимость полиса</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.offerinfo.cost}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Период действия страховки</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{'с «'+offerCtrl.offerinfo.startDate+'» по  «'+offerCtrl.offerinfo.endDate+'»'}}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body collapse in" ng-show="offerCtrl.offerinfo.type == 'traveling'">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Страны</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.traveling.countries}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Дни</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.traveling.duration}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Тип страховки</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{(offerCtrl.data.traveling.type ==1)?'Разовая':'Многоразовая на год'}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-repeat="insured in offerCtrl.data.insured">
+                        <label class="col-sm-3 control-label">Выезжающий {{$index +1}}</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{insured.name+ ' '+ insured.surName + ' '+insured.age+' лет'}}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body collapse in" ng-show="offerCtrl.offerinfo.type == 'accident'">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Спорт</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{(offerCtrl.data.accident.amateurSports)?'да':'нет'}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Время</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.accident.duration}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.insured.name+ ' '+ offerCtrl.data.insured.surName + ' '+offerCtrl.data.insured.age+' лет'}}</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body collapse in" ng-show="offerCtrl.offerinfo.type == 'house' || offerCtrl.offerinfo.type == 'apartment'">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Адрес</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.home.address}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Город</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.home.city}}</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="panel-body collapse in" ng-show="offerCtrl.offerinfo.type == 'casco' || offerCtrl.offerinfo.type == 'osago'">
+                <form action="" class="form-horizontal row-border" style="border-radius: 0px;">
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Марка</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.osago.brand}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Модель</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{offerCtrl.data.osago.model}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-repeat="driver in offerCtrl.data.drivers">
+                        <label class="col-sm-3 control-label">Данные о водителе {{$index+1}}</label>
+                        <div class="col-sm-6">
+                            <span type="text" class="form-control" readonly="readonly">{{'Возраст ' + driver.age + ' и опыт ' +  driver.experience + ' лет, Пол ' + ((driver.isMale) ? 'Мужской, ' : 'Женскый, ') + ((driver.martialStatus) ? 'Не ' : ' ') + 'женат и ' + ((driver.kids > 0) ?(driver.kids > 3)?'имеет более 3 детей' :'имеет ' + driver.kids + 'детей' : 'не имеет детей ')}}</span>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

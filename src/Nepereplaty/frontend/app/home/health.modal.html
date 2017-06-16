@@ -1,0 +1,21 @@
+﻿<section class="modal">
+    <div class="modal-content car-modal" id="openCompare">
+        <a class="close-button" ng-click="dismissModal()"><span>+</span></a>
+        <h3>Выберите интересующий вас пакет</h3>
+        <div class="car accident" id="accident" ng-show="!isMobile">
+            <h2>Страхование от <br/> несчастных случаев</h2>
+            <a ng-click="dismissModal('accident')">Получить</a>
+        </div>
+        <div class="car accident" id="accident" ng-show="isMobile" ng-click="dismissModal('accident')">
+            <h2>Страхование от <br /> несчастных случаев</h2>
+        </div>
+        <div class="health medical" id="soon" ng-show="!isMobile">
+            <img ng-src="../i/soon.png" alt="soon"/>
+            <h2>обязательное<br /> медицинское <br />страхование</h2>
+            <a ng-click="dismissModal('medical')">Получить</a>
+        </div>
+        <div class="health medical" id="soon" ng-show="isMobile"  ng-click="dismissModal('medical')">
+            <h2>обязательное<br /> медицинское <br />страхование</h2>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="modal">
+    <div class="modal-content">
+        <a class="close-button" ng-click="dismissModal()" ng-show="!isMobile && !step3"><span>+</span></a>
+        <span class="login-icon" ng-show="!isMobile"></span>
+        <h3 ng-show="!isMobile && loginModalCtrl.step == 0" >Войдите</h3>
+        <h3 ng-show="!isMobile && loginModalCtrl.step == 1"  >Восстановление пароля</h3>
+        <div class="hiderLogin" ng-show="isMobile">
+            <a class="close-button" ng-click="dismissModal()" ng-show="!step3"><span>+</span></a>
+            <h3 ng-show="loginModalCtrl.step == 0">Вход</h3>
+            <h3 class="passRecovery" ng-show="loginModalCtrl.step == 1">Восстановление пароля</h3>
+        </div>
+        <form ng-show="loginModalCtrl.step < 2" name="form" ng-submit="loginModalCtrl.login()" novalidate>
+            <p class="error" ng-show="(form.$submitted || form.email.$touched) && form.email.$invalid">Введите email</p>
+            <p class="error"  ng-show="(form.$submitted || form.password.$touched) && form.password.$invalid && loginModalCtrl.step < 1">Введите пароль</p>
+            <p class="error" ng-show="loginModalCtrl.isUnSuccessful">Email и/или пароль неверный</p>
+            <input name="email" ng-show="loginModalCtrl.step < 2" type="email" placeholder="Email" ng-model="loginModalCtrl.credentials.login" required />
+            <input name="password" ng-show="loginModalCtrl.step == 0" type="password" placeholder="Пароль" ng-model="loginModalCtrl.credentials.password" required />
+            <input type="submit" ng-show="loginModalCtrl.step == 0" value="Войти" />
+            <input type="submit" ng-click="loginModalCtrl.chackSendMail()"  ng-show="loginModalCtrl.step == 1" value="Восстановить пароль" />
+            <a class="forgot-password" ng-click="loginModalCtrl.step  = 1" ng-show="loginModalCtrl.step == 0">Забыли пароль?</a>
+        </form>
+        <h3 class="passRecoveryFinish" ng-show="loginModalCtrl.step == 2">НА ВАШ EMAIL <BR>ОТПРАВЛЕНА ИНСТРУКЦИЯ <BR>ПО ВОССТАНОВЛЕНИЮ ПАРОЛЯ</h3>
+        <div class="another-action" ng-show="loginModalCtrl.step < 2">
+            <p ng-show="loginModalCtrl.step == 0">Новый пользователь?</p>
+            <a ng-show="loginModalCtrl.step == 0" ng-click="dismissModal('register')">Зарегестрируйтесь</a>
+            <a ng-show="loginModalCtrl.step == 1"  ng-click="loginModalCtrl.step = 0">Отмена</a>
+        </div>
+    </div>
+</section>
+
+

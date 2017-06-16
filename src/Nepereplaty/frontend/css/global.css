@@ -1,0 +1,10 @@
+* {
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+body {
+  background: #f;
+}
+.center-me {
+  margin: 0 auto;
+}

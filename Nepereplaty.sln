@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83551CBB-A300-46CE-9439-E4D2C7B09042}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B36B426B-C5DD-4F40-A8CC-BEEE2409E788}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nepereplaty", "src\Nepereplaty\Nepereplaty.xproj", "{854A9283-DCE6-4187-9F77-E7A6EEAE0467}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{106CFBB3-7F97-46A6-A630-7501508D2351}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1362E663-ABDF-44B5-BD4F-EDCE2E2A4002}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{EC150239-5D37-4E5D-BB18-4702F8B20AAD}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\Nepereplaty.json = PublishScripts\Templates\Nepereplaty.json
+		PublishScripts\Templates\Nepereplaty.param.dev.json = PublishScripts\Templates\Nepereplaty.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{854A9283-DCE6-4187-9F77-E7A6EEAE0467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854A9283-DCE6-4187-9F77-E7A6EEAE0467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854A9283-DCE6-4187-9F77-E7A6EEAE0467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854A9283-DCE6-4187-9F77-E7A6EEAE0467}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{854A9283-DCE6-4187-9F77-E7A6EEAE0467} = {83551CBB-A300-46CE-9439-E4D2C7B09042}
+		{1362E663-ABDF-44B5-BD4F-EDCE2E2A4002} = {106CFBB3-7F97-46A6-A630-7501508D2351}
+		{EC150239-5D37-4E5D-BB18-4702F8B20AAD} = {106CFBB3-7F97-46A6-A630-7501508D2351}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://annaniksvisual.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = src\\Nepereplaty\\Nepereplaty.xproj
+		SccProjectTopLevelParentUniqueName1 = Nepereplaty.sln
+		SccProjectName1 = src/Nepereplaty
+		SccLocalPath1 = src\\Nepereplaty
+	EndGlobalSection
+EndGlobal

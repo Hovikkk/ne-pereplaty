@@ -1,0 +1,182 @@
+﻿<!--<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <p>
+        Страхование для поездки за рубеж для пребывания в странах : <strong>{{travelingPaymentCtrl.content.country}}</strong> на <strong>{{travelingPaymentCtrl.content.travelingDur}}</strong> дней,
+        начиная с <strong>{{travelingPaymentCtrl.startData}}</strong> и до <strong>{{travelingPaymentCtrl.endData}}</strong>, для <strong>{{travelingPaymentCtrl.content.insuredsCount}}</strong> человек <strong>{{travelingPaymentCtrl.content.insuredsAges}}</strong> лет.
+    </p>
+    <div class="logo">
+        <img ng-src="{{accidentDetailsCtrl.logoUrl}}" />
+    </div>
+</section>
+<form>
+    <section class="control-group" id="casco_paymeny_info">
+        <h2><span>Оплата</span></h2>
+        <div class="control payment_box">
+            <p>Вместе с этой страховкой люди обычно заказывают:<br /></p>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Несчастный случай</span><span class="rigth_text" id="rigth_text">покрытие: 1 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="travelingPaymentCtrl.additianalPay[0].b" ng-change="travelingPaymentCtrl.updata()"  />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Потеря багажа</span><span class="rigth_text" id="rigth_text">покрытие: 500 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="travelingPaymentCtrl.additianalPay[1].b" ng-change="travelingPaymentCtrl.updata()"  />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text twoLine">Гражданская ответственность</span><span class="rigth_text" id="rigth_text">покрытие: 10 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[2].s}}</strong></span></p>
+                <input type="checkbox"name="primer3" ng-model="travelingPaymentCtrl.additianalPay[2].b" ng-change="travelingPaymentCtrl.updata()"  />
+                <span></span>
+            </label>
+        </div>
+        <div class="control payment_box">
+            <p><strong>К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{travelingPaymentCtrl.content.Price}}</strong><br /></p>
+            <p><span ng-show="travelingPaymentCtrl.add">пример2 <strong class="price costPrice">{{travelingPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p><strong>Общая сумма</strong><strong class="right price">{{travelingPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="travelingPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit"></section>
+</form>
+    -->
+
+
+<nav>
+    <ul>
+        <li class="previous">
+            <p>
+                <strong></strong>
+                <span ng-show="!isMobile">Заполнить данные</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>2</strong>
+                <span ng-show="!isMobile">Получить предложение</span>
+            </p>
+        </li>
+        <li class="previous">
+            <p>
+                <strong>3</strong>
+                <span ng-show="!isMobile">Дополнить данные</span>
+            </p>
+        </li>
+        <li class="active">
+            <p>
+                <strong>4</strong>
+                <span ng-show="!isMobile">Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span ng-show="!isMobile">Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<section class="offers-desc">
+    <div class="chapter" id="chapterPayment" ng-show="isMobile"><h2><span>Шаг4 </span>Заплатить</h2></div>
+    <p id="logoheader">
+        Страхование для поездки за рубеж для пребывания в странах : <strong>{{travelingPaymentCtrl.content.country}}</strong> на <strong>{{travelingPaymentCtrl.content.travelingDur}}</strong> дней,
+        начиная с <strong>{{travelingPaymentCtrl.startData}}</strong> и до <strong>{{travelingPaymentCtrl.endData}}</strong>, для <strong>{{travelingPaymentCtrl.content.insuredsCount}}</strong> человек <strong>{{travelingPaymentCtrl.content.insuredsAges}}</strong> лет.
+    </p>
+    <div class="logo" id="logoTravel">
+        <img ng-src="{{travelingPaymentCtrl.logoUrl}}" />
+    </div>
+</section>
+<form>
+    <section class="control-group" id="casco_paymeny_info">
+        <h2 ng-show="!isMobile"><span>Оплата</span></h2>
+        <div class="control payment_box" ng-show="!isMobile">
+            <p>Вместе с этой страховкой люди обычно заказывают:<br /></p>
+
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Несчастный случай</span><span class="rigth_text" id="rigth_text">покрытие: 1 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="travelingPaymentCtrl.additianalPay[0].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text">Потеря багажа</span><span class="rigth_text" id="rigth_text">покрытие: 500 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="travelingPaymentCtrl.additianalPay[1].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text twoLine">Гражданская ответственность</span><span class="rigth_text" id="rigth_text">покрытие: 10 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[2].s}}</strong></span></p>
+                <input type="checkbox" name="primer3" ng-model="travelingPaymentCtrl.additianalPay[2].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+        </div>
+
+        <div class="control payment_box" ng-show="!isMobile">
+            <p><strong>К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{travelingPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="travelingPaymentCtrl.add">пример2 <strong class="price costPrice">{{travelingPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p><strong>Общая сумма</strong><strong class="right price">{{travelingPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <div class="control payment_box" id="travelMobail" ng-show="isMobile">
+            <p class="paymentBoxHeader">С ЭТОЙ СТРАХОВКОЙ ОБЫЧНО ЗАКАЗЫВАЮТ:<br /></p>
+            <label class="checkbox" id="travling_payMob">
+                <p><span class="left_text">Несчастный случай</span><span class="rigth_text">1 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[0].s}}</strong></span></p>
+                <input type="checkbox" name="primer1" ng-model="travelingPaymentCtrl.additianalPay[0].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_payMob">
+                <p><span class="left_text">Потеря багажа</span><span class="rigth_text">500 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[1].s}}</strong></span></p>
+                <input type="checkbox" name="primer2" ng-model="travelingPaymentCtrl.additianalPay[1].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            <label class="checkbox" id="travling_pay">
+                <p><span class="left_text twoLine">Гражданская ответственность</span><span class="rigth_text" id="travling_rigth_text">10 000 $  <strong class="price">{{travelingPaymentCtrl.additianalPay[2].s}}</strong></span></p>
+                <input type="checkbox" name="primer3" ng-model="travelingPaymentCtrl.additianalPay[2].b" ng-change="travelingPaymentCtrl.updata()" />
+                <span></span>
+            </label>
+            
+        </div>
+        <div class="control payment_box" ng-show="isMobile">
+            <p><strong class="headerCascoPay">К оплате</strong><br /></p>
+            <p>пример1 <strong class="price costPrice">{{travelingPaymentCtrl.offer.Price}}</strong><br /></p>
+            <p><span ng-show="travelingPaymentCtrl.add">пример2 <strong class="price costPrice">{{travelingPaymentCtrl.additianalPayString}}</strong></span><br /></p>
+            <hr>
+            <p class="footerCascoPay"><strong>Общая сумма</strong><strong class="right price">{{travelingPaymentCtrl.puymentString}}</strong></p>
+        </div>
+        <input type="submit" value="Оплатить" ng-click="travelingPaymentCtrl.pay()" />
+    </section>
+    <section class="control-group submit" id="submit"></section>
+</form>

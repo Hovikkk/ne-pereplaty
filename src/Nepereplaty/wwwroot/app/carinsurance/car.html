@@ -1,0 +1,449 @@
+<nav>
+    <ul>
+        <li class="active">
+            <p>
+                <strong>1</strong>
+                <span>Заполнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>2</strong>
+                <span>Получить предложение</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>3</strong>
+                <span>Дополнить данные</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>4</strong>
+                <span>Заплатить</span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>5</strong>
+                <span>Завершить покупку</span>
+            </p>
+        </li>
+    </ul>
+</nav>
+<form name="form" ng-submit="carCtrl.requestOffer()" novalidate>
+    <section class="control-group" id="period">
+        <h2><span>Период страховки</span></h2>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_periodStart">
+                <p class="name">Начало страховки</p>
+                <p class="error" ng-show="(form.$submitted || form.periodStart.$touched) && form.periodStart.$invalid">Выберите дату начала страховки</p>
+            </label>
+            <input type="text" ng-readonly="true" name="periodStart" class="big date" id="carCtrl_carInsuranceForm_periodStart" ng-model="carCtrl.carInsuranceForm.periodStart | amDateFormat:'DD MMMM YYYY'" ng-click="carCtrl.showPeriodStart = !carCtrl.showPeriodStart" required/>
+        </div>
+        <div pickadate="" ng-show="carCtrl.showPeriodStart" ng-model="carCtrl.carInsuranceForm.periodStart"></div>
+        <a class="datepicker-close" ng-show="carCtrl.showPeriodStart" ng-click="carCtrl.showPeriodStart = !carCtrl.showPeriodStart"><span>Закрыть</span></a>
+    </section>
+    <section class="control-group" id="about-car">
+        <h2><span>Данные по автомобилю</span></h2>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_brand">
+                <p class="name">Марка</p>
+                <p class="error" ng-show="(form.$submitted || form.carBrand.$touched) && form.$error.carBrandRequired">Выберите марку</p>
+            </label>
+            <angucomplete-alt id="carCtrl_carInsuranceForm_brand"
+                              placeholder="укажите"
+                              selected-object="carCtrl.carInsuranceForm.brand"
+                              remote-url="api/handbook/carBrands/"
+                              title-field="title"
+                              minlength="1"
+                              field-required="true"
+                              field-required-class="carBrandRequired"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big"
+                              input-name="carBrand" />
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_model">
+                <p class="name">Модель</p>
+                <p class="error" ng-show="(form.$submitted || form.carModel.$touched) && form.$error.carModelRequired">Выберите модель</p>
+            </label>
+            <angucomplete-alt id="carCtrl_carInsuranceForm_model"
+                              placeholder="укажите"
+                              selected-object="carCtrl.carInsuranceForm.model"
+                              remote-url="api/handbook/carModels/{{carCtrl.carInsuranceForm.brand.originalObject.value}}/"
+                              title-field="title"
+                              disable-input="!carCtrl.carInsuranceForm.brand.originalObject.value"
+                              field-required="true"
+                              field-required-class="carModelRequired"
+                              minlength="0"
+                              text-searching="Идёт поиск..."
+                              text-no-results="Ничего не найдено"
+                              input-class="big"
+                              input-name="carModel" />
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_carBody">
+                <p class="name">Тип кузова</p>
+                <p class="error" ng-show="(form.$submitted) && !carCtrl.carInsuranceForm.carBody.value">Выберите тип кузова</p>
+            </label>
+            <div dropdown-select="carCtrl.carBodyOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.carBody"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_power">
+                <p class="name">Мощность двигателя</p>
+                <p class="error" ng-show="(form.$submitted || form.power.$touched) && form.power.$invalid">Выберите мощность двигателя</p>
+            </label>
+            <input type="number" name="power" class="big" id="carCtrl_carInsuranceForm_power" ng-model="carCtrl.carInsuranceForm.power" min="0" placeholder="в лошадиных силах" required />
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_region">
+                <p class="name">Регион регистрации</p>
+                <p class="error" ng-show="(form.$submitted) && !carCtrl.carInsuranceForm.region.value">Выберите регион регистрации</p>
+            </label>
+            <div dropdown-select="carCtrl.regionOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.region"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_releaseYear">
+                <p class="name">Год выпуска автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.releaseYear.$touched) && form.releaseYear.$invalid">Выберите год</p>
+            </label>
+            <input type="number" name="releaseYear" class="big" id="carCtrl_carInsuranceForm_releaseYear" ng-model="carCtrl.carInsuranceForm.releaseYear" min="0" placeholder="например: 2015" required/>
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Автомобиль на гарантии</p>
+                <p class="error" ng-show="(form.$submitted || form.isGuarantee.$touched) && form.isGuarantee.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" value="true" name="isGuarantee" ng-model="carCtrl.carInsuranceForm.isGuarantee" required/>
+                <span></span>
+                <p>Да</p>
+            </label>
+            <label class="radio">
+                <input type="radio" value="false" name="isGuarantee" ng-model="carCtrl.carInsuranceForm.isGuarantee" required/>
+                <span></span>
+                <p>Нет</p>
+            </label>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_buyingDate">
+                <p class="name">Дата приобретения автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.buyingDate.$touched) && form.buyingDate.$invalid">Выберите дату</p>
+            </label>
+            <input type="text" ng-readonly="true" name="buyingDate" class="big date" id="carCtrl_carInsuranceForm_buyingDate" ng-model="carCtrl.carInsuranceForm.buyingDate | amDateFormat:'DD MMMM YYYY'" ng-click="carCtrl.showBuyingDate = !carCtrl.showBuyingDate" required/>
+        </div>
+        <div pickadate="" ng-show="carCtrl.showBuyingDate" ng-model="carCtrl.carInsuranceForm.buyingDate"></div>
+        <a class="datepicker-close" ng-show="carCtrl.showBuyingDate" ng-click="carCtrl.showBuyingDate = !carCtrl.showBuyingDate"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_startUsingDate">
+                <p class="name">Дата начала использования автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.startUsingDate.$touched) && form.startUsingDate.$invalid">Выберите дату</p>
+            </label>
+            <input type="text" ng-readonly="true" name="startUsingDate" class="big date" id="carCtrl_carInsuranceForm_startUsingDate" ng-model="carCtrl.carInsuranceForm.startUsingDate | amDateFormat:'DD MMMM YYYY'" ng-click="carCtrl.showStartUsingDate = !carCtrl.showStartUsingDate" required />
+        </div>
+        <div pickadate="" ng-show="carCtrl.showStartUsingDate" ng-model="carCtrl.carInsuranceForm.startUsingDate" min-date="carCtrl.carInsuranceForm.buyingDate"></div>
+        <a class="datepicker-close" ng-show="carCtrl.showStartUsingDate" ng-click="carCtrl.showStartUsingDate = !carCtrl.showStartUsingDate"><span>Закрыть</span></a>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_carCost">
+                <p class="name">Стоимость автомобиля</p>
+                <p class="error" ng-show="(form.$submitted || form.carCost.$touched) && form.carCost.$invalid">Укажите стоимость автомобиля</p>
+            </label>
+            <input type="number" name="carCost" class="money big" id="carCtrl_carInsuranceForm_carCost" ng-model="carCtrl.carInsuranceForm.carCost" min="0" required/>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_franchise">
+                <p class="name">Франшиза</p>
+                <p class="error" ng-show="(form.$submitted) && !carCtrl.carInsuranceForm.franchise.value">Выберите франшизу</p>
+            </label>
+            <div dropdown-select="carCtrl.franchiseOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.franchise"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Кредитный или нет автомобиль</p>
+                <p class="error" ng-show="(form.$submitted || form.isCredit.$touched) && form.isCredit.$invalid">Выберите один из вариантов</p>
+            </label>
+            <label class="radio">
+                <input type="radio" value="true" name="isCredit" ng-model="carCtrl.carInsuranceForm.isCredit" required/>
+                <span></span>
+                <p>Да</p>
+            </label>
+            <label class="radio">
+                <input type="radio" value="false" name="isCredit" ng-model="carCtrl.carInsuranceForm.isCredit" required/>
+                <span></span>
+                <p>Нет</p>
+            </label>
+        </div>
+    </section>
+    <section class="control-group" id="about-drivers">
+        <h2><span>Данные по водителям</span></h2>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_isIndividual">
+                <p class="name">Водитель</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.isIndividual.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.isIndividualOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.isIndividual"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_isOwner">
+                <p class="name">Собственник</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.isOwner.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.isOwnerOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.isOwner"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Количество водителей</p>
+                <p class="error" ng-show="(form.$submitted || form.driversCount.$touched) && form.driversCount.$invalid">Выберите количество водителей</p>
+            </label>
+            <input type="number" name="driversCount" ng-change="carCtrl.driversCountChange()" ng-model="carCtrl.driversCount" min="1" required/>
+        </div>
+        <!-- здесь будет список водителей -->
+        <div class="driver" ng-repeat="driver in carCtrl.carInsuranceForm.drivers">
+            <h3>Водитель №{{$index + 1}}</h3>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Возраст</p>
+                    <p class="error" ng-show="(form.$submitted || form.age{{$index}}.$touched) && form.age{{$index}}.$invalid">Укажите возраст</p>
+                </label>
+                <input type="number" name="age{{$index}}" class="big" ng-model="driver.age" min="18" placeholder="полных лет" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Стаж</p>
+                    <p class="error" ng-show="(form.$submitted || form.experience{{$index}}.$touched) && form.experience{{$index}}.$invalid">Укажите стаж</p>
+                </label>
+                <input type="number" name="experience{{$index}}" class="big" ng-model="driver.experience" min="0" placeholder="полных лет" required />
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Пол</p>
+                    <p class="error" ng-show="(form.$submitted || form.isMale{{$index}}.$touched) && form.isMale{{$index}}.$invalid">Укажите пол</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="true" ng-model="driver.isMale" name="isMale{{$index}}" required/>
+                    <span></span>
+                    <p>Мужской</p>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="false" ng-model="driver.isMale" name="isMale{{$index}}" required/>
+                    <span></span>
+                    <p>Женский</p>
+                </label>
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Семейное положение</p>
+                    <p class="error" ng-show="(form.$submitted) && (driver.martialStatus.value == null)">Укажите семейное положение</p>
+                </label>
+                <div dropdown-select="carCtrl.martialStatusOptions"
+                     dropdown-model="driver.martialStatus"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+            <div class="control">
+                <label class="big">
+                    <p class="name">Дети</p>
+                    <p class="error" ng-show="(form.$submitted) && (driver.kids.value == null)">Выберите один из вариантов</p>
+                </label>
+                <div dropdown-select="carCtrl.kidsOptions"
+                     dropdown-model="driver.kids"
+                     dropdown-item-label="text">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="control-group" id="about-claims">
+        <h2><span>Прошлые страховые случаи владельцев автомобиля</span></h2>
+        <div class="control small">
+            <label class="big" for="carCtrl_carInsuranceForm_wasInsurance">
+                <p class="name">Была ли у Вас в прошлом страховка</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.wasInsurance.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.wasInsuranceOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.wasInsurance"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control small">
+            <label class="big" for="carCtrl_carInsuranceForm_wasClaims">
+                <p class="name">Были ли у Вас в прошлом страховые случаи</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.wasClaims.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.wasClaims"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="title">
+            <p>1 год назад</p>
+            <p>2 года назад</p>
+            <p>3 года назад</p>
+        </div>
+        <div class="control small">
+            <label class="big">
+                <p class="name">Страховые случаи по машине</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.carClaimsOneYearAgo.value == null || carCtrl.carInsuranceForm.carClaimsTwoYearAgo.value == null || carCtrl.carInsuranceForm.carClaimsThreeYearAgo.value == null)">Укажите страховые случаи</p>
+            </label>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.carClaimsOneYearAgo"
+                 dropdown-item-label="text">
+            </div>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.carClaimsTwoYearAgo"
+                 dropdown-item-label="text">
+            </div>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.carClaimsThreeYearAgo"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control small">
+            <label class="big">
+                <p class="name">Страховые случаи по увечиям</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.mutilationClaimsOneYearAgo.value == null || carCtrl.carInsuranceForm.mutilationClaimsTwoYearAgo.value == null || carCtrl.carInsuranceForm.mutilationClaimsThreeYearAgo.value == null)">Укажите страховые случаи</p>
+            </label>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.mutilationClaimsOneYearAgo"
+                 dropdown-item-label="text">
+            </div>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.mutilationClaimsTwoYearAgo"
+                 dropdown-item-label="text">
+            </div>
+            <div dropdown-select="carCtrl.wasClaimsOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.mutilationClaimsThreeYearAgo"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+    </section>
+    <section class="control-group" id="additional-params">
+        <h2><span>Дополнительные параметры</span></h2>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_city">
+                <p class="name">Город</p>
+                <p class="error" ng-show="(form.$submitted || form.city.$touched) && form.city.$invalid">Укажите город</p>
+            </label>
+            <input type="text" name="city" class="big" id="carCtrl_carInsuranceForm_city" ng-model="carCtrl.carInsuranceForm.city" required/>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_isLeftSideRudder">
+                <p class="name">Руль</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.isLeftSideRudder.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.rudderOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.isLeftSideRudder"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big">
+                <p class="name">Страховое покрытие</p>
+                <p class="error" ng-show="(form.$submitted || form.isInsuranceSteal.$dirty || form.isInsuranceDamage.$dirty) && (!carCtrl.carInsuranceForm.isInsuranceSteal && !carCtrl.carInsuranceForm.isInsuranceDamage)">Выберите хотя бы одно страховое покрытие</p>
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="isInsuranceSteal" ng-model="carCtrl.carInsuranceForm.isInsuranceSteal"/>
+                <span></span>
+                <p>Угон</p>
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="isInsuranceDamage" ng-model="carCtrl.carInsuranceForm.isInsuranceDamage"/>
+                <span></span>
+                <p>Ущерб</p>
+            </label>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_antiTheftSystem">
+                <p class="name">Противоугоночная система</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.antiTheftSystem.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.antiTheftSystemOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.antiTheftSystem"
+                 dropdown-onchange="carCtrl.antiTheftSystemSelected(selected)"
+                 dropdown-item-label="text">
+            </div>
+            <input type="text" ng-readonly="!carCtrl.carInsuranceForm.antiTheftSystem.value" focus-me="carCtrl.antiTheftSystemAnotherFocused" class="big" id="carCtrl_carInsuranceForm_antiTheftSystem_another" ng-model="carCtrl.carInsuranceForm.antiTheftSystem_another" />
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_searchSystem">
+                <p class="name">Поисковая система</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.searchSystem.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.searchSystemOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.searchSystem"
+                 dropdown-onchange="carCtrl.searchSystemSelected(selected)"
+                 dropdown-item-label="text">
+            </div>
+            <input type="text" ng-readonly="!carCtrl.carInsuranceForm.searchSystem.value" focus-me="carCtrl.searchSystemAnotherFocused" class="big" id="carCtrl_carInsuranceForm_searchSystem_another" ng-model="carCtrl.carInsuranceForm.searchSystem_another" />
+        </div>
+    </section>
+    <section class="control-group" id="additional-options">
+        <h2><span>Дополнительные услуги и опционы</span></h2>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_commissioner">
+                <p class="name">Аварийный комиссар</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.commissioner.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.commissionerOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.commissioner"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_evacuation">
+                <p class="name">Эвакуация автомобиля</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.evacuation.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.evacuationOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.evacuation"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_techSupport">
+                <p class="name">Техпомощь</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.techSupport.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.techSupportOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.techSupport"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+        <div class="control">
+            <label class="big" for="carCtrl_carInsuranceForm_policeReference">
+                <p class="name">Выплата без справок ГИБДД</p>
+                <p class="error" ng-show="(form.$submitted) && (carCtrl.carInsuranceForm.policeReference.value == null)">Выберите один из вариантов</p>
+            </label>
+            <div dropdown-select="carCtrl.policeReferenceOptions"
+                 dropdown-model="carCtrl.carInsuranceForm.policeReference"
+                 dropdown-item-label="text">
+            </div>
+        </div>
+    </section>
+    <section class="control-group submit" id="submit">
+        <label class="checkbox">
+            <p>Cогласен с условиями использования</p>
+            <input type="checkbox" name="isAgreed" ng-model="carCtrl.carInsuranceForm.isAgreed" required/>
+            <span></span>
+        </label>
+        <p class="error" ng-show="(form.$submitted || form.isAgreed.$dirty) && form.isAgreed.$invalid">Вы должны согласится с условиями использования</p>
+        <input type="submit" value="Получить предложение" />
+    </section>
+</form>

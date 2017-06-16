@@ -1,0 +1,324 @@
+﻿@import "variables.less";
+@import "mixins.less";
+
+main{
+    & .main-view-container.account{
+        @media screen and (max-width: 800px) {
+            & #changePass{
+                & div.closeButton{
+                    width:92vw; 
+                    height:5vw; 
+                    background: @blue url(../i/open.png) no-repeat;
+                    background-position:center;
+                    background-size: 4vw;
+                }
+                & div.clButton{
+                    width:92vw; 
+                    height:5vw; 
+                    background: @blue url(../i/closed.png) no-repeat;
+                    background-position:center;
+                    background-size: 4vw;
+                }
+                & h2{
+                    color: @black;
+                    font-family: 'segoeuib';
+                    letter-spacing: .04em;
+                    text-transform: uppercase;
+                    position: relative;
+                    padding: 6vw 0 11vw 6vw;
+                    font-size: 3.5vw;
+                    
+
+                    & span{
+                        display: inline-block;
+                        background: #f2f2f2;
+                        position: absolute;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+        
+        & form {
+            & section#account_details{
+                & .tel{
+                    width: 281px;
+                    @media screen and (max-width: 800px) {
+                        width: 52vw;
+                        font-size: 5vw;
+                    }
+                }
+                 & angucomplete-alt{
+            
+                    display:table-cell;
+                    & .angucomplete-dropdown{
+                        padding-left:0px;
+                    }
+
+                }
+                & #accountCtrl_cascoInsuranceForm_city{
+                    .ie &{
+                        & .angucomplete-holder{
+                            & input.big{
+                                margin: 0px;
+                            }
+                        }
+                    }
+                }
+                & input.big{
+                    width:407px;
+                    @media screen and (max-width: 800px) {
+                        width: 79vw;
+                        margin-left: 6vw;
+                    }
+                    .ie &{
+                        float: left;
+                    }
+                }
+
+                & input.second{
+                    margin-left:48px;
+                }
+                & input.ng-invalid{
+                        border-color:red;
+                    }
+                & #telCode1{
+                    padding: 0 65px 0 0;
+                    @media screen and (max-width: 800px) {
+                        padding: 0vw;
+                    }
+                    .ie &{
+                        padding: 0 65px 0 0;
+                    }
+                }
+                & #telCode2{
+                    padding: 0 65px 0 0;
+                    @media screen and (max-width: 800px) {
+                        padding: 0vw;
+                    }
+                    .ie &{
+                        padding: 0 65px 0 0;
+                    }
+                }
+                & .telCode {
+                    padding-left:48px;
+                    @media screen and (max-width: 800px) {
+                        float: left;
+                    }
+                    & span{
+                        width:65px;
+                        .ie &{
+                            margin-top:6px;
+                        }
+                    }
+                }
+                & .coincidence{
+                    width:565px !important;
+            
+                }
+                & .maleRadio{
+                     width:407px;
+                     margin:0px;
+                     & label.big_radio{
+                         padding:0px;
+
+                     }
+                     & label.big_radio{
+                         width:150px;
+                     }
+                }       
+            }
+            & .accountMob{
+               @media screen and (max-width: 800px) {
+                   width: 92vw;
+                   & #ChangePass{
+                       & span{
+                            background-color:@white-main;
+                       }
+                   }
+                   & h2{
+                       font-family: 'segoeuib';
+                       color: @black;
+                   }
+               }
+            }
+            & section.control-group {
+                & .telCode{
+                    
+                }
+                & div.control {
+                    @media screen and (max-width: 800px) {
+                        padding-bottom: 0vw;
+                    }
+                    & .wrap-dd-select { //    padding: 0 0 20px 0; .wrap-dd-select span
+                        padding: 0px 70px 0px 0px;
+                        & .dropdown{
+                            left: -4px;
+                            right: 67px;
+                            @media screen and (max-width: 800px) {
+                                width: 22vw;
+                            }
+                        }
+                    }
+                    & input {
+                        margin: 0px;
+                        
+                        &.big {
+                            width: 407px;
+                            @media screen and (max-width: 800px) {
+                                width: 79vw;
+                                margin-left: 6vw;
+                            }
+                            &:first-child{
+                                margin-right: 43px;
+                                @media screen and (max-width: 800px) {
+                                    margin-right: 0vw;
+                                }
+                            }
+                        }
+                    }
+                    & label{
+                        width: 150px;
+                    }
+                    & .radio-group{
+                        display:table-cell;
+
+                        &.big {
+                            width: 407px;
+                            &:first-child{
+                                width: 453px;
+                            }
+                        }
+                    }
+                }
+                & .pickadate{
+                    margin-bottom: 20px;
+                }
+                &.buttonSub{
+                    @media screen and (max-width: 800px) {
+                        background-color:@white-main;
+                        width:87vw;
+                    }
+                }
+                &.submit{
+                    padding-top: 0px;
+                    
+                    & input[type="submit"]{
+                        margin-top: 0px;
+                        border: 2px solid @green;
+                        background: @green;
+                        width: 217px;
+                        -webkit-appearance: none;
+                        @media screen and (max-width: 800px) {
+                            width: 86vw;
+                            margin-right: 6vw;
+                        }
+                        &:hover {
+                            color: @green;
+                            background: @gray-light;
+                        }
+                    }
+                    & input.blue{
+                        margin-top: 30px;
+                        border: 2px solid @blue;
+                        background: @blue;
+                        width: 217px;
+                        -webkit-border-radius: 17px;
+                        -moz-border-radius: 17px;
+                        border-radius: 17px;
+                        -moz-background-clip: padding;
+                        -webkit-background-clip: padding-box;
+                        background-clip: padding-box;
+                        display: inline-block;
+                        height: 36px;
+                        font-family: 'segoeuib';
+                        font-size: 16px;
+                        padding: 0 0 3px 0;
+                        color: @white-main;
+                        -webkit-appearance: none;
+                        @media screen and (max-width: 800px) {
+                            width: 93vw;
+                            margin-right: 3vw;
+                            border-radius: 3vw;
+                        }
+                        &:hover {
+                            color: @blue;
+                            background: @gray-light;
+                        }
+                    }
+                }
+            }
+
+            & p.error {
+                font-size: 14px;
+                color: #f12c2c;
+                letter-spacing: 0.020em;
+                line-height: 22px;
+                @media screen and (max-width: 800px) {
+                    font-size: 4vw;
+                    margin-left: 6vw;
+                    margin-right: 6vw;
+                }
+            }
+
+            & .passwordEquals{
+                font-size: 14px;
+                color: black;
+                padding: 0px 25px;
+                background-image: url('../i/ok.png');
+                background-size: 12px 10px;
+                background-position: left center;
+                background-repeat: no-repeat;
+                position:relative;
+
+                @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                    background-image: url("../i/ok.2x.png");
+                }
+            }
+
+            & .passwordNotEquals{
+                font-size: 14px;
+                color: black;
+                padding: 0px 25px;
+                position: relative;
+
+                &:before{
+                    content:"+";
+                    display: inline-block;
+                    position: absolute;
+                    top: -7px;
+                    left: 0px;
+                    color: #e53939;
+                    font-family: 'segoeuibl';
+                    font-size: 26px;
+                    display: inline-block;
+                    .rotate(45deg);
+                }
+            }
+        }
+        & .documents{
+            & .document{
+                padding: 25px 0px 0px 0px;
+
+                & h3{
+                    .opacity(0.9);
+                    color: black;
+                    font-family: 'segoeuib';
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                & p{
+                    .opacity(0.9);
+                    color: black;
+                    font-size: 16px;
+                    margin-top: 12px;
+                    padding: 10px 0px 10px 41px;
+                    background-image: url('../i/doc.png');
+                    background-position: left center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}
